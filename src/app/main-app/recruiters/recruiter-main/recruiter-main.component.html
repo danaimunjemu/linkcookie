@@ -1,0 +1,28 @@
+<app-r-header></app-r-header>
+<!-- FIX THIS BR SECTION -->
+<!-- <br><br><br> -->
+<!-- <div class="app-background">
+    <div class="row">
+        <div class="col">
+            <app-r-sidenav></app-r-sidenav>
+        </div>
+        <div class="col">
+            <router-outlet></router-outlet>slakjfhsljfsdah
+        </div>
+    </div>
+</div> -->
+<div class="content">
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<nz-back-top [nzTemplate]="tpl" [nzVisibilityHeight]="100" (nzOnClick)="notify()">
+    <ng-template #tpl>
+      <div class="ant-back-top-inner">
+        <i class="bi bi-arrow-up-short"></i>
+      </div>
+    </ng-template>
+  </nz-back-top>
+
+<nz-footer>Link Cookie ©2022 </nz-footer>

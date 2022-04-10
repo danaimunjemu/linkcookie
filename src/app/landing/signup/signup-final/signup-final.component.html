@@ -1,0 +1,20 @@
+
+<div class="d-flex justify-content-center form-area">
+    <div class="new-ad-container ">
+        <h3 class="placeholder-logo">Please wait as your account is being created</h3>
+        <h5 class="signup-helper-text" style="text-align: center;">{{ signupProgressText }}</h5>
+        <div class="d-flex justify-content-center welcome-img">
+        <!-- <img src="../../../assets/images/accountcreation.gif" class="d-block w-100 final-img img-fluid" alt="..."> -->
+        <div class="progress-area">
+        <nz-progress [nzPercent]="percent" nzType="circle"></nz-progress>
+
+        </div>
+    <!-- <nz-button-group>
+      <button nz-button (click)="decline()"><i nz-icon nzType="minus"></i></button>
+      <button nz-button (click)="increase()"><i nz-icon nzType="plus"></i></button>
+    </nz-button-group> -->
+        </div>
+    </div>  
+</div>
+
+

@@ -1,0 +1,101 @@
+<!-- <div class="signup-page">
+    <div class="container">
+        <div class="signup-section">
+          <div class="row top-bar">
+            <div class="col-sm-12 d-flex justify-content-center stepper-step">
+              <span>Step {{ currentStep }}/5</span>
+            </div>
+          </div>
+          <div class="ad-progress-bar">
+            <nz-progress
+              [nzPercent]=" progressBar "
+              [nzStrokeColor]="{ '0%': '#ffd36e', '100%': '#ffa104' }"
+              nzStatus="active"
+            ></nz-progress>
+          </div>
+
+             <h3 class="placeholder-logo">Welcome to LinkCookie</h3>
+            <h1 class="signup-heading">Follow these three easy steps to get linked!</h1>
+            <div class="d-flex justify-content-center">
+                <div class="signup-container ">
+                    <nz-steps [nzCurrent]="current">
+                        <nz-step nzTitle="Account Type"></nz-step>
+                        <nz-step nzTitle="Account Settings"></nz-step>
+                        <nz-step nzTitle="User Profile"></nz-step>
+                      </nz-steps>
+                      <div class="signup-steps-content ">
+                          
+                          <form>
+                            <div class="mb-3">
+                              <input type="email" class="form-control" aria-describedby="emailHelp"  placeholder="Email">
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" aria-describedby="emailHelp"  placeholder="Phone Number">
+                              </div>
+                            <div class="mb-3">
+                              <input type="password" class="form-control" placeholder="Password">
+                              <div id="emailHelp" class="form-text">The password must be a minimum of 8 characters..</div>
+
+                            </div>
+                          </form>
+                        </div>
+                      <div class="steps-action d-flex justify-content-between">
+                        <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+                          <span> <i class="bi bi-arrow-left button-icon"></i>Previous</span>
+                        </button>
+                        <button nz-button nzType="default" (click)="next()" *ngIf="current < 2">
+                          <span>Next <i class="bi bi-arrow-right button-icon"></i></span>
+                        </button>
+                        <button nz-button nzType="primary" (click)="done()" *ngIf="current === 2">
+                          <span>Done<i class="bi bi-check2"></i></span>
+                        </button>
+                      </div>
+                      <br>
+                      <br>
+                      <p>By continuing, I agree to Link Cookies Terms</p>
+                      <hr>
+                      <div class="row  d-flex justify-content-between">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6 sign-log-switch">Already using Link Cookie? <a routerLink="/login">Log In</a></div>
+                      </div>
+
+                </div>  
+            </div> 
+        </div>
+        <div class="go-home-section">
+          <a routerLink="/home/welcome" class="go-home"><i class="bi bi-arrow-left button-icon"></i>  Go Home</a>
+      </div>
+    </div>
+</div> -->
+
+
+<div class="container card-control">
+  <div class="signup-section">
+    <div class="row top-bar">
+      <div class="col-sm-12 d-flex justify-content-center stepper-step">
+        <span>Step {{ currentStep }}/4</span>
+      </div>
+    </div>
+    <div class="ad-progress-bar">
+      <nz-progress
+        [nzPercent]=" progressBar "
+        [nzStrokeColor]="{ '0%': '#ffd36e', '100%': '#ffa104' }"
+        nzStatus="active"
+      ></nz-progress>
+    </div>
+    <router-outlet></router-outlet>
+    <div class="mb-3">
+      <div class="row">
+          <div class="col">
+              <button class="login-button" (click)="navigateToPrevious()">{{ previousText }}</button>
+          </div>
+          <div class="col">
+              <button class="login-button" (click)="navigateToNext()" >{{nextText}}</button>
+          </div>
+      </div>
+    </div>
+    <div class="go-home-section">
+      <a routerLink="/home/welcome" class="go-home"><i class="bi bi-arrow-left button-icon"></i>  Go Home</a>
+  </div>
+  </div>
+</div>

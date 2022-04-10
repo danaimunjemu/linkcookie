@@ -1,0 +1,76 @@
+
+
+    <div class="container checkout-card-control">
+        <div class="checkout-section">
+            <div class="row">
+                <div class="col-md-7">
+                  <div class="cart-section">
+                    <span class="checkout-header">SHOPPING CART</span> 
+                    <div class="cart-table">
+                      <nz-table
+                      #rowSelectionTable
+                      [nzData]="listOfData"
+                    >
+                      <thead>
+                        <tr>
+                          <!-- <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" (nzCheckedChange)="onAllChecked($event)"></th> -->
+                          <th [nzChecked]="checked" [nzIndeterminate]="indeterminate"></th>
+                          <th>Item Name</th>
+                          <th>Quantity</th>
+                          <th>Total Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let data of rowSelectionTable.data">
+                          <td
+                            [nzChecked]="setOfCheckedId.has(data.id)"
+                          ></td>
+                          <td>{{ data.name }}</td>
+                          <td>{{ data.quantity }}</td>
+                          <td>$ {{ data.total }}.00</td>
+                        </tr>
+                        <tr *ngFor="let data of rowSelectionTable.data" class="subtotal-section">
+                          <td></td>
+                          <td></td>
+                          <td>Subtotal: <br> Tax:</td>
+                          <td>$ {{ data.total }}.00 <br> $12.25</td>
+                        </tr>
+                        <tr class="total-section">
+                          <td></td>
+                          <td></td>
+                          <td>Total:</td>
+                          <td>$ 62.25</td>
+                        </tr>
+                      </tbody>
+                    </nz-table>
+                     </div>
+                  </div>
+                     
+                 </div>
+                 <div class="col-md-5">
+                   <div class="payment-info-section">
+                     <span class="checkout-header payment-header">PAYMENT INFO</span>  
+                     <div class="payment-info">
+                      <form class="payment-info-form">
+                        <div class="mb-3">
+                          <input type="email" class="form-control login-input" aria-describedby="emailHelp"  placeholder="First Name">
+                        </div>
+                        <div class="mb-3">
+                          <input type="email" class="form-control login-input" aria-describedby="emailHelp"  placeholder="Last Name">
+                        </div>
+                        <div class="mb-3">
+                          <input type="email" class="form-control login-input" aria-describedby="emailHelp"  placeholder="Phone Number">
+                        </div>
+                        <div class="mb-3">
+                          <input type="email" class="form-control login-input" aria-describedby="emailHelp"  placeholder="Email">
+                        </div>
+                        <div class="mb-3">
+                            <button routerLink="../payway-sim" class="login-button">Check Out</button>
+                          </div>
+                      </form>
+                     </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>

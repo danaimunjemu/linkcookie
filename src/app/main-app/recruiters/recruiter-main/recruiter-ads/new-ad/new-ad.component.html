@@ -1,0 +1,34 @@
+  <div class="container card-control">
+      <div class="login-section">
+        <div class="row top-bar">
+          <div class="col-sm-12 d-flex justify-content-center stepper-step">
+            <span>Step {{ currentStep }}/5</span>
+          </div>
+        </div>
+        <div class="ad-progress-bar">
+          <nz-progress
+            [nzPercent]=" progressBar "
+            [nzStrokeColor]="{ '0%': '#ffd36e', '100%': '#ffa104' }"
+            nzStatus="active"
+          ></nz-progress>
+        </div>
+        <router-outlet></router-outlet>
+        <div class="mb-3">
+          <div class="row">
+              <div class="col">
+                  <button class="login-button" (click)="navigateToPrevious()">{{ previousText }}</button>
+              </div>
+              <div class="col">
+                  <button class="login-button" (click)="navigateToNext()" >{{nextText}}</button>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
+
+  
+   
+    
