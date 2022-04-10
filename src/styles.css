@@ -131,7 +131,7 @@ body {
         width: 90%;
     }
     .hero-header {
-        font-size: 50px;
+        font-size: 40px !important;
         text-align: center;
     }
     .hero-subheader {
