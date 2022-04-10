@@ -113,10 +113,87 @@ body {
     margin-left: 20px;
 }
 
+/* .background-img-section{
+    background-image: url('./assets/images/back3.png'); 
+    background-repeat: no-repeat; 
+    background-size: 85%;
+    background-position: center;
+} */
+
+
+@media (min-device-width: 320px) and (max-device-width: 480px) {
+    body {
+        padding-top: 25px;
+    }
+    .wrap-bg{
+        top: 100px !important;
+        opacity: 0.7 !important;
+        width: 90%;
+    }
+    .hero-header {
+        font-size: 50px;
+        text-align: center;
+    }
+    .hero-subheader {
+        text-align: center;
+    }
+    .bullet-icon {
+        font-size: 20px !important;
+    }
+    .link-description {
+        font-size: 30px !important;
+    }
+    .bullet-list {
+        font-size: 18px !important ;
+    }
+    .partners-sub {
+        font-size: 30px !important;
+        text-align: center;
+    }
+}
+
+@media (min-device-width: 481) and (max-device-width: 768px) {
+    body {
+        padding-top: 25px;
+    }
+    .wrap-bg{
+        top: 90px !important;
+        opacity: 0.7 !important;
+        width: 90% !important;
+    }
+    .hero-header {
+        font-size: 50px;
+        text-align: center;
+    }
+    .hero-subheader {
+        text-align: center;
+    }
+}
+
+.wrap {
+    align-content: center;
+}
+
+.wrap-bg {
+    opacity: 0.5;
+    position: absolute;
+    width: 85%;
+    height: auto;
+    max-width: 100%;
+    top: 55px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    /* z-index: 1; */
+    margin: auto;
+}
 
 .hero-section {
-    padding: 20px;
+    /* padding: 20px; */
     max-width: 1500px;
+    min-height: 87vh;
+    position: relative;
+    
 }
 
 .hero-text {
@@ -263,13 +340,15 @@ body {
     color: #2D3540;
     animation-duration: 1s;
     animation-name: bounceIn;
+    /* background-color: #fff; */
 }
 
 .hero-subheader {
     font-size: 20px;
     font-weight: 400;
-    color: #9c9ea2;
+    color: #060c27;
     line-height: 28px;
+    background-color: #fff;
 }
 
 
@@ -314,6 +393,7 @@ body {
     transition: 0.3s;
     background-position: center;
     transition: background 0.8s;
+    background-color: #fff;
 }
 
 .hero-link-secondary:hover{
@@ -337,7 +417,7 @@ body {
     padding-bottom: 20px;
   }
 
- 
+  
   
   /* Button style */
   button {
@@ -399,10 +479,11 @@ body {
     color: #ffa104;
     font-weight: bold;
     transition: 0.3s;
+    background-color: #fff;
 }
 
 .stats-section {
-    padding: 0px 50px 50px 50px;
+    padding: 50px 0px 50px 0px;
     text-align: center;
 }
 
@@ -454,7 +535,7 @@ body {
     padding: 30px;
     width: 100%;
     height: auto;
-    max-width: 500px;
+    max-width: 450px;
     opacity: 0;
 }
 
@@ -462,6 +543,7 @@ body {
     opacity: 1;
     animation-duration: 1s;
     animation-name: bounceIn;
+    align-items: center;
 }
 
 @keyframes bounceIn {
@@ -633,15 +715,16 @@ body {
     background-color: #fff;
     padding-top: 30px;
     padding-bottom: 30px;
-    padding-left: 75px;
-    padding-right: 75px;
+    padding-left: 30px;
+    padding-right: 30px;
     border-radius: 30px;
-    box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1); */
     min-height: 650px;
 } 
 
 .card-control {
     max-width: 800px !important;
+    padding: 20px;
 }
 
 .login-para {
@@ -656,12 +739,17 @@ body {
 
 .login-container {
     align-content: center;
-    width: 60%;
+    width: 100%;
 }
 
 .login-input {
     border-radius: 30px;
     padding: 12px 18px;
+}
+
+.login-input:focus {
+    border: 1px solid #ffa104;
+
 }
 
 .login-button {
@@ -833,7 +921,7 @@ body {
   }
 
   .content {
-    /* padding: 40px; */
+    padding: 20px;
     min-height: calc(100vh - 145px);
     /* background-color: #eff1f7; */
     background-color: #fff;

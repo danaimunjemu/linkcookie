@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { HostListener } from '@angular/core';
+import {
+  NzSkeletonAvatarShape,
+  NzSkeletonAvatarSize,
+  NzSkeletonButtonShape,
+  NzSkeletonButtonSize,
+  NzSkeletonInputSize
+} from 'ng-zorro-antd/skeleton';
 
 @Component({
   selector: 'app-welcome',
@@ -9,9 +16,23 @@ import { HostListener } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
+  // Skeleton
+
+  buttonActive = false;
+  avatarActive = false;
+  inputActive = false;
+  imageActive = false;
+  buttonSize: NzSkeletonButtonSize = 'default';
+  avatarSize: NzSkeletonAvatarSize = 'default';
+  inputSize: NzSkeletonInputSize = 'default';
+  elementActive = false;
+  buttonShape: NzSkeletonButtonShape = 'default';
+  avatarShape: NzSkeletonAvatarShape = 'circle';
+  elementSize: NzSkeletonInputSize = 'default';
+
   isVisible = false;
 
-  linkText = "Job Seekers";
+  linkText = "JOB SEEKERS";
 
   constructor(private message: NzMessageService) { }
 
@@ -59,21 +80,24 @@ export class WelcomeComponent implements OnInit {
 
 textChanger():void {
   switch (this.linkText) {
-        case 'Job Seekers': {
-          this.linkText = 'Businesses';
+        case 'JOB SEEKERS': {
+          this.linkText = 'BUSINESSES';
           break;
         }
-        case 'Businesses': {
-          this.linkText = 'Freelancers';
+        case 'BUSINESSES': {
+          this.linkText = 'FREELANCERS';
           break;
         }
-        case 'Freelancers': {
-          this.linkText = 'Jobseekers';
+        case 'FREELANCERS': {
+          this.linkText = 'CONSULTANTS';
           break;
         }
-       
+        case 'CONSULTANTS': {
+          this.linkText = 'JOB SEEKERS';
+          break;
+        }
         default: {
-          this.linkText = 'Businesses';
+          this.linkText = 'BUSINESSES';
           break;
         }
       }

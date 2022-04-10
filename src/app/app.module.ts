@@ -62,6 +62,13 @@ import { SignupTwoComponent } from './landing/signup/signup-two/signup-two.compo
 import { SignupThreeComponent } from './landing/signup/signup-three/signup-three.component';
 import { SignupFinalComponent } from './landing/signup/signup-final/signup-final.component';
 import { PaywaySimComponent } from './main-app/shared/payway-sim/payway-sim.component';
+import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { ContactUsComponent } from './landing/contact-us/contact-us.component';
+import { TendersComponent } from './landing/tenders/tenders.component';
 
 
 
@@ -100,7 +107,9 @@ registerLocaleData(en);
     SignupTwoComponent,
     SignupThreeComponent,
     SignupFinalComponent,
-    PaywaySimComponent
+    PaywaySimComponent,
+    ContactUsComponent,
+    TendersComponent
   ],
   imports: [
     BrowserModule,
@@ -128,7 +137,12 @@ registerLocaleData(en);
     NzSelectModule,
     NzProgressModule,
     ReactiveFormsModule,
-    NzTagModule
+    NzTagModule,
+    NzSkeletonModule,
+    NzGridModule,
+    NzSpaceModule,
+    NzRadioModule,
+    NzSwitchModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

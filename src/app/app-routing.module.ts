@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { ContactUsComponent } from "./landing/contact-us/contact-us.component";
 import { ForJobseekersComponent } from "./landing/for-jobseekers/for-jobseekers.component";
 import { ForRecruitersComponent } from "./landing/for-recruiters/for-recruiters.component";
 import { HomeComponent } from "./landing/home/home.component";
@@ -10,6 +11,7 @@ import { SignupThreeComponent } from "./landing/signup/signup-three/signup-three
 import { SignupTwoComponent } from "./landing/signup/signup-two/signup-two.component";
 import { SignupWelcomeComponent } from "./landing/signup/signup-welcome/signup-welcome.component";
 import { SignupComponent } from "./landing/signup/signup.component";
+import { TendersComponent } from "./landing/tenders/tenders.component";
 import { WelcomeComponent } from "./landing/welcome/welcome.component";
 import { NewAdComponent } from "./main-app/recruiters/recruiter-main/recruiter-ads/new-ad/new-ad.component";
 import { StepFiveComponent } from "./main-app/recruiters/recruiter-main/recruiter-ads/new-ad/step-five/step-five.component";
@@ -39,7 +41,9 @@ const appRoutes: Routes = [
             {path:'', redirectTo: 'welcome', pathMatch: 'full'},
             {path:'welcome', component: WelcomeComponent},
             { path: 'for-jobseekers', component: ForJobseekersComponent },
-            { path: 'for-recruiters', component: ForRecruitersComponent }
+            { path: 'for-recruiters', component: ForRecruitersComponent },
+            { path: 'tenders', component: TendersComponent },
+            { path: 'contact-us', component: ContactUsComponent }
         ]
     },
 

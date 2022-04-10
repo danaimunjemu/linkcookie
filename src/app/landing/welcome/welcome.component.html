@@ -1,41 +1,110 @@
-
-
-<div class="container-fluid hero-section">
-    <div class="row">
-      <div class="col-lg-5">
-        <img src="../../../assets/images/hero1.png" class="d-block w-100 hero-img img-fluid" alt="...">
-    </div>
-      <div class="col-lg-7  d-flex align-items-center">
-          <div>
-            <h1 class="hero-header">  The last <span class="hero-text">LINK</span> you'll ever need!
-            </h1>
-            <h3 class="hero-subheader">Join the #1 community  for job seekers and recruiters! Link Cookie is a platform that helps both job seekers
-              to find jobs and recruiters to find talent!
-            </h3>
-            <br><br>
-            <div class="d-grid gap-2 d-sm-flex justify-content-md-start">
-              <button class="btn hero-link-primary btn-sm" routerLink="../for-jobseekers">Find Work<i class="bi bi-arrow-right button-icon"></i></button>
-              <button class="btn hero-link-secondary btn-sm" routerLink="../for-recruiters">Find Talent<i class="bi bi-arrow-right button-icon"></i></button>
-            </div>
-          </div>
-
-      </div>
-      
-    </div>
+<!-- <nz-space nzSize="middle">
+  <nz-skeleton-element
+    *nzSpaceItem
+    nzType="button"
+    [nzActive]="elementActive"
+    [nzSize]="elementSize"
+    [nzShape]="buttonShape"
+  ></nz-skeleton-element>
+  <nz-skeleton-element
+    *nzSpaceItem
+    nzType="avatar"
+    [nzActive]="elementActive"
+    [nzSize]="elementSize"
+    [nzShape]="avatarShape"
+  ></nz-skeleton-element>
+  <nz-skeleton-element
+    *nzSpaceItem
+    nzType="input"
+    [nzActive]="elementActive"
+    [nzSize]="elementSize"
+    style="width:200px"
+  ></nz-skeleton-element>
+</nz-space>
+<br />
+<br />
+<nz-skeleton-element nzType="image" [nzActive]="elementActive"></nz-skeleton-element>
+<div nz-row nzAlign="middle" [nzGutter]="8">
+  <div nz-col nzSpan="10">
+    Size:
+    <nz-radio-group [(ngModel)]="elementSize">
+      <label nz-radio-button nzValue="default">Default</label>
+      <label nz-radio-button nzValue="large">Large</label>
+      <label nz-radio-button nzValue="small">Small</label>
+    </nz-radio-group>
+  </div>
+  <div nz-col nzSpan="5">
+    Active:
+    <nz-switch [(ngModel)]="elementActive"></nz-switch>
+  </div>
 </div>
+<br />
+<br />
+<div nz-row nzAlign="middle" [nzGutter]="8">
+  <div nz-col nzSpan="10">
+    Button Shape:
+    <nz-radio-group [(ngModel)]="buttonShape">
+      <label nz-radio-button nzValue="default">Default</label>
+      <label nz-radio-button nzValue="circle">Circle</label>
+      <label nz-radio-button nzValue="round">Round</label>
+    </nz-radio-group>
+  </div>
+  <div nz-col nzSpan="10">
+    Avatar Shape:
+    <nz-radio-group [(ngModel)]="avatarShape">
+      <label nz-radio-button nzValue="circle">Circle</label>
+      <label nz-radio-button nzValue="square">Square</label>
+    </nz-radio-group>
+  </div>
+</div> -->
+
+
+
+
+
+<div class="wrap  d-flex align-items-center">
+  <img src="../../../assets/images/back3.png" alt="" class="wrap-bg img-fluid">
+</div>
+
+<div>
+  <div class="background-img-section">
+    <div class="container-fluid hero-section">
+      <div class="row">
+        <div class="col-lg-5">
+          <img src="../../../assets/images/hero1.png" class="d-block w-100 hero-img img-fluid" alt="...">
+      </div>
+        <div class="col-lg-7  d-flex align-items-center">
+            <div>
+              <h1 class="hero-header">  The last <span class="hero-text">LINK</span> you'll ever need!
+              </h1>
+              <h3 class="hero-subheader">Join the #1 community  for job seekers and recruiters! Link Cookie is a platform that helps both job seekers
+                to find jobs and recruiters to find talent!
+              </h3>
+              <br><br>
+              <div class="d-grid gap-2 d-sm-flex justify-content-md-start">
+                <button class="btn hero-link-primary btn-sm" routerLink="../for-jobseekers">Find Work<i class="bi bi-arrow-right button-icon"></i></button>
+                <button class="btn hero-link-secondary btn-sm" routerLink="../for-recruiters">Find Talent<i class="bi bi-arrow-right button-icon"></i></button>
+              </div>        
+            </div>
+        </div>
+      </div>
+      <div class="container stats-section">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="link-description"> A place for <span class="link-changing">{{ linkText }}</span> to link</p>
+          </div>
+        </div>
+      </div>  
+  </div>
+  </div>
+</div>
+
 <br>
 
 
 
 
 
-<div class="container stats-section">
-    <div class="row">
-      <div class="col-md-12">
-        <p class="link-description"> Link Cookie is a place for <span class="link-changing">{{ linkText }}</span> to link</p>
-      </div>
-    </div>
-  </div>
 
   
   
