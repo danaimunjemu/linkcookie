@@ -32,7 +32,7 @@ import { PaywaySimComponent } from "./main-app/shared/payway-sim/payway-sim.comp
 
 const appRoutes: Routes = [
     
-    { path: '', redirectTo: '/home' , pathMatch: 'full'},
+    { path: '', redirectTo: '/home/welcome' , pathMatch: 'full'},
     
     { path: 'home', component: HomeComponent, 
         children: [
