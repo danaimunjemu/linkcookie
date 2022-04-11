@@ -179,7 +179,7 @@ body {
     position: absolute;
     width: 85%;
     height: auto;
-    max-width: 100%;
+    max-width: 80%;
     top: 55px;
     left: 0;
     right: 0;
@@ -228,7 +228,125 @@ body {
     }
 }
 
+/* Feature Wrap */
 
+.feature-wrap {
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 42px 26px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.feature-icon {
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    background-color: #fff7ee;
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 auto 20px;
+}
+
+.feature-title {
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 28px;
+    color: #060c27;
+    margin-bottom: 18px;
+}
+
+.feature-paragraph {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    color: rgba(0, 23, 27, 0.7);
+    margin-bottom: 30px;
+}
+
+
+
+/* Partners Scroll */
+
+
+
+.section-tag {
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    padding: 8px 20px;
+    margin: 0;
+    background-color: #fff7ee;
+    color: #ffa104;
+    display: inline-block;
+    text-transform: uppercase;
+    border-radius: 50px;
+}
+
+.section-header {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    color: rgba(0, 23, 27, 0.7);
+    margin: 10px !important;
+}
+
+.header-yellow {
+    color: #ffa104;
+}
+
+.section-description {
+    color: rgba(0, 23, 27, 0.7);
+    font-size: 18px;
+    text-align: center;
+    padding: 10px 5px 20px 5px ;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+   }
+    100% {
+        transform: translateX(calc(-250px * 7));
+   }
+}
+.slider {
+    background: white;
+    /* box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125); */
+    border: 1px solid #fff7ee;
+    border-radius: 30px;
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 960px;
+}
+.slider::before, .slider::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    content: "";
+    height: 100px;
+    position: absolute;
+    max-width: 200px;
+    z-index: 2;
+}
+.slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+.slider::before {
+    left: 0;
+    top: 0;
+}
+.slider .slide-track {
+    animation: scroll 40s linear infinite;
+    display: flex;
+    width: calc(250px * 14);
+}
+.slider .slide {
+    height: 100px;
+    width: 250px;
+}
 
 .square {
     width: 200px;
