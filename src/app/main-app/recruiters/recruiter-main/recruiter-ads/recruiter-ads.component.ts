@@ -4,6 +4,7 @@ interface ItemData {
   href: string;
   title: string;
   avatar: string;
+  job: string;
   description: string;
   content: string;
 }
@@ -52,10 +53,11 @@ export class RecruiterAdsComponent implements OnInit {
   }
 
   loadData(pi: number): void {
-    this.data = new Array(5).fill({}).map((_, index) => ({
+    this.data = new Array(1).fill({}).map((_, index) => ({
       href: 'http://ant.design',
-      title: `Project Manager ${index}`,
-      avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+      title: `Meta Platforms Inc`,
+      job: `Sr. Back-End Developer`,
+      avatar: '../../../../../assets/images/part4.jpg',
       description: 'The Eastern Line Company is looking for an experienced project manager for a senior position.',
       content:
         'We supply a series of design principles, practical patterns and high quality design resources ' +

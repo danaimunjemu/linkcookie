@@ -405,7 +405,7 @@ a.learn-more:hover {
     margin: auto;
     overflow: hidden;
     position: relative;
-    width: 960px;
+    width: 1200px;
 }
 .slider::before, .slider::after {
     background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
@@ -1192,8 +1192,14 @@ a.learn-more:hover {
 }
 
 .ant-list-item-meta-title {
-    font-size: 24px !important;
-    color: #060c27 !important;
+    font-size: 20px !important;
+    color: #98a7b2 !important;
+}
+
+.ant-list-item-meta-description {
+    font-size: 20px;
+    font-weight: bold;
+    color: #7a858f;
 }
 
 .ant-tag {
@@ -1354,8 +1360,12 @@ a.learn-more:hover {
     border-radius: 30px;
     background-color: #fff;
     padding: 20px;
-    box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.1);
+    border: 2px solid #f4f6f8;
 
+  }
+
+  .ad-container:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   }
 
   .ant-tabs-nav-more {
@@ -2652,5 +2662,6 @@ footer#site-footer #footer-social-buttons img:hover {
     }
 }
   
-
-  
+nz-tag {
+    color: #bbc5cc !important;
+}

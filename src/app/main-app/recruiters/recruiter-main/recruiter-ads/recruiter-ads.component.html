@@ -88,26 +88,20 @@
             <a (click)="showModal()">
               <nz-list-item *ngFor="let item of data">
                   <nz-list-item-meta>
-                    <nz-list-item-meta-avatar [nzSrc]="item.avatar"></nz-list-item-meta-avatar>
+                    <!-- <nz-list-item-meta-avatar [nzSrc]="item.avatar"></nz-list-item-meta-avatar> -->
                     <nz-list-item-meta-title>
-                      <div class="ad-title">{{ item.title }}</div> 
+                      <div class="ad-title">{{ item.title }} <nz-tag [nzColor]="'#fdecee'" style="color: #fd8d9a !important; border: none;">Technology</nz-tag></div> 
                     </nz-list-item-meta-title>
                     <nz-list-item-meta-description>
-                      {{ item.description }}
+                      {{ item.job }}
                     </nz-list-item-meta-description>
+                    <!-- <nz-list-item-meta-description>
+                      {{ item.description }}
+                    </nz-list-item-meta-description> -->
                   </nz-list-item-meta>
-
-                    <!-- <nz-tag [nzColor]="'magenta'">Project Management</nz-tag> -->
-                    <!-- <nz-tag [nzColor]="'red'">Project Management</nz-tag> -->
-                    <!-- <nz-tag [nzColor]="'volcano'">volcano</nz-tag> -->
-                    <nz-tag [nzColor]="'orange'">Accounting</nz-tag>
-                    <nz-tag [nzColor]="'gold'">Construction</nz-tag>
-                    <!-- <nz-tag [nzColor]="'lime'">lime</nz-tag> -->
-                    <nz-tag [nzColor]="'green'">Engineering</nz-tag>
-                    <!-- <nz-tag [nzColor]="'cyan'">cyan</nz-tag> -->
-                    <!-- <nz-tag [nzColor]="'blue'">Accounting</nz-tag> -->
-                    <!-- <nz-tag [nzColor]="'geekblue'">geekblue</nz-tag> -->
-                    <!-- <nz-tag [nzColor]="'purple'">purple</nz-tag> -->
+                    <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
+                    <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
+                    <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
                   <ul nz-list-item-actions>
                     <nz-list-item-action>
                       <i class="bi bi-people" style="font-size: 20px;"></i> Applicants
@@ -123,13 +117,144 @@
                     </nz-list-item-action>
                   </ul>
                   <nz-list-item-extra>
-                    <img width="272" alt="logo" src="../../../../../../assets/images/listitem.png" />
+                    <img width="120" alt="logo" src="../../../../../../assets/images/part4.jpg" />
+                    <ul nz-list-item-actions>
+                    </ul>
                   </nz-list-item-extra>
                 </nz-list-item>
             </a>
-                
               </nz-list>
         </div>
+        <div class="ad-container">
+          <nz-list nzItemLayout="vertical"
+          >
+          <a (click)="showModal()">
+            <nz-list-item *ngFor="let item of data">
+                <nz-list-item-meta>
+                  <!-- <nz-list-item-meta-avatar [nzSrc]="item.avatar"></nz-list-item-meta-avatar> -->
+                  <nz-list-item-meta-title>
+                    <div class="ad-title">{{ item.title }} <nz-tag [nzColor]="'#fff2e5'" style="color: #ff8b1b !important; border: none;">Electronic Cars</nz-tag></div> 
+                  </nz-list-item-meta-title>
+                  <nz-list-item-meta-description>
+                    {{ item.job }}
+                  </nz-list-item-meta-description>
+                  <!-- <nz-list-item-meta-description>
+                    {{ item.description }}
+                  </nz-list-item-meta-description> -->
+                </nz-list-item-meta>
+                  <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
+                  <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
+                  <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
+                <ul nz-list-item-actions>
+                  <nz-list-item-action>
+                    <i class="bi bi-people" style="font-size: 20px;"></i> Applicants
+                    156
+                  </nz-list-item-action>
+                  <nz-list-item-action>
+                    <i class="bi bi-calendar-date" style="font-size: 20px;"></i> Posted
+                    3 February 2022
+                  </nz-list-item-action>
+                  <nz-list-item-action>
+                    <i class="bi bi-clock-history" style="font-size: 20px;"></i> Due
+                    18 April 2022
+                  </nz-list-item-action>
+                </ul>
+                <nz-list-item-extra>
+                  <img width="120" alt="logo" src="../../../../../../assets/images/part5.png" />
+                  <ul nz-list-item-actions>
+                  </ul>
+                </nz-list-item-extra>
+              </nz-list-item>
+          </a>
+            </nz-list>
+      </div>
+
+      <div class="ad-container">
+        <nz-list nzItemLayout="vertical"
+        >
+        <a (click)="showModal()">
+          <nz-list-item *ngFor="let item of data">
+              <nz-list-item-meta>
+                <!-- <nz-list-item-meta-avatar [nzSrc]="item.avatar"></nz-list-item-meta-avatar> -->
+                <nz-list-item-meta-title>
+                  <div class="ad-title">{{ item.title }} <nz-tag [nzColor]="'#fdecee'" style="color: #fd8d9a !important; border: none;">Technology</nz-tag></div> 
+                </nz-list-item-meta-title>
+                <nz-list-item-meta-description>
+                  {{ item.job }}
+                </nz-list-item-meta-description>
+                <!-- <nz-list-item-meta-description>
+                  {{ item.description }}
+                </nz-list-item-meta-description> -->
+              </nz-list-item-meta>
+                <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
+                <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
+                <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
+              <ul nz-list-item-actions>
+                <nz-list-item-action>
+                  <i class="bi bi-people" style="font-size: 20px;"></i> Applicants
+                  156
+                </nz-list-item-action>
+                <nz-list-item-action>
+                  <i class="bi bi-calendar-date" style="font-size: 20px;"></i> Posted
+                  3 February 2022
+                </nz-list-item-action>
+                <nz-list-item-action>
+                  <i class="bi bi-clock-history" style="font-size: 20px;"></i> Due
+                  18 April 2022
+                </nz-list-item-action>
+              </ul>
+              <nz-list-item-extra>
+                <img width="120" alt="logo" src="../../../../../../assets/images/part2.png" />
+                <ul nz-list-item-actions>
+                </ul>
+              </nz-list-item-extra>
+            </nz-list-item>
+        </a>
+          </nz-list>
+    </div>
+    <div class="ad-container">
+      <nz-list nzItemLayout="vertical"
+      >
+      <a (click)="showModal()">
+        <nz-list-item *ngFor="let item of data">
+            <nz-list-item-meta>
+              <!-- <nz-list-item-meta-avatar [nzSrc]="item.avatar"></nz-list-item-meta-avatar> -->
+              <nz-list-item-meta-title>
+                <div class="ad-title">{{ item.title }} <nz-tag [nzColor]="'#fdecee'" style="color: #fd8d9a !important; border: none;">Technology</nz-tag></div> 
+              </nz-list-item-meta-title>
+              <nz-list-item-meta-description>
+                {{ item.job }}
+              </nz-list-item-meta-description>
+              <!-- <nz-list-item-meta-description>
+                {{ item.description }}
+              </nz-list-item-meta-description> -->
+            </nz-list-item-meta>
+              <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
+              <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
+              <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
+            <ul nz-list-item-actions>
+              <nz-list-item-action>
+                <i class="bi bi-people" style="font-size: 20px;"></i> Applicants
+                156
+              </nz-list-item-action>
+              <nz-list-item-action>
+                <i class="bi bi-calendar-date" style="font-size: 20px;"></i> Posted
+                3 February 2022
+              </nz-list-item-action>
+              <nz-list-item-action>
+                <i class="bi bi-clock-history" style="font-size: 20px;"></i> Due
+                18 April 2022
+              </nz-list-item-action>
+            </ul>
+            <nz-list-item-extra>
+              <img width="120" alt="logo" src="../../../../../../assets/images/part1.png" />
+              <ul nz-list-item-actions>
+              </ul>
+            </nz-list-item-extra>
+          </nz-list-item>
+      </a>
+        </nz-list>
+  </div>
     </div>
 </div>
 
@@ -149,4 +274,3 @@
       </ng-container>
     </nz-modal>
 
-    
