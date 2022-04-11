@@ -69,6 +69,8 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { ContactUsComponent } from './landing/contact-us/contact-us.component';
 import { TendersComponent } from './landing/tenders/tenders.component';
+import { NzRateModule } from 'ng-zorro-antd/rate';
+
 
 
 
@@ -142,7 +144,8 @@ registerLocaleData(en);
     NzGridModule,
     NzSpaceModule,
     NzRadioModule,
-    NzSwitchModule
+    NzSwitchModule,
+    NzRateModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
