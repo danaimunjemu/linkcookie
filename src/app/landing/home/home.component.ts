@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
@@ -7,6 +7,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
 
   isVisible = false;
 
@@ -29,6 +30,17 @@ export class HomeComponent implements OnInit {
   createMessage(type: string): void {
     this.message.create(type, `Your application was sent successfully ${type}`);
   }
+
+  // loader(){
+  //   myVar = setTimeout(showPage, 3000);
+  // }
+
+  // showPage(){
+  //   document.getElementById("loader").style.display = "none";
+  //   document.getElementById("myDiv").style.display = "block";
+  // }
+
+
 
   ngOnInit(): void {
   }
