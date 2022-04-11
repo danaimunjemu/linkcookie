@@ -1125,7 +1125,7 @@ a.learn-more:hover {
   }
 
   .content {
-    padding: 20px;
+    /* padding: 20px; */
     min-height: calc(100vh - 145px);
     /* background-color: #eff1f7; */
     background-color: #fff;
