@@ -62,7 +62,7 @@ body {
 .navbar-logo {
     width: 100%;
     height: auto;
-    max-width: 300px;
+    max-width: 200px;
 }
 
 .nav-landing {
@@ -155,6 +155,11 @@ body {
     .partners-sub {
         font-size: 30px !important;
         text-align: center;
+    }
+    .login-container {
+        align-content: center;
+        width: 90
+        0% !important;
     }
 }
 
@@ -887,7 +892,7 @@ a.learn-more:hover {
 
 .login-container {
     align-content: center;
-    width: 100%;
+    width: 60%;
 }
 
 .login-input {
