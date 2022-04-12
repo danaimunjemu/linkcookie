@@ -217,6 +217,15 @@ div.wrapper {
         width: 90
         0% !important;
     }
+    .wrapper2 {
+        /* background: linear-gradient(60deg, #fff7ee, #fff); */
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        min-height: 50vh;
+        margin-top: 30px;
+      }
 }
 
 @media (min-device-width: 481) and (max-device-width: 768px) {
