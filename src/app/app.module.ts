@@ -72,6 +72,7 @@ import { TendersComponent } from './landing/tenders/tenders.component';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import { CanDeactivateGuard } from './landing/signup/can-deactivate-guard.service';
 import { SwiperModule } from 'swiper/angular';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 
@@ -148,7 +149,8 @@ registerLocaleData(en);
     NzRadioModule,
     NzSwitchModule,
     NzRateModule,
-    SwiperModule
+    SwiperModule,
+    SlickCarouselModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }, CanDeactivateGuard],
   bootstrap: [AppComponent]

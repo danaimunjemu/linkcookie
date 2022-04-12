@@ -18,7 +18,6 @@ import {
 })
 export class WelcomeComponent implements OnInit {
 
-  
 
   // Skeleton
 
