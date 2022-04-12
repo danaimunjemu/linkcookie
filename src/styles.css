@@ -196,6 +196,9 @@ div.wrapper {
         font-size: 40px !important;
         text-align: center;
     }
+    .hero-img {
+        max-height: 300px !important;
+    }
     .hero-subheader {
         text-align: center;
     }
