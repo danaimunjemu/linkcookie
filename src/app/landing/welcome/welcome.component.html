@@ -71,19 +71,35 @@
     <div class="container-fluid hero-section">
       <div class="row">
         <div class="col-lg-5">
-          <img src="../../../assets/images/hero1.png" class="d-block w-100 hero-img img-fluid" alt="...">
+          <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="4000">
+                <img src="../../../assets/images/hero1.png" class="d-block w-100 hero-img img-fluid" alt="...">
+              </div>
+              <div class="carousel-item" data-bs-interval="4000">
+                <img src="../../../assets/images/hero3.png" class="d-block w-100 hero-img img-fluid" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
       </div>
         <div class="col-lg-7  d-flex align-items-center">
             <div>
-              <h1 class="hero-header">  The last <span class="hero-text">LINK</span> you'll ever need!
+              <h1 class="hero-header">  The last <span class="hero-text">LINK</span> you will ever need!
               </h1>
-              <h3 class="hero-subheader">Join the #1 community  for job seekers and recruiters! Link Cookie is a platform that helps both job seekers
-                to find jobs and recruiters to find talent!
+              <h3 class="hero-subheader">Join the top community talent! <span style="color: #ffa104; font-weight: bold;">LinkCookie</span>  is a platform that helps both projects to find talent, consultants to find business opportunities, and job seekers to find jobs.
               </h3>
               <br><br>
               <div class="d-grid gap-2 d-sm-flex justify-content-md-start">
-                <button class="btn hero-link-primary btn-sm" routerLink="../for-jobseekers">Find Work<i class="bi bi-arrow-right button-icon"></i></button>
-                <button class="btn hero-link-secondary btn-sm" routerLink="../for-recruiters">Find Talent<i class="bi bi-arrow-right button-icon"></i></button>
+                <button class="btn hero-link-primary btn-sm" routerLink="../for-recruiters">Find Freelance talent for your next project<i class="bi bi-arrow-right button-icon"></i></button>
+                <!-- <button class="btn hero-link-secondary btn-sm" routerLink="../for-recruiters">Find Freelance talent for your next project<i class="bi bi-arrow-right button-icon"></i></button> -->
               </div>        
             </div>
         </div>
@@ -106,7 +122,8 @@
 <div class="container-fluid partners">
   <div class="section-heading ">
     <h3 class="section-header">Everything you need  <span class="header-yellow">to get linked!</span> </h3>
-    <p class="section-description">Meet some of the companies that have worked with us to bring you Link Cookie</p>
+    <!-- <p class="section-description">Meet some of the companies that have worked with us and that trust <span style="color: #ffa104; font-weight: bold;">LinkCookie</span></p> -->
+    <br>
   </div>
   <div class="row">
     <div class="col-md-4 d-flex justify-content-center">
@@ -115,8 +132,8 @@
               <i class="bi bi-people feature-icon1"></i>
             </div>
             <div class="feature-content">
-                <h4 class="feature-title">Low cost hiring</h4>
-                <p class="feature-paragraph">Our talented pool of students will get your work done at no cost.</p>
+                <h4 class="feature-title">Affordable talent</h4>
+                <p class="feature-paragraph">Find affordable and qualified freelancers for your next project using the LinkCookie database.</p>
                 <a routerLink="../for-recruiters" class="learn-more">Learn More <i class="bi bi-arrow-right button-icon"></i></a>
             </div>
         </div>
@@ -127,10 +144,8 @@
             <i class="bi bi-briefcase feature-icon1"></i>
           </div>
           <div class="feature-content">
-              <h4 class="feature-title">Free job finder</h4>
-              <p class="feature-paragraph">We help you Hire the best talent
-                from across the globe
-                at no cost.</p>
+              <h4 class="feature-title">Job finder</h4>
+              <p class="feature-paragraph">Find your next big job opportunity through the LinkCookie community.</p>
                 <a routerLink="../for-jobseekers" class="learn-more">Learn More <i class="bi bi-arrow-right button-icon"></i></a>
           </div>
       </div>
@@ -138,15 +153,12 @@
   <div class="col-md-4 d-flex justify-content-center">
     <div class="feature-wrap">
         <div class="feature-icon">
-          <i class="bi bi-chat feature-icon1"></i>
+          <i class="bi bi-box-seam feature-icon1"></i>
         </div>
         <div class="feature-content">
-            <h4 class="feature-title">Affordable Consultancy</h4>
-            <p class="feature-paragraph">World's most affordable consulting
-              services for a $5/hour flat fee with
-              guaranteed quality or 100% money
-              back.</p>
-              <a routerLink="../contact-us" class="learn-more">Learn More <i class="bi bi-arrow-right button-icon"></i></a>
+            <h4 class="feature-title">Tenders</h4>
+            <p class="feature-paragraph">Publish your next big idea and project to attract the best talent.</p>
+              <a routerLink="../tenders" class="learn-more">Learn More <i class="bi bi-arrow-right button-icon"></i></a>
         </div>
     </div>
 </div>
@@ -194,7 +206,7 @@
     <h5 class="section-tag">PARTNERS</h5>
   </div>
   <h3 class="section-header">Our  <span class="header-yellow">Partners</span> </h3>
-  <p class="section-description">Meet some of the companies that have worked with us to bring you Link Cookie</p>
+  <p class="section-description">Meet some of the companies that have worked with us and that trust <span style="color: #ffa104; font-weight: bold;">LinkCookie</span></p>
 </div>
 
 <div class="slider">
@@ -252,27 +264,31 @@
     <h5 class="section-tag">TALENT</h5>
   </div>
   <h3 class="section-header">Hire  <span class="header-yellow">Talent</span> </h3>
-  <p class="section-description">We have a database full of job finders</p>
+  <p class="section-description">We have a database full of telent ready to make you a success</p>
 </div>
 
 
   <div class="container">
     <div class="row">
-      <div class="col-md-8 d-flex align-items-center">
+      <div class="col-md-7 d-flex align-items-center">
         <div>
-          <h5 class="details-header-sm">Are you looking for a job?</h5>
-          <h3 class="details-header-lg">A Link For Job Seekers</h3>
-          <p>We didnt design our courses to share our skills, but to ensure you can acquire 
-            them too! Theres a big difference between the two. Youve probably seen courses taught 
-            by experts. But the learning experience isnt good. Being an expert doesnt always
-            mean being a great teacher.</p>
+          <!-- <h5 class="details-header-sm">Are you looking for a job?</h5> -->
+          <h3 class="details-header-lg">A Link For Freelance Talent</h3>
+          <p class="description-p">Link with qualified freelance talent and hire them to bring your business to the next
+            level. With <span style="color: #ffa104; font-weight: bold;">LinkCookie</span> you can
+            customize the service you need by quickly hiring the right talent. We ensure quality 
+            through protected and upfront payment and support from our customer service team. <br>
+            LinkCookie specializations:
+          </p>
           <div>
             <ul class="welcome-list">
-              <li><i class="bi bi-check2-circle bullet-icon"></i>Easy to use</li>
-              <li><i class="bi bi-check2-circle bullet-icon"></i>Quick to set up</li>
-              <li><i class="bi bi-check2-circle bullet-icon"></i>Trusted by suppliers all over the world</li>
-              <li><i class="bi bi-check2-circle bullet-icon"></i>Yet another reason</li>
-              <li><i class="bi bi-check2-circle bullet-icon"></i>Affordable!</li>
+              <li><i class="bi bi-check2-circle bullet-icon"></i>Digital Marketing and Sales</li>
+              <li><i class="bi bi-check2-circle bullet-icon"></i>Programming & IT</li>
+              <li><i class="bi bi-check2-circle bullet-icon"></i>Graphic & Creative Design</li>
+              <li><i class="bi bi-check2-circle bullet-icon"></i>Writing & Translation</li>
+              <li><i class="bi bi-check2-circle bullet-icon"></i>Finance & Accounting</li>
+              <li><i class="bi bi-check2-circle bullet-icon"></i>Business Services</li>
+              <li><i class="bi bi-check2-circle bullet-icon"></i>Other specializations</li>
             </ul>
           </div>
           <div class="d-grid gap-2 d-sm-flex justify-content-md-start">
@@ -286,13 +302,13 @@
         </div>  
       </div>
   
-      <div class="col-md-4">
+      <div class="col-md-5">
         <img src="../../../assets/images/jobseekers.png" class="d-block w-100 hero-img img-fluid details-img" alt="...">
       </div>
     </div>
   </div>
   
-  <div class="container">
+  <!-- <div class="container">
     <hr>
   </div>
 
@@ -340,9 +356,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <br><br>
+  <br><br><br>
 <!--   
   
   <div class="container">

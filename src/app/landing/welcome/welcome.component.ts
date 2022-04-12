@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { HostListener } from '@angular/core';
 import {
@@ -9,12 +9,16 @@ import {
   NzSkeletonInputSize
 } from 'ng-zorro-antd/skeleton';
 
+
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.css']
+  styleUrls: ['./welcome.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class WelcomeComponent implements OnInit {
+
+  
 
   // Skeleton
 
@@ -29,6 +33,8 @@ export class WelcomeComponent implements OnInit {
   buttonShape: NzSkeletonButtonShape = 'default';
   avatarShape: NzSkeletonAvatarShape = 'circle';
   elementSize: NzSkeletonInputSize = 'default';
+
+
 
   isVisible = false;
 

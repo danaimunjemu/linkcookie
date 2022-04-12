@@ -70,6 +70,8 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { ContactUsComponent } from './landing/contact-us/contact-us.component';
 import { TendersComponent } from './landing/tenders/tenders.component';
 import { NzRateModule } from 'ng-zorro-antd/rate';
+import { CanDeactivateGuard } from './landing/signup/can-deactivate-guard.service';
+import { SwiperModule } from 'swiper/angular';
 
 
 
@@ -145,9 +147,10 @@ registerLocaleData(en);
     NzSpaceModule,
     NzRadioModule,
     NzSwitchModule,
-    NzRateModule
+    NzRateModule,
+    SwiperModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

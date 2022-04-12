@@ -5,6 +5,7 @@ import { ForJobseekersComponent } from "./landing/for-jobseekers/for-jobseekers.
 import { ForRecruitersComponent } from "./landing/for-recruiters/for-recruiters.component";
 import { HomeComponent } from "./landing/home/home.component";
 import { LoginComponent } from "./landing/login/login.component";
+import { CanDeactivateGuard } from "./landing/signup/can-deactivate-guard.service";
 import { SignupFinalComponent } from "./landing/signup/signup-final/signup-final.component";
 import { SignupOneComponent } from "./landing/signup/signup-one/signup-one.component";
 import { SignupThreeComponent } from "./landing/signup/signup-three/signup-three.component";
@@ -52,7 +53,7 @@ const appRoutes: Routes = [
         children: [
             {path: '', redirectTo: 'signup-welcome', pathMatch: 'full'},
             { path: 'signup-welcome', component: SignupWelcomeComponent },
-            { path: 'signup-one', component: SignupOneComponent },
+            { path: 'signup-one', component: SignupOneComponent,  canDeactivate: [CanDeactivateGuard]},
             { path: 'signup-two', component: SignupTwoComponent },
             { path: 'signup-three', component: SignupThreeComponent },
             { path: 'signup-final', component: SignupFinalComponent },
