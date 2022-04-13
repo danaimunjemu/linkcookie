@@ -73,6 +73,7 @@ import { NzRateModule } from 'ng-zorro-antd/rate';
 import { CanDeactivateGuard } from './landing/signup/can-deactivate-guard.service';
 import { SwiperModule } from 'swiper/angular';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { SignupFourComponent } from './landing/signup/signup-four/signup-four.component';
 
 
 
@@ -114,7 +115,8 @@ registerLocaleData(en);
     SignupFinalComponent,
     PaywaySimComponent,
     ContactUsComponent,
-    TendersComponent
+    TendersComponent,
+    SignupFourComponent
   ],
   imports: [
     BrowserModule,

@@ -30,21 +30,27 @@ export class SignupComponent implements OnInit {
             break;
           }
           case 2: {
-            this.progressBar = 33;
+            this.progressBar = 25;
             this.nextRoute = 'signup-three';
             this.previousRoute = 'signup-one';
             break;
           }
           case 3: {
-            this.progressBar = 66;
-            this.nextRoute = 'signup-final';
+            this.progressBar = 50;
+            this.nextRoute = 'signup-four';
             this.previousRoute = 'signup-two';
             break;
           }
           case 4: {
+            this.progressBar = 75;
+            this.nextRoute = 'signup-final';
+            this.previousRoute = 'signup-three';
+            break;
+          }
+          case 5: {
             this.progressBar = 99;
             this.nextRoute = '/login';
-            this.previousRoute = 'signup-three';
+            this.previousRoute = 'signup-four';
             break;
           }
           default: {
@@ -65,7 +71,7 @@ export class SignupComponent implements OnInit {
 
   startButton() {
     if (this.currentStep == 0) {
-      this.nextText = 'CREATE ACCOUNT';
+      this.nextText = 'START';
       this.previousText = 'GO HOME';
     } else {
       this.nextText = 'NEXT';

@@ -7,6 +7,7 @@ import { HomeComponent } from "./landing/home/home.component";
 import { LoginComponent } from "./landing/login/login.component";
 import { CanDeactivateGuard } from "./landing/signup/can-deactivate-guard.service";
 import { SignupFinalComponent } from "./landing/signup/signup-final/signup-final.component";
+import { SignupFourComponent } from "./landing/signup/signup-four/signup-four.component";
 import { SignupOneComponent } from "./landing/signup/signup-one/signup-one.component";
 import { SignupThreeComponent } from "./landing/signup/signup-three/signup-three.component";
 import { SignupTwoComponent } from "./landing/signup/signup-two/signup-two.component";
@@ -56,6 +57,7 @@ const appRoutes: Routes = [
             { path: 'signup-one', component: SignupOneComponent,  canDeactivate: [CanDeactivateGuard]},
             { path: 'signup-two', component: SignupTwoComponent },
             { path: 'signup-three', component: SignupThreeComponent },
+            { path: 'signup-four', component: SignupFourComponent },
             { path: 'signup-final', component: SignupFinalComponent },
         ]
     },
