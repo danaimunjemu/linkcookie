@@ -3,11 +3,12 @@ import { User } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-r-header',
-  templateUrl: './r-header.component.html',
-  styleUrls: ['./r-header.component.css']
+  selector: 'app-s-header',
+  templateUrl: './s-header.component.html',
+  styleUrls: ['./s-header.component.css']
 })
-export class RHeaderComponent implements OnInit {
+export class SHeaderComponent implements OnInit {
+
   user: User;
 
   constructor(private usersService: UsersService) { 

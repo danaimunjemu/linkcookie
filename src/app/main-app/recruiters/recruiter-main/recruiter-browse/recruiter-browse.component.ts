@@ -36,6 +36,7 @@ export class RecruiterBrowseComponent implements OnInit {
   listOfOption: Array<{ label: string; value: string }> = [];
   listOfTagOptions = []; 
 
+  jobSeekers = [];
 
 
   searchValue = '';

@@ -8,16 +8,18 @@
             <p class="login-para">The last link you&apos;ll ever need</p>
             <div class="d-flex justify-content-center">
                     <div class="login-container ">
-                        <form>
+                        <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
                             <div class="mb-3">
-                              <input type="email" class="form-control login-input" aria-describedby="emailHelp"  placeholder="Email">
+                              <input type="email" class="form-control login-input" name="email" ngModel  aria-describedby="emailHelp"  placeholder="Email" #emailInput="ngModel" required email>
+                              <p *ngIf="emailInput.invalid">Please enter a valid email</p>
                             </div>
                             <div class="mb-3">
-                              <input type="password" class="form-control login-input" placeholder="Password">
+                              <input type="password" name="password" ngModel class="form-control login-input" placeholder="Password" #passwordInput="ngModel" required>
                               <div id="emailHelp" class="form-text  d-flex flex-row-reverse">The password must be a minimum of 8 characters..</div>
+                              <p *ngIf="passwordInput.invalid">Please enter a valid password</p>
                             </div>
                             <div class="mb-3">
-                                <button routerLink="/recruiter-main" class="login-button">Log In</button>
+                                <button type="submit" class="login-button">Log In</button>
                               </div>
                           </form>
                           <br>

@@ -9,7 +9,8 @@ export class SignupTwoComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    
   }
 
 }

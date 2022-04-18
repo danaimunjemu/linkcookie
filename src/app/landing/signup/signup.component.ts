@@ -8,6 +8,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
+
+  
+
+
   currentStep = 0;
   progressBar = 0;
   nextRoute = 'signup-one';

@@ -74,6 +74,14 @@ import { CanDeactivateGuard } from './landing/signup/can-deactivate-guard.servic
 import { SwiperModule } from 'swiper/angular';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SignupFourComponent } from './landing/signup/signup-four/signup-four.component';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { TermsComponent } from './landing/terms/terms.component';
+import { PrivacyComponent } from './landing/privacy/privacy.component';
+import { GeneralTermsComponent } from './landing/general-terms/general-terms.component';
+import { CrudTrialComponent } from './landing/crud-trial/crud-trial.component';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { SeekersMainComponent } from './main-app/jobseekers/seekers-main/seekers-main.component';
+import { SHeaderComponent } from './main-app/jobseekers/seekers-main/s-header/s-header.component';
 
 
 
@@ -116,7 +124,13 @@ registerLocaleData(en);
     PaywaySimComponent,
     ContactUsComponent,
     TendersComponent,
-    SignupFourComponent
+    SignupFourComponent,
+    TermsComponent,
+    PrivacyComponent,
+    GeneralTermsComponent,
+    CrudTrialComponent,
+    SeekersMainComponent,
+    SHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -152,7 +166,9 @@ registerLocaleData(en);
     NzSwitchModule,
     NzRateModule,
     SwiperModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    NzCollapseModule,
+    NzEmptyModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }, CanDeactivateGuard],
   bootstrap: [AppComponent]

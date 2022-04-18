@@ -1238,6 +1238,7 @@ a.learn-more:hover {
     min-height: calc(100vh - 145px);
     /* background-color: #eff1f7; */
     background-color: #fff;
+    padding-top: 50px;
   }
 
   /* nz-content {
@@ -2998,4 +2999,21 @@ nz-tag {
   .skills-icon {
       font-size: 30px;
       color: #ffa104;
+  }
+
+
+  .spacer {
+      padding-bottom: 50px;
+  }
+
+  .justified {
+      text-align: justify;
+  }
+
+  .tab-first {
+      margin-left: 50px;
+  }
+
+  .tab-second {
+      margin-left: 100px;
   }

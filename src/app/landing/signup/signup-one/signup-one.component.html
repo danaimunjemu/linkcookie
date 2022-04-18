@@ -2,9 +2,9 @@
     <div class="signup-container ">
         
           <div class="signup-steps-content ">
-            <h3 class="placeholder-logo">Are you a company or a user?</h3>
-            <h5 class="signup-helper-text" style="text-align: center;">Please select one of the two options</h5>
-            <form>
+            <h3 class="placeholder-logo">Basic Information</h3>
+            <h5 class="signup-helper-text" style="text-align: center;">To create an account, please fill in the basic information below</h5>
+            <!-- <form>
               <div class="row radio-selections">
                 <div class="col-sm-6 radio-area">
                   <div class="radio-card">
@@ -30,7 +30,6 @@
                         Company
                       </label>
                     </div>
-                    <!-- <button class="btn btn-primary" type="submit">Submit</button> -->
                   </div>
                 </div>
               </div>
@@ -44,7 +43,99 @@
                     </div>
                 </div>
               </div>
+              </form> -->
+
+
+              <form (submit)="onAddUser(userForm)" #userForm="ngForm">
+                <div class="mb-3">
+                  <input 
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  placeholder="Email"
+                  ngModel
+                  required
+                  #email = "ngModel"
+                  email
+                  >
+                </div>
+                <p *ngIf="email.invalid">This is not valid</p>
+                <div class="mb-3">
+                  <input 
+                  type="text"
+                  class="form-control"
+                  name="username"
+                  placeholder="Username"
+                  ngModel
+                  required
+                  >
+                </div>
+                <div class="mb-3">
+                    <input 
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    placeholder="Password"
+                    ngModel
+                    required
+                    minlength="6"
+                    >
+                  </div>
+                  <!-- <div class="mb-3">
+                    <input 
+                    type="text"
+                    class="form-control"
+                    name="userType"
+                    placeholder="User Type"
+                    ngModel
+                    required
+                    >
+                  </div> -->
+                  <div class="mb-3">
+                    <select (change)="selectChangeHandler($event)" class="form-select" aria-label="Default select example" name="selectedType">
+                      <option value="individual">Individual</option>
+                      <option value="corporate">Corporate</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <input 
+                    type="text"
+                    class="form-control"
+                    name="professionalHeadline"
+                    placeholder="Professional Headline"
+                    ngModel
+                    required
+                    >
+                  </div>
+                  <div class="mb-3">
+                    <input 
+                    type="text"
+                    class="form-control"
+                    name="summary"
+                    placeholder="Summary"
+                    ngModel
+                    required
+                    >
+                  </div>
+                  <div class="mb-3">
+                    <input 
+                    type="text"
+                    class="form-control"
+                    name="hourlyRate"
+                    placeholder="Hourly Rate"
+                    ngModel
+                    required
+                    >
+                  </div>
+                <button 
+                type="submit" 
+                class="btn login-button"
+                [disabled]="!userForm.valid">
+                    Sign Up
+                </button>
               </form>
+            
+
             </div>
     </div>  
 </div> 

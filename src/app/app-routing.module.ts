@@ -1,10 +1,13 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { ContactUsComponent } from "./landing/contact-us/contact-us.component";
+import { CrudTrialComponent } from "./landing/crud-trial/crud-trial.component";
 import { ForJobseekersComponent } from "./landing/for-jobseekers/for-jobseekers.component";
 import { ForRecruitersComponent } from "./landing/for-recruiters/for-recruiters.component";
+import { GeneralTermsComponent } from "./landing/general-terms/general-terms.component";
 import { HomeComponent } from "./landing/home/home.component";
 import { LoginComponent } from "./landing/login/login.component";
+import { PrivacyComponent } from "./landing/privacy/privacy.component";
 import { CanDeactivateGuard } from "./landing/signup/can-deactivate-guard.service";
 import { SignupFinalComponent } from "./landing/signup/signup-final/signup-final.component";
 import { SignupFourComponent } from "./landing/signup/signup-four/signup-four.component";
@@ -14,6 +17,7 @@ import { SignupTwoComponent } from "./landing/signup/signup-two/signup-two.compo
 import { SignupWelcomeComponent } from "./landing/signup/signup-welcome/signup-welcome.component";
 import { SignupComponent } from "./landing/signup/signup.component";
 import { TendersComponent } from "./landing/tenders/tenders.component";
+import { TermsComponent } from "./landing/terms/terms.component";
 import { WelcomeComponent } from "./landing/welcome/welcome.component";
 import { NewAdComponent } from "./main-app/recruiters/recruiter-main/recruiter-ads/new-ad/new-ad.component";
 import { StepFiveComponent } from "./main-app/recruiters/recruiter-main/recruiter-ads/new-ad/step-five/step-five.component";
@@ -23,7 +27,6 @@ import { StepThreeComponent } from "./main-app/recruiters/recruiter-main/recruit
 import { StepTwoComponent } from "./main-app/recruiters/recruiter-main/recruiter-ads/new-ad/step-two/step-two.component";
 import { RecruiterAdsComponent } from "./main-app/recruiters/recruiter-main/recruiter-ads/recruiter-ads.component";
 import { SingleAdComponent } from "./main-app/recruiters/recruiter-main/recruiter-ads/single-ad/single-ad.component";
-import { RecruiterApplicantsComponent } from "./main-app/recruiters/recruiter-main/recruiter-applicants/recruiter-applicants.component";
 import { RecruiterBrowseComponent } from "./main-app/recruiters/recruiter-main/recruiter-browse/recruiter-browse.component";
 import { RecruiterDashboardComponent } from "./main-app/recruiters/recruiter-main/recruiter-dashboard/recruiter-dashboard.component";
 import { RecruiterMainComponent } from "./main-app/recruiters/recruiter-main/recruiter-main.component";
@@ -33,6 +36,9 @@ import { RecruiterSettingsComponent } from "./main-app/recruiters/recruiter-main
 import { CartComponent } from "./main-app/shared/cart/cart.component";
 import { CheckoutComponent } from "./main-app/shared/checkout/checkout.component";
 import { PaywaySimComponent } from "./main-app/shared/payway-sim/payway-sim.component";
+import { AuthGuard } from "./constants/helpers/auth-guard";
+import { SeekersMainComponent } from "./main-app/jobseekers/seekers-main/seekers-main.component";
+import { DeauthGuard } from "./constants/helpers/deauth-guard";
 
 const appRoutes: Routes = [
     
@@ -45,6 +51,10 @@ const appRoutes: Routes = [
             { path: 'for-jobseekers', component: ForJobseekersComponent },
             { path: 'for-recruiters', component: ForRecruitersComponent },
             { path: 'tenders', component: TendersComponent },
+            { path: 'terms', component: TermsComponent },
+            { path: 'general-terms', component: GeneralTermsComponent },
+            { path: 'privacy', component: PrivacyComponent },
+            { path: 'crud', component: CrudTrialComponent },
             { path: 'contact-us', component: ContactUsComponent }
         ]
     },
@@ -61,7 +71,7 @@ const appRoutes: Routes = [
             { path: 'signup-final', component: SignupFinalComponent },
         ]
     },
-    { path: 'recruiter-main', component: RecruiterMainComponent, 
+    { path: 'recruiter-main', component: RecruiterMainComponent, canActivate: [AuthGuard], 
         children: [
             {path:'',redirectTo: 'recruiter-dashboard', pathMatch: 'full'},
             { path: 'recruiter-dashboard', component: RecruiterDashboardComponent },
@@ -88,13 +98,18 @@ const appRoutes: Routes = [
             { path: 'recruiter-settings', component: RecruiterSettingsComponent },
             { path: 'recruiter-payment', component: RecruiterPaymentComponent },
         ] 
-    }
+    },
+
+    { path: 'seekers', component: SeekersMainComponent, canActivate: [DeauthGuard]}
+
+
 
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    providers: [AuthGuard, DeauthGuard]
 })
 export class AppRoutingModule {
 
