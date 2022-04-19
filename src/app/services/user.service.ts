@@ -112,6 +112,7 @@ export class UsersService {
       }
 
       get Type() {
+
         return localStorage.getItem('type');
       }
 }
