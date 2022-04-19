@@ -1,138 +1,244 @@
 <div class="container">
-  
   <div>
     <div class="background-img-section">
-        <div class="section-heading ">
-          <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
-            <h5 class="section-tag">TALENT</h5>
-          </div>
-          <h3 class="section-header">Hire  <span class="header-yellow">Talent</span> </h3>
-          <p class="section-description">We have a database full of talent ready to make you a success</p>
+      <div class="section-heading">
+        <div class="d-flex justify-content-center" style="margin-bottom: 10px">
+          <h5 class="section-tag">TALENT</h5>
         </div>
+        <h3 class="section-header">
+          Hire <span class="header-yellow">Talent</span>
+        </h3>
+        <p class="section-description">
+          We have a database full of talent ready to make you a success
+        </p>
+      </div>
     </div>
   </div>
 
+  <div class="spacer"></div>
+
   <div>
     <div class="background-img-section">
-        <div class="section-heading ">
-          <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
-            <h5 class="section-tag">CATEGORIES</h5>
+      <div class="section-heading">
+        <div class="d-flex justify-content-center" style="margin-bottom: 10px">
+          <h5 class="section-tag">CATEGORIES</h5>
+        </div>
+        <div class="spacer"></div>
+        <div class="categories">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-sunglasses"></i>
+                  </div>
+                  <div class="category-name">Trending Skills</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-shop"></i>
+                  </div>
+                  <div class="category-name">Digital Marketing & Sales</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-code-slash"></i>
+                  </div>
+                  <div class="category-name">Programming & IT</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-brush"></i>
+                  </div>
+                  <div class="category-name">Graphic & Creative Design</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-pencil-square"></i>
+                  </div>
+                  <div class="category-name">Writing & Translation</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-cash-coin"></i>
+                  </div>
+                  <div class="category-name">Finance & Accounting</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="categories">
-              <div class="row">
-                <div class="col-md-2">
-                  <div class="single-category">
-                    <div class="category-card">
-                          Hey
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-briefcase"></i>
+                  </div>
+                  <div class="category-name">Business Services</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-three-dots"></i>
+                  </div>
+                  <div class="category-name">Other</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-group filter-group">
+      <span class="input-group-text filter-input-icon"
+        ><i class="bi bi-funnel"></i
+      ></span>
+      <input
+        type="text"
+        aria-label="First name"
+        class="form-control filter-input-text"
+        placeholder="What are you looking for?"
+      />
+    </div>
+    <div class="col-md-3">
+      <div class="filter-container">
+        <h3>Filter</h3>
+        <nz-select
+          [(ngModel)]="listOfTagOptions"
+          nzMode="tags"
+          [nzTokenSeparators]="[',']"
+          nzPlaceHolder="automatic tokenization"
+          nzPlaceHolder="Filter by skills"
+          class="filter-select"
+        >
+          <nz-option
+            *ngFor="let option of listOfOption"
+            [nzLabel]="option.label"
+            [nzValue]="option.value"
+          ></nz-option>
+        </nz-select>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckChecked"
+            checked
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            No Experience
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            Less than 1 year
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            1 to 3 years
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            More than 5 years
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="row browse-section">
+        <div class="col">
+          <!-- <div class="modalp">
+  <img src="../../../../../assets/images/profile.jpg" alt="">
+  <div class="close"></div>
+</div> -->
+          <div class="containerp d-flex justify-content-center">
+            <div class="cardp">
+              <div class="headerp">
+                <div class="card-price">$500</div>
+                <a href="#" class="mail">
+                  <i class="bi bi-eye"></i>
+                </a>
+                <div class="main">
+                  <div class="image">
+                    <div class="hover">
+                      <i class="bi bi-camera camera-icon"></i>
+                    </div>
+                  </div>
+                  <h3 class="name">John Doe</h3>
+                  <h3 class="sub-name">UI/UX Designer</h3>
+                </div>
+              </div>
+
+              <div class="contentp">
+                <div class="left">
+                  <div class="about-container">
+                    <h3 class="title">About</h3>
+                    <!-- <p class="text">Lorem Ipsum is simply text of the printing and types industry.</p> -->
+                    <p>
+                      <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
+                      <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
+                      <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
+                    </p>
+
+                    <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
+                  </div>
+                  <div class="buttons-wrap">
+                    <div class="follow-wrap">
+                      <a href="#" class="follow">Bookmark</a>
+                    </div>
+                    <div class="share-wrap">
+                      <a href="#" class="share">Save</a>
                     </div>
                   </div>
                 </div>
-              </div>
-          </div>
-        </div>
-    </div>
-  </div>
 
-
-
-<div class="row">
-  <div class="input-group filter-group">
-    <span class="input-group-text filter-input-icon"><i class="bi bi-funnel"></i></span>
-    <input type="text" aria-label="First name" class="form-control filter-input-text" placeholder="What are you looking for?">
-  </div>
-    <div class="col-md-3">
-        <div class="filter-container">
-            <h3>Filter</h3>
-            <nz-select
-              [(ngModel)]="listOfTagOptions"
-              nzMode="tags"
-              [nzTokenSeparators]="[',']"
-              nzPlaceHolder="automatic tokenization"
-              nzPlaceHolder="Filter by skills"
-              class="filter-select"
-            >
-              <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
-            </nz-select>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-              <label class="form-check-label" for="flexCheckChecked">
-                No Experience
-              </label>
-            </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Less than 1 year
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  1 to 3 years
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  More than 5 years
-                </label>
-              </div>
-        </div>
-    </div>
-    <div class="col-md-9 ">
-      <div class="row browse-section ">
-        <div class="col">
-            <!-- <div class="modalp">
-  <img src="../../../../../assets/images/profile.jpg" alt="">
-  <div class="close"></div>
-</div> -->
-<div class="containerp d-flex justify-content-center">
-  <div class="cardp">
-      <div class="headerp">
-          <div class="hamburger-menu">
-              <div class="center"></div>
-          </div>
-          <a href="#" class="mail">
-            <i class="bi bi-eye"></i>
-          </a>
-          <div class="main">
-              <div class="image">
-                  <div class="hover">
-                    <i class="bi bi-camera camera-icon"></i>
-                  </div>
-              </div>
-              <h3 class="name">John Doe</h3>
-              <h3 class="sub-name">UI/UX Designer</h3>
-          </div>
-      </div>
-
-      <div class="contentp">
-          <div class="left">
-              <div class="about-container">
-                  <h3 class="title">About</h3>
-                  <!-- <p class="text">Lorem Ipsum is simply text of the printing and types industry.</p> -->
-                  <p>
-                    <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
-                    <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
-                    <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
-                  </p>
-                    
-                  <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
-              </div>
-              <div class="icons-container">
-                <nz-tag [nzColor]="'#fdecee'" style="color: #fd8d9a !important; border: none;">Unvailable</nz-tag>
-              </div>
-              <div class="buttons-wrap">
-                  <div class="follow-wrap">
-                      <a href="#" class="follow">Bookmark</a>
-                  </div>
-                  <div class="share-wrap">
-                      <a href="#" class="share">Save</a>
-                  </div>
-              </div>
-          </div>
-
-          <!-- <div class="right">
+                <!-- <div class="right">
               <div>
                   <h3 class="number">91</h3>
                   <h3 class="number-title">Posts</h3>
@@ -146,283 +252,57 @@
                   <h3 class="number-title">Followers</h3>
               </div>
           </div> -->
-      </div>
-  </div>
-</div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col">
           <!-- <div class="modalp">
 <img src="../../../../../assets/images/profile.jpg" alt="">
 <div class="close"></div>
 </div> -->
-<div class="containerp d-flex justify-content-center">
-<div class="cardp">
-    <div class="headerp">
-        <div class="hamburger-menu">
-            <div class="center"></div>
-        </div>
-        <a href="#" class="mail">
-          <i class="bi bi-eye"></i>
-        </a>
-        <div class="main">
-            <div class="image">
-                <div class="hover">
-                  <i class="bi bi-camera camera-icon"></i>
-                </div>
-            </div>
-            <h3 class="name">John Doe</h3>
-            <h3 class="sub-name">UI/UX Designer</h3>
-        </div>
-    </div>
-
-    <div class="contentp">
-        <div class="left">
-            <div class="about-container">
-                <h3 class="title">About</h3>
-                <!-- <p class="text">Lorem Ipsum is simply text of the printing and types industry.</p> -->
-                <p>
-                  <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
-                  <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
-                  <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
-                </p>
-                  
-                <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
-            </div>
-            <div class="icons-container">
-              <nz-tag [nzColor]="'#e6f8f5'" style="color: #1cc3a5 !important; border: none;">Available</nz-tag>
-            </div>
-            <div class="buttons-wrap">
-                <div class="follow-wrap">
-                    <a href="#" class="follow">Bookmark</a>
-                </div>
-                <div class="share-wrap">
-                    <a href="#" class="share">Save</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- <div class="right">
-            <div>
-                <h3 class="number">91</h3>
-                <h3 class="number-title">Posts</h3>
-            </div>
-            <div>
-                <h3 class="number">2.4K</h3>
-                <h3 class="number-title">Following</h3>
-            </div>
-            <div>
-                <h3 class="number">4.7K</h3>
-                <h3 class="number-title">Followers</h3>
-            </div>
-        </div> -->
-    </div>
-</div>
-</div>
-      </div>
-      <div class="col">
-        <!-- <div class="modalp">
-<img src="../../../../../assets/images/profile.jpg" alt="">
-<div class="close"></div>
-</div> -->
-<div class="containerp d-flex justify-content-center">
-<div class="cardp">
-  <div class="headerp">
-      <div class="hamburger-menu">
-          <div class="center"></div>
-      </div>
-      <a href="#" class="mail">
-        <i class="bi bi-eye"></i>
-      </a>
-      <div class="main">
-          <div class="image">
-              <div class="hover">
-                <i class="bi bi-camera camera-icon"></i>
-              </div>
-          </div>
-          <h3 class="name">John Doe</h3>
-          <h3 class="sub-name">UI/UX Designer</h3>
-      </div>
-  </div>
-
-  <div class="contentp">
-      <div class="left">
-          <div class="about-container">
-              <h3 class="title">About</h3>
-              <!-- <p class="text">Lorem Ipsum is simply text of the printing and types industry.</p> -->
-              <p>
-                <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
-                <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
-                <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
-              </p>
-                
-              <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
-          </div>
-          <div class="icons-container">
-            <nz-tag [nzColor]="'#fdecee'" style="color: #fd8d9a !important; border: none;">Unvailable</nz-tag>
-          </div>
-          <div class="buttons-wrap">
-              <div class="follow-wrap">
-                  <a href="#" class="follow">Bookmark</a>
-              </div>
-              <div class="share-wrap">
-                  <a href="#" class="share">Save</a>
-              </div>
-          </div>
-      </div>
-
-      <!-- <div class="right">
-          <div>
-              <h3 class="number">91</h3>
-              <h3 class="number-title">Posts</h3>
-          </div>
-          <div>
-              <h3 class="number">2.4K</h3>
-              <h3 class="number-title">Following</h3>
-          </div>
-          <div>
-              <h3 class="number">4.7K</h3>
-              <h3 class="number-title">Followers</h3>
-          </div>
-      </div> -->
-  </div>
-</div>
-</div>
-    </div>
-
-        
-    </div>
-    </div>
-    
-</div>
-
-<div class="row">
- 
-    <div class="col-md-3">
-        
-    </div>
-    <div class="col-md-9 ">
-      <div class="row browse-section ">
-        <div class="col">
-            <!-- <div class="modalp">
-  <img src="../../../../../assets/images/profile.jpg" alt="">
-  <div class="close"></div>
-</div> -->
-<div class="containerp d-flex justify-content-center">
-  <div class="cardp">
-      <div class="headerp">
-          <div class="hamburger-menu">
-              <div class="center"></div>
-          </div>
-          <a href="#" class="mail">
-            <i class="bi bi-eye"></i>
-          </a>
-          <div class="main">
-              <div class="image">
-                  <div class="hover">
-                    <i class="bi bi-camera camera-icon"></i>
+          <div class="containerp d-flex justify-content-center">
+            <div class="cardp">
+              <div class="headerp">
+                <div class="card-price">$500</div>
+                <a href="#" class="mail">
+                  <i class="bi bi-eye"></i>
+                </a>
+                <div class="main">
+                  <div class="image">
+                    <div class="hover">
+                      <i class="bi bi-camera camera-icon"></i>
+                    </div>
                   </div>
+                  <h3 class="name">John Doe</h3>
+                  <h3 class="sub-name">UI/UX Designer</h3>
+                </div>
               </div>
-              <h3 class="name">John Doe</h3>
-              <h3 class="sub-name">UI/UX Designer</h3>
-          </div>
-      </div>
 
-      <div class="contentp">
-          <div class="left">
-              <div class="about-container">
-                  <h3 class="title">About</h3>
-                  <!-- <p class="text">Lorem Ipsum is simply text of the printing and types industry.</p> -->
-                  <p>
-                    <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
-                    <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
-                    <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
-                  </p>
-                    
-                  <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
-              </div>
-              <div class="icons-container">
-                <nz-tag [nzColor]="'#e6f8f5'" style="color: #1cc3a5 !important; border: none;">Available</nz-tag>
-              </div>
-              <div class="buttons-wrap">
-                  <div class="follow-wrap">
+              <div class="contentp">
+                <div class="left">
+                  <div class="about-container">
+                    <h3 class="title">About</h3>
+                    <!-- <p class="text">Lorem Ipsum is simply text of the printing and types industry.</p> -->
+                    <p>
+                      <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
+                      <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
+                      <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
+                    </p>
+
+                    <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
+                  </div>
+                  <div class="buttons-wrap">
+                    <div class="follow-wrap">
                       <a href="#" class="follow">Bookmark</a>
-                  </div>
-                  <div class="share-wrap">
+                    </div>
+                    <div class="share-wrap">
                       <a href="#" class="share">Save</a>
+                    </div>
                   </div>
-              </div>
-          </div>
-
-          <!-- <div class="right">
-              <div>
-                  <h3 class="number">91</h3>
-                  <h3 class="number-title">Posts</h3>
-              </div>
-              <div>
-                  <h3 class="number">2.4K</h3>
-                  <h3 class="number-title">Following</h3>
-              </div>
-              <div>
-                  <h3 class="number">4.7K</h3>
-                  <h3 class="number-title">Followers</h3>
-              </div>
-          </div> -->
-      </div>
-  </div>
-</div>
-        </div>
-        <div class="col">
-          <!-- <div class="modalp">
-<img src="../../../../../assets/images/profile.jpg" alt="">
-<div class="close"></div>
-</div> -->
-<div class="containerp d-flex justify-content-center">
-<div class="cardp">
-    <div class="headerp">
-        <div class="hamburger-menu">
-            <div class="center"></div>
-        </div>
-        <a href="#" class="mail">
-          <i class="bi bi-eye"></i>
-        </a>
-        <div class="main">
-            <div class="image">
-                <div class="hover">
-                  <i class="bi bi-camera camera-icon"></i>
                 </div>
-            </div>
-            <h3 class="name">John Doe</h3>
-            <h3 class="sub-name">UI/UX Designer</h3>
-        </div>
-    </div>
 
-    <div class="contentp">
-        <div class="left">
-            <div class="about-container">
-                <h3 class="title">About</h3>
-                <!-- <p class="text">Lorem Ipsum is simply text of the printing and types industry.</p> -->
-                <p>
-                  <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
-                  <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
-                  <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
-                </p>
-                  
-                <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
-            </div>
-            <div class="icons-container">
-              <nz-tag [nzColor]="'#fdecee'" style="color: #fd8d9a !important; border: none;">Unvailable</nz-tag>
-            </div>
-            <div class="buttons-wrap">
-                <div class="follow-wrap">
-                    <a href="#" class="follow">Bookmark</a>
-                </div>
-                <div class="share-wrap">
-                    <a href="#" class="share">Save</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- <div class="right">
+                <!-- <div class="right">
             <div>
                 <h3 class="number">91</h3>
                 <h3 class="number-title">Posts</h3>
@@ -436,62 +316,57 @@
                 <h3 class="number-title">Followers</h3>
             </div>
         </div> -->
-    </div>
-</div>
-</div>
-      </div>
-      <div class="col">
-        <!-- <div class="modalp">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <!-- <div class="modalp">
 <img src="../../../../../assets/images/profile.jpg" alt="">
 <div class="close"></div>
 </div> -->
-<div class="containerp d-flex justify-content-center">
-<div class="cardp">
-  <div class="headerp">
-      <div class="hamburger-menu">
-          <div class="center"></div>
-      </div>
-      <a href="#" class="mail">
-        <i class="bi bi-eye"></i>
-      </a>
-      <div class="main">
-          <div class="image">
-              <div class="hover">
-                <i class="bi bi-camera camera-icon"></i>
+          <div class="containerp d-flex justify-content-center">
+            <div class="cardp">
+              <div class="headerp">
+                <div class="card-price">$500</div>
+                <a href="#" class="mail">
+                  <i class="bi bi-eye"></i>
+                </a>
+                <div class="main">
+                  <div class="image">
+                    <div class="hover">
+                      <i class="bi bi-camera camera-icon"></i>
+                    </div>
+                  </div>
+                  <h3 class="name">John Doe</h3>
+                  <h3 class="sub-name">UI/UX Designer</h3>
+                </div>
               </div>
-          </div>
-          <h3 class="name">John Doe</h3>
-          <h3 class="sub-name">UI/UX Designer</h3>
-      </div>
-  </div>
 
-  <div class="contentp">
-      <div class="left">
-          <div class="about-container">
-              <h3 class="title">About</h3>
-              <!-- <p class="text">Lorem Ipsum is simply text of the printing and types industry.</p> -->
-              <p>
-                <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
-                <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
-                <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
-              </p>
-                
-              <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
-          </div>
-          <div class="icons-container">
-            <nz-tag [nzColor]="'#e6f8f5'" style="color: #1cc3a5 !important; border: none;">Available</nz-tag>
-          </div>
-          <div class="buttons-wrap">
-              <div class="follow-wrap">
-                  <a href="#" class="follow">Bookmark</a>
-              </div>
-              <div class="share-wrap">
-                  <a href="#" class="share">Save</a>
-              </div>
-          </div>
-      </div>
+              <div class="contentp">
+                <div class="left">
+                  <div class="about-container">
+                    <h3 class="title">About</h3>
+                    <!-- <p class="text">Lorem Ipsum is simply text of the printing and types industry.</p> -->
+                    <p>
+                      <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
+                      <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
+                      <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
+                    </p>
 
-      <!-- <div class="right">
+                    <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
+                  </div>
+                  <div class="buttons-wrap">
+                    <div class="follow-wrap">
+                      <a href="#" class="follow">Bookmark</a>
+                    </div>
+                    <div class="share-wrap">
+                      <a href="#" class="share">Save</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="right">
           <div>
               <h3 class="number">91</h3>
               <h3 class="number-title">Posts</h3>
@@ -505,32 +380,78 @@
               <h3 class="number-title">Followers</h3>
           </div>
       </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+      <div class="row browse-section"></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="spacer"></div>
+
+
+    <div class="background-img-section">
+      <div class="section-heading">
+        <div class="d-flex justify-content-center" style="margin-bottom: 10px">
+          <h5 class="section-tag">HOW TO</h5>
+        </div>
+        <h3 class="section-header">
+          Hiring <span class="header-yellow">Talent</span>
+        </h3>
+        <p class="section-description">How to hire on LinkCookie</p>
+      </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md3">
+            <div class="how">
+              <img src="../../../assets/images/hero1.png" alt="" class="how-img">
+            </div>
+            <div class="content">
+                <h5>Post a job (it’s free)</h5>
+                <p>Tell us what you need. Provide as many details as possible, but don’t worry about getting it perfect.</p>
+            </div>
+        </div>
+        <div class="col-md3">
+          <div class="how">
+            <img src="../../../assets/images/hero1.png" alt="" class="how-img">
+          </div>
+          <div class="content">
+              <h5>Talent comes to you</h5>
+              <p>Get qualified proposals within 24 hours, and meet the candidates you’re excited about.</p>
+          </div>
+      </div>
+      <div class="col-md3">
+        <div class="how">
+          <img src="../../../assets/images/hero1.png" alt="" class="how-img">
+        </div>
+        <div class="content">
+            <h5>Collaborate easily</h5>
+            <p>Use Upwork to chat or video call, share files, and track project progress right from the app.</p>
+        </div>
+    </div>
+    <div class="col-md3">
+      <div class="how">
+        <img src="../../../assets/images/hero1.png" alt="" class="how-img">
+      </div>
+      <div class="content">
+          <h5>Payment simplified</h5>
+          <p>Receive invoices and make payments through Upwork. Only pay for work you authorize.</p>
+      </div>
+  </div>
+    </div>
+
+
   </div>
 </div>
-</div>
-    </div>
 
-        
-    </div>
-    </div>
-    
-</div>
-
-
-
-<div class="row">
-    <div class="col-md-3">
-        
-    </div>
-    <div class="col-md-9 ">
-      <div class="row browse-section ">
-        
-
-       
-        
-    </div>
-    </div>
-    
-</div>
-
-</div>
+<div class="spacer"></div>
