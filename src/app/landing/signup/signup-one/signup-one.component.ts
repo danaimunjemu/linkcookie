@@ -25,7 +25,7 @@ export class SignupOneComponent implements OnInit, CanComponentDeactivate {
 
   enteredDate: Date = new Date();
   finalDate: string = this.enteredDate.toString();
-  selectedType: string = '';
+  selectedType: string = 'individual';
 
   constructor( private router: Router, private route: ActivatedRoute, public usersService: UsersService, private http: HttpClient) { }
 
