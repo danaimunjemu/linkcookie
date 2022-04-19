@@ -3017,3 +3017,18 @@ nz-tag {
   .tab-second {
       margin-left: 100px;
   }
+
+
+
+  
+.single-category {
+    padding: 10px;
+}
+
+.category-card {
+    border-radius: 30px;
+    background-color: #f5f6f8;
+    padding: 20px;
+    color: #a8afbd;
+}
+

@@ -9,9 +9,16 @@
     <app-header></app-header>
 
 <div class="content">
-<router-outlet></router-outlet>
-    
+    <router-outlet></router-outlet>
 </div>
+
+<nz-back-top [nzTemplate]="tpl" [nzVisibilityHeight]="100" (nzOnClick)="notify()">
+    <ng-template #tpl>
+      <div class="ant-back-top-inner">
+        <i class="bi bi-arrow-up-short"></i>
+      </div>
+    </ng-template>
+  </nz-back-top>
 
 <nz-footer>Link Cookie ©2022 </nz-footer>
 </div>

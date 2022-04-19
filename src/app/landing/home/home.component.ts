@@ -45,4 +45,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  notify(): void {
+    console.log('notify');
+  }
+
 }
