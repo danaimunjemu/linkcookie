@@ -85,7 +85,6 @@ import { SHeaderComponent } from './main-app/jobseekers/seekers-main/s-header/s-
 
 
 
-
 registerLocaleData(en);
 
 @NgModule({

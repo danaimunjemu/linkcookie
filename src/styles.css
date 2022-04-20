@@ -298,7 +298,7 @@ div.wrapper {
 }
 
 .top-section {
-    margin-top: 80px !important;
+    /* margin-top: 80px !important; */
 }
 
 .bottom-section {
@@ -350,6 +350,7 @@ div.wrapper {
     border-radius: 50%;
     margin: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: #a8afbd;
 
 }
 
@@ -781,7 +782,7 @@ a.learn-more:hover {
 }
 
 .stats-section {
-    padding: 50px 0px 50px 0px;
+    padding: 0px 0px 50px 0px;
     text-align: center;
 }
 
@@ -1044,6 +1045,10 @@ a.learn-more:hover {
     width: 60%;
 }
 
+.signup-container {
+    align-content: center;
+    width: 60%;
+}
 
 .login-input {
     border-radius: 30px;
@@ -1059,6 +1064,7 @@ a.learn-more:hover {
     width: 100%;
     border-radius: 30px;
     background-color: #ffa104;
+    padding: 15px;
 }
 
 .go-home {
@@ -2145,10 +2151,6 @@ nz-select {
     width: 100%;
 }
 
-.signup-container {
-    align-content: center;
-    width: 100%;
-}
 
 
 .form-control {
@@ -3070,7 +3072,177 @@ nz-tag {
 }
 
 .how-img {
+    width: auto;
+    height: 100%;
+    max-height: 200px;
+}
+
+.why-card {
+    padding: 20px;
+}
+
+.why-img {
+    width: auto;
+    height: 100%;
+    max-height: 500px;
+}
+
+.why-icons {
+    padding-right: 10px;
+    color: #ffa104;
+}
+
+.why-header {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(0, 23, 27, 0.7);
+}
+
+.form-select {
+    border-radius: 30px;
+    padding: 15px;
+}
+
+.signup-form-area {
+    max-width: 100%;
+}
+
+
+
+
+
+/* Here */
+
+
+.carousel {
+	margin: 50px auto;
+	padding: 0 70px;
+    max-width: 100% !important;
+}
+.carousel .item {
+	color: #747d89;
+	/* min-height: 325px; */
+    text-align: center;
+	overflow: hidden;
+}
+div.item.active {
+    text-decoration: none;
+    border: none;
+}
+.carousel .thumb-wrapper {
+	padding: 25px 15px;
+	background: #fff;
+	border-radius: 6px;
+	text-align: center;
+	position: relative;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+}
+.carousel .item .img-box {
+	height: 120px;
+	margin-bottom: 20px;
+	width: 100%;
+	position: relative;
+}
+.carousel .item img {	
+	max-width: 100%;
+	max-height: 100%;
+	display: inline-block;
+	position: absolute;
+	bottom: 0;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+}
+.carousel-inner1 {
+    max-height: 250px;
+    position: relative;
     width: 100%;
-    height: auto;
-    max-width: 200px;
+    overflow: hidden;
+}
+.carousel .item h4 {
+	font-size: 18px;
+}
+.carousel .item h4, .carousel .item p, .carousel .item ul {
+	margin-bottom: 5px;
+}
+.carousel .thumb-content .btn {
+	color: #ffa104;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: none;
+    border: 1px solid #fff7ee;
+    padding: 6px 14px;
+    margin-top: 5px;
+    line-height: 16px;
+    border-radius: 20px;
+}
+.carousel .thumb-content .btn:hover, .carousel .thumb-content .btn:focus {
+	color: #fff !important;
+	background: #ffa104;
+	box-shadow: none;
+}
+.carousel .thumb-content .btn i {
+	font-size: 14px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.carousel-control {
+    transition: 0.5s;
+}
+.carousel-control:hover i{
+    color: #fff;
+}
+.carousel .carousel-control {
+	height: 44px;
+	width: 40px;
+	background: #fff7ee;	
+    margin: auto 0;
+    border-radius: 4px;
+	opacity: 0.8;
+}
+.carousel .carousel-control:hover {
+	background: #ffa104;
+	opacity: 1;
+    color: #fff !important;
+}
+.carousel .carousel-control i {
+    font-size: 36px;
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    margin: -19px 0 0 0;
+    z-index: 5;
+    left: 0;
+    right: 0;
+    color: #ffa104;
+	text-shadow: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.carousel .carousel-control.left i {
+	margin-left: -2px;
+}
+.carousel .carousel-control.right i {
+	margin-right: 10px;
+}
+.carousel .carousel-indicators {
+	bottom: -50px;
+    margin-right: 15%;
+    margin-left: 20% !important;
+}
+.carousel-indicators li, .carousel-indicators li.active {
+	width: 10px;
+	height: 10px;
+	margin: 4px;
+	border-radius: 50%;
+	border: none;
+}
+.carousel-indicators li {	
+	background: #a8afbd;
+}
+.carousel-indicators li.active {	
+	background: #ffa104;
 }

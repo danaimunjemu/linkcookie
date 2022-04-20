@@ -45,96 +45,89 @@
               </div>
               </form> -->
 
-
-              <form (submit)="onAddUser(userForm)" #userForm="ngForm">
-                <div class="mb-3">
-                  <input 
-                  type="email"
-                  class="form-control"
-                  name="email"
-                  placeholder="Email"
-                  ngModel
-                  required
-                  #email = "ngModel"
-                  email
-                  >
-                </div>
-                <p *ngIf="email.invalid">This is not valid</p>
-                <div class="mb-3">
-                  <input 
-                  type="text"
-                  class="form-control"
-                  name="username"
-                  placeholder="Username"
-                  ngModel
-                  required
-                  >
-                </div>
-                <div class="mb-3">
-                    <input 
-                    type="password"
-                    class="form-control"
-                    name="password"
-                    placeholder="Password"
-                    ngModel
-                    required
-                    minlength="6"
-                    >
-                  </div>
-                  <!-- <div class="mb-3">
-                    <input 
-                    type="text"
-                    class="form-control"
-                    name="userType"
-                    placeholder="User Type"
-                    ngModel
-                    required
-                    >
-                  </div> -->
+              <div class="signup-container">
+                <form (submit)="onAddUser(userForm)" #userForm="ngForm">
                   <div class="mb-3">
-                    <select (change)="selectChangeHandler($event)" class="form-select" aria-label="Default select example" name="selectedType">
-                      <option value="individual">Individual</option>
-                      <option value="corporate">Corporate</option>
-                    </select>
+                    <input 
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    placeholder="Email"
+                    ngModel
+                    required
+                    #email = "ngModel"
+                    email
+                    >
                   </div>
+                  <p *ngIf="email.invalid">This is not valid</p>
                   <div class="mb-3">
                     <input 
                     type="text"
                     class="form-control"
-                    name="professionalHeadline"
-                    placeholder="Professional Headline"
+                    name="username"
+                    placeholder="Username"
                     ngModel
                     required
                     >
                   </div>
                   <div class="mb-3">
-                    <input 
-                    type="text"
-                    class="form-control"
-                    name="summary"
-                    placeholder="Summary"
-                    ngModel
-                    required
-                    >
-                  </div>
-                  <div class="mb-3">
-                    <input 
-                    type="text"
-                    class="form-control"
-                    name="hourlyRate"
-                    placeholder="Hourly Rate"
-                    ngModel
-                    required
-                    >
-                  </div>
-                <button 
-                type="submit" 
-                class="btn login-button"
-                [disabled]="!userForm.valid">
-                    Sign Up
-                </button>
+                      <input 
+                      type="password"
+                      class="form-control"
+                      name="password"
+                      placeholder="Password"
+                      ngModel
+                      required
+                      minlength="6"
+                      >
+                    </div>
+                    <div class="mb-3">
+                      <select (change)="selectChangeHandler($event)" class="form-select" aria-label="Default select example" name="selectedType">
+                        <option value="individual">Individual</option>
+                        <option value="corporate">Corporate</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <input 
+                      type="text"
+                      class="form-control"
+                      name="professionalHeadline"
+                      placeholder="Professional Headline"
+                      ngModel
+                      required
+                      >
+                    </div>
+                    <div class="mb-3">
+                      <input 
+                      type="text"
+                      class="form-control"
+                      name="summary"
+                      placeholder="Summary"
+                      ngModel
+                      required
+                      >
+                    </div>
+                    <div class="mb-3">
+                      <input 
+                      type="text"
+                      class="form-control"
+                      name="hourlyRate"
+                      placeholder="Hourly Rate"
+                      ngModel
+                      required
+                      >
+                    </div>
+                    <button 
+                    type="submit" 
+                    class="btn login-button"
+                    [disabled]="!userForm.valid">
+                        Sign Up
+                    </button>
+               
               </form>
-            
+              </div>
+
+              
 
             </div>
     </div>  

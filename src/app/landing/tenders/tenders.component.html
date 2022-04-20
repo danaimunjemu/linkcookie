@@ -1,8 +1,364 @@
 <div class="container">
-    <div class="d-flex justify-content-center">
-        <img src="../../../../../assets/images/comingsoon.gif" class="img-fluid" alt="">
+  
+  <div class="section-heading ">
+    <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
+      <h5 class="section-tag">TENDERS</h5>
+    </div>
+    <h3 class="section-header">Submit <span class="header-yellow">Bids</span> </h3>
+    <p class="section-description">Our site has businesses looking to hire</p>
+  </div>
+  
+  
+  <div class="spacer"></div>
+
+  <div>
+    <div class="background-img-section">
+      <div class="section-heading">
+        <div class="d-flex justify-content-center" style="margin-bottom: 10px">
+          <h5 class="section-tag">CATEGORIES</h5>
+        </div>
+        <div class="spacer"></div>
+        <div class="categories">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-sunglasses"></i>
+                  </div>
+                  <div class="category-name">Trending Skills</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-shop"></i>
+                  </div>
+                  <div class="category-name">Digital Marketing & Sales</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-code-slash"></i>
+                  </div>
+                  <div class="category-name">Programming & IT</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-brush"></i>
+                  </div>
+                  <div class="category-name">Graphic & Creative Design</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-pencil-square"></i>
+                  </div>
+                  <div class="category-name">Writing & Translation</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-cash-coin"></i>
+                  </div>
+                  <div class="category-name">Finance & Accounting</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-briefcase"></i>
+                  </div>
+                  <div class="category-name">Business Services</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="single-category">
+                <div class="category-card">
+                  <div class="category-icon">
+                    <i class="bi bi-three-dots"></i>
+                  </div>
+                  <div class="category-name">Other</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="d-flex justify-content-center">
-        <h3>Page under construction</h3>
+    </div>
+  </div>
+  
+  
+  <div class="row">
+    
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="input-group filter-group">
+            <span class="input-group-text filter-input-icon"><i class="bi bi-search"></i></span>
+            <input type="text" aria-label="First name" class="form-control filter-input-text" placeholder="Search...">
+          </div>
+        </div>
+    </div>
+  
+  
+    
+      <div class="col-md-3">
+          <div class="filter-container">
+              <h3>Filter</h3>
+              <nz-select
+              [(ngModel)]="listOfTagOptions"
+              nzMode="tags"
+              [nzTokenSeparators]="[',']"
+              nzPlaceHolder="automatic tokenization"
+              nzPlaceHolder="Filter by skills"
+              class="filter-select"
+            >
+              <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+            </nz-select>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                  All Adverts
+                </label>
+              </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Live Adverts
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Draft Adverts
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Archived Adverts
+                  </label>
+                </div>
+          </div>
       </div>
-</div>
+      <div class="col-md-9">
+          <div class="ad-container">
+              <nz-list nzItemLayout="vertical"
+              >
+              <a (click)="showModal()">
+                <nz-list-item *ngFor="let item of data">
+                    <nz-list-item-meta>
+                      <!-- <nz-list-item-meta-avatar [nzSrc]="item.avatar"></nz-list-item-meta-avatar> -->
+                      <nz-list-item-meta-title>
+                        <div class="ad-title">{{ item.title }} <nz-tag [nzColor]="'#fdecee'" style="color: #fd8d9a !important; border: none;">Technology</nz-tag></div> 
+                      </nz-list-item-meta-title>
+                      <nz-list-item-meta-description>
+                        {{ item.job }}  
+                        <div>
+                          <nz-tag [nzColor]="'#fdecee'" style="color: #fd8d9a !important; border: none;">FULL TIME</nz-tag>
+                        </div>
+                      </nz-list-item-meta-description>
+                      <!-- <nz-list-item-meta-description>
+                        {{ item.description }}
+                      </nz-list-item-meta-description> -->
+                    </nz-list-item-meta>
+                      <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
+                      <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
+                      <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
+                    <ul nz-list-item-actions>
+                      <nz-list-item-action>
+                        <i class="bi bi-people-fill" style="font-size: 20px;"></i> Applicants
+                        156
+                      </nz-list-item-action>
+                      <nz-list-item-action>
+                        <i  class="bi bi-calendar-week-fill" style="font-size: 20px;"></i> Posted
+                        3 February 2022
+                      </nz-list-item-action>
+                      <nz-list-item-action>
+                        <i class="bi bi-clock-fill" style="font-size: 20px;"></i> Due
+                        18 April 2022
+                      </nz-list-item-action>
+                    </ul>
+                    <nz-list-item-extra>
+                      <img width="120" alt="logo" src="../../../../../../assets/images/part4.jpg" />
+                      <ul nz-list-item-actions>
+                      </ul>
+                    </nz-list-item-extra>
+                  </nz-list-item>
+              </a>
+                </nz-list>
+          </div>
+          <div class="ad-container">
+            <nz-list nzItemLayout="vertical"
+            >
+            <a (click)="showModal()">
+              <nz-list-item *ngFor="let item of data">
+                  <nz-list-item-meta>
+                    <!-- <nz-list-item-meta-avatar [nzSrc]="item.avatar"></nz-list-item-meta-avatar> -->
+                    <nz-list-item-meta-title>
+                      <div class="ad-title">{{ item.title }} <nz-tag [nzColor]="'#fff2e5'" style="color: #ff8b1b !important; border: none;">Electronic Cars</nz-tag></div> 
+                    </nz-list-item-meta-title>
+                    <nz-list-item-meta-description>
+                      {{ item.job }}
+                    </nz-list-item-meta-description>
+                    <!-- <nz-list-item-meta-description>
+                      {{ item.description }}
+                    </nz-list-item-meta-description> -->
+                  </nz-list-item-meta>
+                    <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
+                    <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
+                    <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
+                  <ul nz-list-item-actions>
+                    <nz-list-item-action>
+                      <i class="bi bi-people-fill" style="font-size: 20px;"></i> Applicants
+                      156
+                    </nz-list-item-action>
+                    <nz-list-item-action>
+                      <i  class="bi bi-calendar-week-fill" style="font-size: 20px;"></i> Posted
+                      3 February 2022
+                    </nz-list-item-action>
+                    <nz-list-item-action>
+                      <i class="bi bi-clock-fill" style="font-size: 20px;"></i> Due
+                      18 April 2022
+                    </nz-list-item-action>
+                  </ul>
+                  <nz-list-item-extra>
+                    <img width="120" alt="logo" src="../../../../../../assets/images/part5.png" />
+                    <ul nz-list-item-actions>
+                    </ul>
+                  </nz-list-item-extra>
+                </nz-list-item>
+            </a>
+              </nz-list>
+        </div>
+  
+        <div class="ad-container">
+          <nz-list nzItemLayout="vertical"
+          >
+          <a (click)="showModal()">
+            <nz-list-item *ngFor="let item of data">
+                <nz-list-item-meta>
+                  <!-- <nz-list-item-meta-avatar [nzSrc]="item.avatar"></nz-list-item-meta-avatar> -->
+                  <nz-list-item-meta-title>
+                    <div class="ad-title">{{ item.title }} <nz-tag [nzColor]="'#fdecee'" style="color: #fd8d9a !important; border: none;">Technology</nz-tag></div> 
+                  </nz-list-item-meta-title>
+                  <nz-list-item-meta-description>
+                    {{ item.job }}
+                  </nz-list-item-meta-description>
+                  <!-- <nz-list-item-meta-description>
+                    {{ item.description }}
+                  </nz-list-item-meta-description> -->
+                </nz-list-item-meta>
+                  <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
+                  <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
+                  <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
+                <ul nz-list-item-actions>
+                  <nz-list-item-action>
+                    <i class="bi bi-people-fill" style="font-size: 20px;"></i> Applicants
+                    156
+                  </nz-list-item-action>
+                  <nz-list-item-action>
+                    <i  class="bi bi-calendar-week-fill" style="font-size: 20px;"></i> Posted
+                    3 February 2022
+                  </nz-list-item-action>
+                  <nz-list-item-action>
+                    <i class="bi bi-clock-fill" style="font-size: 20px;"></i> Due
+                    18 April 2022
+                  </nz-list-item-action>
+                </ul>
+                <nz-list-item-extra>
+                  <img width="120" alt="logo" src="../../../../../../assets/images/part2.png" />
+                  <ul nz-list-item-actions>
+                  </ul>
+                </nz-list-item-extra>
+              </nz-list-item>
+          </a>
+            </nz-list>
+      </div>
+      <div class="ad-container">
+        <nz-list nzItemLayout="vertical"
+        >
+        <a (click)="showModal()">
+          <nz-list-item *ngFor="let item of data">
+              <nz-list-item-meta>
+                <!-- <nz-list-item-meta-avatar [nzSrc]="item.avatar"></nz-list-item-meta-avatar> -->
+                <nz-list-item-meta-title>
+                  <div class="ad-title">{{ item.title }} <nz-tag [nzColor]="'#fdecee'" style="color: #fd8d9a !important; border: none;">Technology</nz-tag></div> 
+                </nz-list-item-meta-title>
+                <nz-list-item-meta-description>
+                  {{ item.job }}
+                </nz-list-item-meta-description>
+                <!-- <nz-list-item-meta-description>
+                  {{ item.description }}
+                </nz-list-item-meta-description> -->
+              </nz-list-item-meta>
+                <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
+                <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
+                <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
+              <ul nz-list-item-actions>
+                <nz-list-item-action>
+                  <i class="bi bi-people-fill" style="font-size: 20px;"></i> Applicants
+                  156
+                </nz-list-item-action>
+                <nz-list-item-action>
+                  <i  class="bi bi-calendar-week-fill" style="font-size: 20px;"></i> Posted
+                  3 February 2022
+                </nz-list-item-action>
+                <nz-list-item-action>
+                  <i class="bi bi-clock-fill" style="font-size: 20px;"></i> Due
+                  18 April 2022
+                </nz-list-item-action>
+              </ul>
+              <nz-list-item-extra>
+                <img width="120" alt="logo" src="../../../../../../assets/images/part1.png" />
+                <ul nz-list-item-actions>
+                </ul>
+              </nz-list-item-extra>
+            </nz-list-item>
+        </a>
+          </nz-list>
+    </div>
+      </div>
+  </div>
+  
+  
+  
+      <nz-modal [(nzVisible)]="isVisible" nzTitle="Advert Details" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" class="modal-style">
+        <ng-container *nzModalContent>
+          <!-- <router-outlet></router-outlet> -->
+          <div class="container">
+            <div class="d-flex justify-content-center">
+                <img src="../../../../../assets/images/comingsoon.gif" class="img-fluid" alt="">
+              </div>
+              <div class="d-flex justify-content-center">
+                <h3>Page under construction</h3>
+              </div>
+        </div>
+        </ng-container>
+      </nz-modal>
+  
+  
+  </div>
+  
+  
+  <div class="spacer"></div>
