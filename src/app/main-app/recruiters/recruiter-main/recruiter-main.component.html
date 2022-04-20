@@ -1,4 +1,15 @@
-<app-r-header></app-r-header>
+<div *ngIf="!pageReady">
+    <div class="loader-wrapper" >
+      <h1 class="brand">
+        <img src="../../../assets/images/linkcookie-logo.png" alt="" class="wrapper-img">
+      </h1>
+      <div class="loading-bar"></div>
+    </div>
+  </div>
+
+
+  <div *ngIf="pageReady">
+    <app-r-header></app-r-header>
 <!-- FIX THIS BR SECTION -->
 <!-- <br><br><br> -->
 <!-- <div class="app-background">
@@ -26,3 +37,5 @@
   </nz-back-top>
 
 <nz-footer>Link Cookie ©2022 </nz-footer>
+
+  </div>

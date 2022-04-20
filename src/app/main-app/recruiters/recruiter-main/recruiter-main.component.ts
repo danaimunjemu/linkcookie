@@ -9,7 +9,16 @@ export class RecruiterMainComponent implements OnInit {
 
   constructor() { }
 
+  pageReady: Boolean = false;
+
+  loadPage() {
+    setInterval(() =>
+      this.pageReady = true
+    , 3000);
+  }
+
   ngOnInit(): void {
+    this.loadPage();
   }
 
   notify(): void {

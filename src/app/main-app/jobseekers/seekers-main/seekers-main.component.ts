@@ -9,7 +9,18 @@ export class SeekersMainComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+
+  pageReady: Boolean = false;
+
+  loadPage() {
+    setInterval(() =>
+      this.pageReady = true
+    , 3000);
   }
+
+  ngOnInit() {
+    this.loadPage();
+  }
+
 
 }
