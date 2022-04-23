@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CorporateUser } from 'src/app/models/corporateuser.model';
+import { User } from 'src/app/models/user.model';
 import { CorporateUserService } from 'src/app/services/corporateuser.service';
 import { UsersService } from 'src/app/services/user.service';
 
@@ -11,11 +12,13 @@ import { UsersService } from 'src/app/services/user.service';
 export class RecruiterMainComponent implements OnInit {
 
   corporateUser: CorporateUser;
+  user: User;
 
   isCollapsed = false;
 
   constructor(private corporateUserService: CorporateUserService, private usersService: UsersService) { 
     this.corporateUser = corporateUserService.Corporate;
+    this.user = usersService.User;
     console.log(this.corporateUser);
   }
 

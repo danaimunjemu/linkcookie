@@ -3180,8 +3180,8 @@ div.loading-bar {
 
 
 .dash-card {
-    border-radius: 30px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     padding: 20px;
     background-color: #fff;
     animation-duration: 1s;
@@ -3200,7 +3200,6 @@ div.loading-bar {
 
 
 .dash-card:hover {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     cursor: pointer;
 }
 
@@ -3238,11 +3237,11 @@ div.loading-bar {
       max-height: calc(100vh - 40px) ;
       border-radius: 30px;
       position: fixed !important;
-      background-color: #f0f2f5 !important;
+      background-color: #fff !important;
   }
 
   .ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark .ant-menu-sub {
-    background-color: #f0f2f5 !important;
+    background-color: #fff !important;
 
   }
 
@@ -3262,12 +3261,12 @@ div.loading-bar {
     border-radius: 30px;
     position: fixed;
     max-width: calc(100vw - 100px);
-    background-color: #f0f2f5 !important;
+    background-color: #fff !important;
   }
 
   nz-content {
     margin: 0 16px;
-    padding-top: 115px;
+    /* padding-top: 115px; */
   }
 
   nz-breadcrumb {
@@ -3276,13 +3275,13 @@ div.loading-bar {
 
   .inner-content {
     padding: 24px;
-    background: #f0f2f5;
+    background: #fff;
     min-height: calc(100vh - 185px);
   }
 
   nz-footer {
     text-align: center;
-    background-color: #f0f2f5 !important;
+    background-color: #fff !important;
     color: #060c27 !important;
   }
 
@@ -3302,6 +3301,10 @@ div.loading-bar {
       min-height: 100vh;
   }
 
+  .ant-layout {
+      background-color: #fff;
+  }
+
   .p-2 {
       padding: 0px !important;
   }
@@ -3314,13 +3317,11 @@ div.loading-bar {
   .innerCollapsed {
       min-width: calc( 100vw - 180px);
       margin-left: 120px;
-      transition: 0.5s ease-in-out;
 }
 
   .headerCollapsed {
     min-width: calc( 100vw - 180px);
     margin-left: 150px;
-    transition: 0.5s ease-in-out;
 }
 
 .nav-icon {
@@ -3348,7 +3349,7 @@ nz-menu-item {
 
 
 .side-navigation.active {
-    background-color: #f0f2f5;
+    background-color: #fff;
 }
 
 .side-navigation.active .nav-icon {
@@ -3382,6 +3383,10 @@ li {
     color: #ffa104 !important;
 }
 
+.toggler-section {
+    padding-top: 10px;
+}
+
 
 @media (min-device-width: 320px) and (max-device-width: 480px) {
     .main-section {
@@ -3397,6 +3402,10 @@ li {
         display: none;
     }
 
+    nz-content {
+        padding-top: 100px;
+      }
+
     nz-sider{
         margin-left: 0;
     }
@@ -3411,16 +3420,61 @@ li {
     .ant-layout-content {
         min-height: calc(100vh + 65px);
     }
+    .toggler-section {
+        display: none;
+    }
+}
+
+@media (max-device-width: 991px) {
+    .toggler-section {
+        display: none;
+    }
 }
 
 .ux-button {
     transition: all 0.1s ease-in-out;
     background-color: #ffa104;
+    border-radius: 30px;
 }
 
 .ux-button:active {
     transform: scale(0.92);
-    transition: background 0s; 
     border: none;
     border-style: none;
 }
+
+.toggler-section {
+    padding: 0px;
+}
+
+
+.dash-img {
+    border-radius: 50%;
+}
+
+.app-nav {
+    background-color: #fff !important;
+    padding: 10px 20px;
+    border: none;
+}
+
+nz-badge {
+    margin-right: 20px;
+  }
+
+  .head-example {
+    width: 42px;
+    height: 42px;
+    border-radius: 4px;
+    background: #eee;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .nav-notification {
+      margin-top: 10px;
+  }
+
+  .no-padding {
+      padding-left: 0px !important;
+  }

@@ -1,9 +1,17 @@
+<nz-page-header
+      class="site-page-header"
+      nzTitle="Dashboard"
+      nzSubtitle="Overview and Quick Links "
+    ></nz-page-header>
+
 <div class="row">
   <div class="col-md-9">
     <div class="dash-card">
       <div class="row">
-        <div class="col-md-12">
-          <nz-avatar [nzSize]="64" nzIcon="user"></nz-avatar>
+        <div class="col-md-2">
+          <img src="../../../../../assets/images/avatar.png" class="img-fluid dash-img" alt="">
+        </div>
+        <div class="col-md-10">
           <h5>Welcome, {{user.username}}</h5>
           <p>to your Member Dashboard</p>
         </div>

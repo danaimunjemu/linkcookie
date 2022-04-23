@@ -29,17 +29,85 @@
 
   </div> -->
 
+  
+
 <div class="main-section">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light app-nav">
+    <div class="container-fluid">
+      <div class="toggler-section d-flex justify-content-start">
+        <i
+        class="trigger"
+        nz-icon
+        (click)="isCollapsed = !isCollapsed"
+      >
+      <div class="menu-unfold" *ngIf="!isCollapsed">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" width="24" fill="currentColor"><path d="M10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1.828-8l3.535 3.536a1 1 0 0 1-1.414 1.414L6.05 10.707a1 1 0 0 1 0-1.414l4.243-4.243a1 1 0 0 1 1.414 1.414L8.172 10z"></path></svg>
+      </div>
+      <div class="menu-fold"  *ngIf="isCollapsed">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" width="24" fill="currentColor"><path d="M10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1.828-8L8.293 6.464A1 1 0 0 1 9.707 5.05l4.243 4.243a1 1 0 0 1 0 1.414L9.707 14.95a1 1 0 1 1-1.414-1.414L11.828 10z"></path></svg>
+      </div>
+    </i>
+      </div>
+      <a class="navbar-brand" routerLink="/welcome"><img src="../../../assets/images/linkcookie-logo.png" class="img-fluid navbar-logo" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+        <div class="d-flex justify-content-end">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <li class="nav-item">
+              <a class="nav-link nav-landing" id="navbarDropdown">
+                <span class="nav-header"> 
+                  <div class="d-flex align-items-center">
+                    <nz-avatar nzSize="small" nzIcon="user" style="background-color: rgb(247, 248, 250);"></nz-avatar>  <span style="padding-left: 10px;">{{user.username}}</span> 
+                  </div>
+                  </span>
+              </a>
+            </li>
+            <li  class="nav-item no-padding">
+              <div class="nav-notification">
+                <nz-badge nzDot>
+                  <!-- <a class="head-example"></a> -->
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 24 24" width="24" fill="currentColor"><path d="M13.666 11.782L13 11.186V6a4 4 0 1 0-8 0v5.186l-.666.596A6.987 6.987 0 0 0 2.29 15h13.42a6.987 6.987 0 0 0-2.044-3.218zM12 17a3 3 0 0 1-6 0H0a8.978 8.978 0 0 1 3-6.708V6a6 6 0 1 1 12 0v4.292A8.978 8.978 0 0 1 18 17h-6zm-3 1a1 1 0 0 0 1-1H8a1 1 0 0 0 1 1z"></path></svg>
+                </nz-badge>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+          
+        
+
+      </div>
+    </div>
+  </nav>
+  <div class="spacer"></div>
   <nz-layout>
     <div class="d-flex bd-highlight">
       <div class="p-2 flex-fill bd-highlight sidebar-area">
         <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" nzBreakpoint="lg" [nzCollapsedWidth]="80">
           <!-- <div class="logo"></div> -->
-          <ul nz-menu nzTheme="dark" nzMode="inline">
+          <!-- <div class="toggler-section d-flex justify-content-start">
+            <i
+            class="trigger"
+            nz-icon
+            (click)="isCollapsed = !isCollapsed"
+          >
+          <div class="menu-unfold" *ngIf="!isCollapsed">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" width="24" fill="currentColor"><path d="M10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1.828-8l3.535 3.536a1 1 0 0 1-1.414 1.414L6.05 10.707a1 1 0 0 1 0-1.414l4.243-4.243a1 1 0 0 1 1.414 1.414L8.172 10z"></path></svg>
+          </div>
+          <div class="menu-fold"  *ngIf="isCollapsed">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" width="24" fill="currentColor"><path d="M10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1.828-8L8.293 6.464A1 1 0 0 1 9.707 5.05l4.243 4.243a1 1 0 0 1 0 1.414L9.707 14.95a1 1 0 1 1-1.414-1.414L11.828 10z"></path></svg>
+          </div>
+        </i>
+          </div> -->
+          <ul nz-menu nzTheme="dark" nzMode="inline" style="display: none;">
             <li nz-menu-item>
-              
+               
             </li>
           </ul>
+          <div style="padding: 10px;"></div>
           <a  routerLink="recruiter-dashboard" routerLinkActive="active" class="side-navigation">
             <ul nz-menu nzTheme="dark" nzMode="inline" class="menu-item-container">
               <li nz-menu-item>
@@ -122,20 +190,12 @@
       <div class="p-2 flex-fill bd-highlight">
         <nz-layout>
           <div class="row row-fix">
-            <nz-header  [class.headerCollapsed]="isCollapsed">
-              <i
-                class="trigger"
-                nz-icon
-                [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-                (click)="isCollapsed = !isCollapsed"
-              ></i>
-                <span>Timothy</span>
-                <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 24 24" width="24" fill="currentColor"><path d="M18 17H0a8.978 8.978 0 0 1 3-6.708V6a6 6 0 1 1 12 0v4.292A8.978 8.978 0 0 1 18 17zM6.17 18h5.66a3.001 3.001 0 0 1-5.66 0z"></path></svg></span>
-            </nz-header>
+            
           </div>
           <div class="row">
             <nz-content>
               <div class="inner-content" [class.innerCollapsed]="isCollapsed">
+               
                 <router-outlet></router-outlet>
               </div>
           <nz-footer>LinkCookie ©2022</nz-footer>

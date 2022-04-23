@@ -84,6 +84,8 @@ import { SeekersMainComponent } from './main-app/jobseekers/seekers-main/seekers
 import { SHeaderComponent } from './main-app/jobseekers/seekers-main/s-header/s-header.component';
 import { NzElementPatchModule } from 'ng-zorro-antd/core/element-patch';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 
 
@@ -171,7 +173,9 @@ registerLocaleData(en);
     NzCollapseModule,
     NzEmptyModule,
     NzElementPatchModule,
-    NzUploadModule
+    NzUploadModule,
+    NzPageHeaderModule,
+    NzBadgeModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }, CanDeactivateGuard],
   bootstrap: [AppComponent]
