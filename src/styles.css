@@ -3376,6 +3376,10 @@ li {
         /* background: #ff0000; */
         min-height: calc(100vh - 185px);
       }
+    
+    nz-header {
+        display: none;
+    }
 
     nz-sider{
         margin-left: 0;
@@ -3383,6 +3387,7 @@ li {
 
     .innerCollapsed {
         margin-left: 65px;
+        margin-top: -65px;
     }
     .headerCollapsed {
         margin-left: 90px;
