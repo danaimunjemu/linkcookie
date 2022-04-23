@@ -82,6 +82,8 @@ import { CrudTrialComponent } from './landing/crud-trial/crud-trial.component';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { SeekersMainComponent } from './main-app/jobseekers/seekers-main/seekers-main.component';
 import { SHeaderComponent } from './main-app/jobseekers/seekers-main/s-header/s-header.component';
+import { NzElementPatchModule } from 'ng-zorro-antd/core/element-patch';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 
 
@@ -167,7 +169,9 @@ registerLocaleData(en);
     SwiperModule,
     SlickCarouselModule,
     NzCollapseModule,
-    NzEmptyModule
+    NzEmptyModule,
+    NzElementPatchModule,
+    NzUploadModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }, CanDeactivateGuard],
   bootstrap: [AppComponent]

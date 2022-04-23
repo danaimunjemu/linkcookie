@@ -1,8 +1,39 @@
-<div class="container">
-    <div class="d-flex justify-content-center">
-        <img src="../../../../../assets/images/comingsoon.gif" class="img-fluid" alt="">
+<div class="row">
+  <div class="col-md-9">
+    <div class="dash-card">
+      <div class="row">
+        <div class="col-md-12">
+          <nz-avatar [nzSize]="64" nzIcon="user"></nz-avatar>
+          <h5>Welcome, {{user.username}}</h5>
+          <p>to your Member Dashboard</p>
+        </div>
       </div>
-      <div class="d-flex justify-content-center">
-        <h3>Page under construction</h3>
-      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="ad-progress-bar">
+            <nz-progress
+              [nzPercent]=" progressBar "
+              [nzStrokeColor]="{ '0%': '#ffd36e', '100%': '#ffa104' }"
+              nzStatus="active"
+            ></nz-progress>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <button class="learn-more buttonp"  routerLink="../recruiter-profile" routerLinkActive="active">
+            <span class="circle" aria-hidden="true">
+              <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">COMPLETE PROFILE</span>
+          </button>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <div class="col-md-3">
+      <p>Another Card</p>
+  </div>
 </div>
+
+
+
+

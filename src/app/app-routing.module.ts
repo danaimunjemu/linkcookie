@@ -39,6 +39,7 @@ import { PaywaySimComponent } from "./main-app/shared/payway-sim/payway-sim.comp
 import { AuthGuard } from "./constants/helpers/auth-guard";
 import { SeekersMainComponent } from "./main-app/jobseekers/seekers-main/seekers-main.component";
 import { DeauthGuard } from "./constants/helpers/deauth-guard";
+import { LogGuard } from "./constants/helpers/log-guard";
 
 const appRoutes: Routes = [
     
@@ -59,8 +60,8 @@ const appRoutes: Routes = [
         ]
     },
 
-    { path: 'login', component: LoginComponent},
-    { path: 'signup', component: SignupComponent,
+    { path: 'login', component: LoginComponent,  canActivate: [LogGuard]},
+    { path: 'signup', component: SignupComponent,  canActivate: [LogGuard],
         children: [
             {path: '', redirectTo: 'signup-welcome', pathMatch: 'full'},
             { path: 'signup-welcome', component: SignupWelcomeComponent },

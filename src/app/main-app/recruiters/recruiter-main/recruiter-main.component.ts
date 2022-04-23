@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CorporateUser } from 'src/app/models/corporateuser.model';
+import { CorporateUserService } from 'src/app/services/corporateuser.service';
+import { UsersService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-recruiter-main',
@@ -7,14 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecruiterMainComponent implements OnInit {
 
-  constructor() { }
+  corporateUser: CorporateUser;
+
+  isCollapsed = false;
+
+  constructor(private corporateUserService: CorporateUserService, private usersService: UsersService) { 
+    this.corporateUser = corporateUserService.Corporate;
+    console.log(this.corporateUser);
+  }
 
   pageReady: Boolean = false;
 
   loadPage() {
     setInterval(() =>
       this.pageReady = true
-    , 3000);
+    , 0);
+    // fix timeto 3000
   }
 
   ngOnInit(): void {
@@ -23,6 +34,10 @@ export class RecruiterMainComponent implements OnInit {
 
   notify(): void {
     console.log('notify');
+  }
+
+  onLogout() {
+    this.usersService.logOut();
   }
 
 }

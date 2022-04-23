@@ -1,8 +1,93 @@
-<div class="container">
-    <div class="d-flex justify-content-center">
-        <img src="../../../../../assets/images/comingsoon.gif" class="img-fluid" alt="">
+<div class="row">
+  <div class="col-md-6">
+    <div class="main-profile-card">
+      <div>
+          <h3>Basic Information</h3>
       </div>
-      <div class="d-flex justify-content-center">
-        <h3>Page under construction</h3>
+        <div class="row">
+          <div class="col-lg-6">
+            <nz-upload
+            class="avatar-uploader"
+            nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+            nzName="avatar"
+            nzListType="picture-card"
+            [nzShowUploadList]="false"
+            [nzBeforeUpload]="beforeUpload"
+            (nzChange)="handleChange($event)"
+          >
+            <ng-container *ngIf="!avatarUrl">
+              <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+              <div class="ant-upload-text">Upload</div>
+            </ng-container>
+            <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+          </nz-upload>
+          </div>
+    
+          <div class="col-lg-6">
+            <h5><i class="bi bi-person"></i>{{user.username}}</h5> 
+            <p><i class="bi bi-envelope"></i>{{user.email}}</p>
+            <p><i class="bi bi-flag"></i>N/A</p>
+            <p>{{user.professionalHeadline}}</p>
+            <p>{{user.summary}}</p>
+            <p>{{user.dateCreated}}</p>
+            <button class="btn btn-primary">Edit</button>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="main-profile-card">
+      <div>
+          <h3>Company Details</h3>
       </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p>Company Name: {{corporateUser.companyName}}</p>
+            <p>Company Type: {{corporateUser.companyType}}</p>
+            <p>Company Formed: {{corporateUser.dateCreated}}</p>
+            <button class="btn btn-primary">Edit</button>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
+
+
+
+<div class="spacer"></div>
+
+<div class="main-profile-card">
+  <div>
+      <h3>Experience</h3>
+  </div>
+    <div class="row">
+      <div class="col-md-3">
+       
+      </div>
+
+      <div class="col-md-9">
+        
+        <button class="btn btn-primary">Edit</button>
+      </div>
+    </div>
+</div>
+
+<div class="spacer"></div>
+
+<div class="main-profile-card">
+  <div>
+      <h3>Skills</h3>
+  </div>
+    <div class="row">
+      <div class="col-md-3">
+       
+      </div>
+
+      <div class="col-md-9">
+        
+        <button class="btn btn-primary">Edit</button>
+      </div>
+    </div>
+</div>
+
+<div class="spacer"></div>

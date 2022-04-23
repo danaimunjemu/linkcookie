@@ -11,7 +11,13 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap'); */
 
 
-@import url('https://fonts.googleapis.com/css2?family=Spinnaker&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Spinnaker&display=swap'); */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap'); */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 
 
@@ -20,9 +26,7 @@
   } 
 
 body {
-    /* font-family: 'Poppins', sans-serif; */
-    /* font-family: 'Quicksand', sans-serif; */
-    font-family: 'Spinnaker', sans-serif;
+    font-family: 'Inter', sans-serif;
     padding-top: 75px;
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
@@ -265,6 +269,9 @@ div.wrapper {
       }
       .promotion-header {
           text-align: center;
+      }
+      .main-section {
+          margin-top: -29px !important;
       }
 }
 
@@ -672,13 +679,20 @@ a.learn-more:hover {
     transition: 0.3s;
     margin-right: 10px;
     background-position: center;
-    transition: background 0.8s;
+    /* transition: background 0.8s; */
+    transition: all 0.4s ease-in-out;
+
 }
 
 .hero-link-primary:hover{
     background: #ffbc1e radial-gradient(circle, transparent 1%, #ffbc1e 1%) center/15000%;
     color: white;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transform: translateY(-10px);
+    transition: all 0.4s ease-in-out;
+}
+.hero-link-primary:active {
+    transform: scale(0.96);
 }
 
 .hero-link-primary:hover .button-icon{
@@ -1119,9 +1133,8 @@ a.learn-more:hover {
     align-items: center;
 }
 
-.signup-section {
-    padding: 20px 50px 20px 50px;
-}
+/* .signup-section {
+} */
 
 .placeholder-logo {
     text-align: center;
@@ -2342,7 +2355,7 @@ nz-select {
     font-weight: 400;
   }
   .buttonp.learn-more {
-    width: 12rem;
+    width:250px;
     height: auto;
   }
   .buttonp.learn-more .circle {
@@ -2391,7 +2404,6 @@ nz-select {
     padding: 0.75rem 0;
     margin: 0 0 0 1.85rem;
     color: #282936;
-    font-weight: 700;
     line-height: 1.6;
     text-align: center;
     text-transform: uppercase;
@@ -3167,4 +3179,212 @@ div.loading-bar {
   }
 
 
+.dash-card {
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 20px;
+    background-color: #fff;
+}
 
+.dash-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    cursor: pointer;
+}
+
+.main-profile-card {
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.ant-upload.ant-upload-select-picture-card {
+    max-width: 250px !important;
+    max-height: 250px !important;
+    min-width: 250px;
+    min-height: 250px;
+}
+
+
+.main-section {
+    margin-top: -75px !important;
+}
+
+
+.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  nz-sider {
+      margin-top: 20px;
+      margin-left: 20px;
+      min-height: calc(100vh - 40px) ;
+      max-height: calc(100vh - 40px) ;
+      border-radius: 30px;
+      position: fixed !important;
+      background-color: #f0f2f5 !important;
+  }
+
+  .ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark .ant-menu-sub {
+    background-color: #f0f2f5 !important;
+
+  }
+
+  .logo {
+    height: 32px;
+    background-image: url('./assets/images/linkcookie-fav.png') ;
+    background-position: center;
+    background-size: contain;
+    margin: 16px;
+    background-repeat: no-repeat;
+  }
+
+  nz-header {
+    background: #fff;
+    padding: 0;
+    margin: 20px;
+    border-radius: 30px;
+    position: fixed;
+    max-width: calc(100vw - 100px);
+    background-color: #f0f2f5 !important;
+  }
+
+  nz-content {
+    margin: 0 16px;
+    padding-top: 115px;
+  }
+
+  nz-breadcrumb {
+    margin: 16px 0;
+  }
+
+  .inner-content {
+    padding: 24px;
+    background: #f0f2f5;
+    min-height: calc(100vh - 185px);
+  }
+
+  nz-footer {
+    text-align: center;
+    background-color: #f0f2f5 !important;
+    color: #060c27 !important;
+  }
+
+  .sidebar-area {
+      max-width: 235px;
+  }
+
+  /* .content-area{
+      max-width: calc(100vw - );
+  } */
+
+  .ant-layout-header{
+    max-width: calc(100vw - 275px);
+    margin-top: 20px;
+  }
+
+  .p-2 {
+      padding: 0px !important;
+  }
+
+  .row {
+      margin-right: 0px !important;
+  }
+
+
+  .innerCollapsed {
+      min-width: calc( 100vw - 180px);
+      margin-left: 120px;
+      transition: 0.5s ease-in-out;
+}
+
+  .headerCollapsed {
+    min-width: calc( 100vw - 180px);
+    margin-left: 150px;
+    transition: 0.5s ease-in-out;
+}
+
+.nav-icon {
+    margin-right: 16px;
+    color: #B8BED9;
+    padding: 10px;
+    border-radius: 10px;
+    /* background-color: #B8BED9; */
+    font-size: 15px;
+}
+
+.nav-menu-item {
+    color: #B8BED9;
+    font-weight: 500;
+}
+
+nz-menu-item {
+    height: 100%;
+    padding: 10px 0px;
+}
+/* 
+.menu-item-container {
+    padding: 10px 0px;
+} */
+
+
+.side-navigation.active {
+    background-color: #f0f2f5;
+}
+
+.side-navigation.active .nav-icon {
+    background-color: #ffa104;
+    color: #fff;
+}
+
+li {
+    padding-left: 24px !important;
+}
+
+.side-navigation.active .nav-menu-item {
+    color: #ffa104;
+    font-weight: 600;
+}
+
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: transparent !important;
+}
+
+.ant-menu-dark.ant-menu-inline .ant-menu-item, .ant-menu-dark.ant-menu-inline .ant-menu-submenu-title {
+    padding: 30px 0px;
+}
+
+.logout {
+    color: #ff4842 !important;
+    font-weight: 600;
+}
+
+.side-navigation:hover .nav-menu-item .nav-icon {
+    color: #ffa104 !important;
+}
+
+
+@media (min-device-width: 320px) and (max-device-width: 480px) {
+    .main-section {
+        padding-top: 30px !important;
+    }
+    .inner-content {
+        padding: 24px;
+        /* background: #ff0000; */
+        min-height: calc(100vh - 185px);
+      }
+
+    nz-sider{
+        margin-left: 0;
+    }
+
+    .innerCollapsed {
+        margin-left: 65px;
+    }
+    .headerCollapsed {
+        margin-left: 90px;
+    }
+}

@@ -7,6 +7,7 @@ import { User } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-signup-one',
@@ -27,7 +28,7 @@ export class SignupOneComponent implements OnInit, CanComponentDeactivate {
   finalDate: string = this.enteredDate.toString();
   selectedType: string = 'individual';
 
-  constructor( private router: Router, private route: ActivatedRoute, public usersService: UsersService, private http: HttpClient) { }
+  constructor( private router: Router, private route: ActivatedRoute, public usersService: UsersService, private http: HttpClient, private message: NzMessageService) { }
 
   selectChangeHandler(event: any) {
     this.selectedType = event.target.value;
@@ -65,22 +66,31 @@ export class SignupOneComponent implements OnInit, CanComponentDeactivate {
     this.usersService.addUser(form.value.email, form.value.username, form.value.password, this.selectedType, form.value.professionalHeadline, form.value.summary, form.value.hourlyRate, this.finalDate)
     .subscribe((result: any) => {
       console.log(result);
+      this.changesSaved = true;
     });
     console.log(form.value);
     form.reset();
-    this.router.navigate(['../signup-final'], {relativeTo: this.route});
+    this.createMessage('success');
+    setInterval(() =>
+      this.router.navigate(['../../login'], {relativeTo: this.route})
+      , 2000);
+  }
+
+
+  createMessage(type: string): void {
+    this.message.create(type, `Your account has been created successfully`);
   }
 
  
 
-  onNextStep() {
-    this.changesSaved = true;
-    this.router.navigate(['../signup-two'], {relativeTo: this.route});
-  }
+  // onNextStep() {
+  //   this.changesSaved = true;
+  //   this.router.navigate(['../signup-two'], {relativeTo: this.route});
+  // }
 
   canDeactivate():  Observable<boolean> | Promise<boolean> | boolean {
     if (!this.changesSaved) {
-      return confirm('Do you want to discard the changes?');
+      return true;
     } else {
       return true;
     }
