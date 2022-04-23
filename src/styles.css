@@ -3184,7 +3184,21 @@ div.loading-bar {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     padding: 20px;
     background-color: #fff;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    display: inline-block;
+    animation-name: fadeInBottom
 }
+
+@keyframes fadeInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to { opacity: 1 }
+}
+
+
 
 .dash-card:hover {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
@@ -3393,3 +3407,4 @@ li {
         margin-left: 90px;
     }
 }
+
