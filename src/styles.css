@@ -3186,7 +3186,6 @@ div.loading-bar {
     background-color: #fff;
     animation-duration: 1s;
     animation-fill-mode: both;
-    display: inline-block;
     animation-name: fadeInBottom
 }
 
@@ -3299,6 +3298,9 @@ div.loading-bar {
     max-width: calc(100vw - 275px);
     margin-top: 20px;
   }
+  .ant-layout-content{
+      min-height: 100vh;
+  }
 
   .p-2 {
       padding: 0px !important;
@@ -3406,5 +3408,19 @@ li {
     .headerCollapsed {
         margin-left: 90px;
     }
+    .ant-layout-content {
+        min-height: calc(100vh + 65px);
+    }
 }
 
+.ux-button {
+    transition: all 0.1s ease-in-out;
+    background-color: #ffa104;
+}
+
+.ux-button:active {
+    transform: scale(0.92);
+    transition: background 0s; 
+    border: none;
+    border-style: none;
+}
