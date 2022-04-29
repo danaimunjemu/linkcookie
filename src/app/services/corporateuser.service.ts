@@ -25,7 +25,7 @@ export class CorporateUserService {
             this.corporate$.next(corporates);
             this.thisUser =  corporates;
             this._Corporate =  this.corporateData = corporates.filter((corporate: CorporateUser) => {
-                return corporate.userId == this.userID
+                return corporate.userId == this.userID;
             });
         });
      };

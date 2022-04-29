@@ -1,0 +1,63 @@
+
+
+<div class="onboard-page">
+    <div *ngIf="!pageReady">
+        <div class="loader-wrapper">
+          <h1 class="brand">
+            <img
+              src="../../../assets/images/linkcookie-logo.png"
+              alt=""
+              class="wrapper-img"
+            />
+          </h1>
+          <div class="loading-bar"></div>
+        </div>
+      </div>
+      
+      <div *ngIf="pageReady">
+        <div class="page" #page>
+          <div class="onboard-area">
+            
+<div class="login-page">
+    <div class="container card-control">
+        <div class="login-section">
+            <h3 class="placeholder-logo1"><img src="../../../assets/images/linkcookie-logo.png" class="img-fluid navbar-logo" alt=""></h3>
+                
+                
+      <router-outlet></router-outlet>
+
+        </div>
+        <!-- <div class="go-home-section">
+            <div class="row">
+                <div class="col-md-6 d-flex justify-content-start">
+                    <a class="go-home">
+                        <span *ngIf="currentStep>0">
+                            <button class="link-secondary responsive-click" (click)="navigateToPrevious()">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" width="24" fill="currentColor"><path d="M10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1.828-8l3.535 3.536a1 1 0 0 1-1.414 1.414L6.05 10.707a1 1 0 0 1 0-1.414l4.243-4.243a1 1 0 0 1 1.414 1.414L8.172 10z"></path></svg>  
+                                {{ previousText }}
+                            </button>
+                        </span>
+                    </a>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end">
+                    <a class="go-home">
+                        <span>
+                            <button class="link-primary responsive-click" (click)="navigateToNext()" >
+                                {{nextText}}
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" width="24" fill="currentColor"><path d="M10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1.828-8L8.293 6.464A1 1 0 0 1 9.707 5.05l4.243 4.243a1 1 0 0 1 0 1.414L9.707 14.95a1 1 0 1 1-1.414-1.414L11.828 10z"></path></svg> 
+                            </button>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+</div>
+
+

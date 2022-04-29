@@ -1,10 +1,25 @@
+import { Packages } from "./packages.model";
+import { UserExperience } from "./userexperience.model";
+
 export interface User {
+    _id?:string,
     email: string,
-    username: string,
     password:string,
     userType: string,
-    professionalHeadline: string,
-    summary: string,
-    hourlyRate: string,
     dateCreated: string,
+    firstName: string,
+    lastName: string,
+    profession: string,
+    companyName: string,
+    industry: string,
+    imagePath: string,
+    country: string,
+    summary: string,
+    skills: string[],
+    experience: UserExperience[],
+    packages: Packages[],
+    billingAddress: string,
+    rating: string[],
+    emailConfirmation: string,
+    logIns:string[],
 }

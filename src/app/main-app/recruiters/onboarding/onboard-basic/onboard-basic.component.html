@@ -1,0 +1,63 @@
+<div class="signup-steps-content ">
+    <h3 class="placeholder-logo">Basic Information</h3>
+    <h5 class="signup-helper-text" style="text-align: center;">Please introduce yourself</h5>
+
+      <div class="signup-section">
+        <form (submit)="onAddUserInfo(infoForm)" #infoForm="ngForm">
+            
+            <div *ngIf="ifUser">
+                <div class="mb-3">
+                    <input 
+                    type="text"
+                    class="form-control"
+                    name="firstName"
+                    placeholder="First Name"
+                    ngModel
+                    >
+                  </div>
+        
+                  <div class="mb-3">
+                    <input 
+                    type="text"
+                    class="form-control"
+                    name="lastName"
+                    placeholder="Last Name"
+                    ngModel
+                    >
+                  </div>
+            </div>
+
+
+          <div *ngIf="ifCompany">
+            <div class="mb-3">
+                <input 
+                type="text"
+                class="form-control"
+                name="companyName"
+                placeholder="Company Name"
+                ngModel
+                >
+              </div>
+        </div>
+          
+            <button 
+            type="submit" 
+            class="btn link-primary responsive-click log-in"
+            [disabled]="!infoForm.valid ">
+            <span *ngIf="!infoForm.valid">
+              <svg class="primary-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" width="24" fill="currentColor"><path d="M5.094 16.32A8 8 0 0 0 16.32 5.094L5.094 16.32zM3.68 14.906L14.906 3.68A8 8 0 0 0 3.68 14.906zM10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10z"></path></svg>
+            </span>       
+            Next
+            </button>
+
+            
+
+            
+       
+      </form>
+      </div>
+
+      <a routerLink="../../recruiter-main"> Skip </a>
+      
+
+    </div>

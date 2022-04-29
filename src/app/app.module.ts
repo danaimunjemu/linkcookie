@@ -7,7 +7,7 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './landing/header/header.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
@@ -58,11 +58,10 @@ import { CheckoutComponent } from './main-app/shared/checkout/checkout.component
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { SignupWelcomeComponent } from './landing/signup/signup-welcome/signup-welcome.component';
 import { SignupOneComponent } from './landing/signup/signup-one/signup-one.component';
-import { SignupTwoComponent } from './landing/signup/signup-two/signup-two.component';
-import { SignupThreeComponent } from './landing/signup/signup-three/signup-three.component';
 import { SignupFinalComponent } from './landing/signup/signup-final/signup-final.component';
 import { PaywaySimComponent } from './main-app/shared/payway-sim/payway-sim.component';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
+import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
@@ -73,19 +72,30 @@ import { NzRateModule } from 'ng-zorro-antd/rate';
 import { CanDeactivateGuard } from './landing/signup/can-deactivate-guard.service';
 import { SwiperModule } from 'swiper/angular';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-import { SignupFourComponent } from './landing/signup/signup-four/signup-four.component';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { TermsComponent } from './landing/terms/terms.component';
 import { PrivacyComponent } from './landing/privacy/privacy.component';
 import { GeneralTermsComponent } from './landing/general-terms/general-terms.component';
-import { CrudTrialComponent } from './landing/crud-trial/crud-trial.component';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
-import { SeekersMainComponent } from './main-app/jobseekers/seekers-main/seekers-main.component';
-import { SHeaderComponent } from './main-app/jobseekers/seekers-main/s-header/s-header.component';
 import { NzElementPatchModule } from 'ng-zorro-antd/core/element-patch';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { PersonalDetailsComponent } from './main-app/recruiters/recruiter-main/recruiter-profile/personal-details/personal-details.component';
+import { ProfileImageService } from './services/profileimage.service';
+import { PasswordStrengthMeterModule, PSM_CONFIG } from 'angular-password-strength-meter';
+import zxcvbnEnPackage from '@zxcvbn-ts/language-en';
+import { OnboardingComponent } from './main-app/recruiters/onboarding/onboarding.component';
+import { HttpConfigInterceptor } from './constants/helpers/http.interceptor';
+import { OnboardWelcomeComponent } from './main-app/recruiters/onboarding/onboard-welcome/onboard-welcome.component';
+import { OnboardFirstComponent } from './main-app/recruiters/onboarding/onboard-first/onboard-first.component';
+import { OnboardSecondComponent } from './main-app/recruiters/onboarding/onboard-second/onboard-second.component';
+import { OnboardThirdComponent } from './main-app/recruiters/onboarding/onboard-third/onboard-third.component';
+import { OnboardBasicComponent } from './main-app/recruiters/onboarding/onboard-basic/onboard-basic.component';
+import { OnboardIndustryComponent } from './main-app/recruiters/onboarding/onboard-industry/onboard-industry.component';
+import { OnboardImageComponent } from './main-app/recruiters/onboarding/onboard-image/onboard-image.component';
+
 
 
 
@@ -121,19 +131,22 @@ registerLocaleData(en);
     CheckoutComponent,
     SignupWelcomeComponent,
     SignupOneComponent,
-    SignupTwoComponent,
-    SignupThreeComponent,
     SignupFinalComponent,
     PaywaySimComponent,
     ContactUsComponent,
     TendersComponent,
-    SignupFourComponent,
     TermsComponent,
     PrivacyComponent,
     GeneralTermsComponent,
-    CrudTrialComponent,
-    SeekersMainComponent,
-    SHeaderComponent
+    PersonalDetailsComponent,
+    OnboardingComponent,
+    OnboardWelcomeComponent,
+    OnboardFirstComponent,
+    OnboardSecondComponent,
+    OnboardThirdComponent,
+    OnboardBasicComponent,
+    OnboardIndustryComponent,
+    OnboardImageComponent
   ],
   imports: [
     BrowserModule,
@@ -175,9 +188,23 @@ registerLocaleData(en);
     NzElementPatchModule,
     NzUploadModule,
     NzPageHeaderModule,
-    NzBadgeModule
+    NzBadgeModule,
+    NzAlertModule,
+    NzNotificationModule,
+    PasswordStrengthMeterModule.forRoot()
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }, CanDeactivateGuard],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US }, 
+    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
+    CanDeactivateGuard, 
+    ProfileImageService,
+    {
+      provide: PSM_CONFIG,
+      useValue: {
+        translations: zxcvbnEnPackage.translations,
+        dictionary: {
+          ...zxcvbnEnPackage.dictionary,
+        }}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

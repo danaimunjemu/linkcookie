@@ -5,7 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 import { CanComponentDeactivate } from '../can-deactivate-guard.service';
 import { User } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/user.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -17,6 +17,10 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class SignupOneComponent implements OnInit, CanComponentDeactivate {
 
+  psswrd = '';
+  cpsswrd = '';
+  strengthMeter = '';
+
   changesSaved = false;
 
   users: User[] = [];
@@ -27,6 +31,7 @@ export class SignupOneComponent implements OnInit, CanComponentDeactivate {
   enteredDate: Date = new Date();
   finalDate: string = this.enteredDate.toString();
   selectedType: string = 'individual';
+  agreeTerms: any;
 
   constructor( private router: Router, private route: ActivatedRoute, public usersService: UsersService, private http: HttpClient, private message: NzMessageService) { }
 
@@ -34,6 +39,7 @@ export class SignupOneComponent implements OnInit, CanComponentDeactivate {
     this.selectedType = event.target.value;
     console.log(this.selectedType);
   }
+
 
   ngOnInit() {
     // this.users$ = this.usersService.getUsers();
@@ -51,6 +57,32 @@ export class SignupOneComponent implements OnInit, CanComponentDeactivate {
   ngOnDestroy() {
     this.usersSub.unsubscribe();
   }
+
+  getStreChange(event: any) {
+    switch(event) {
+      case 0: {
+        this.strengthMeter = 'Weak';
+        break;
+      }
+      case 1: {
+        this.strengthMeter = 'Weak';
+        break;
+      }
+      case 2: {
+        this.strengthMeter = 'Fair';
+        break;
+      }
+      case 3: {
+        this.strengthMeter = 'Good';
+        break;
+      }
+      case 4: {
+        this.strengthMeter = 'Strong';
+        break;
+      }
+    }
+
+  }
   
 
   getAll(){
@@ -58,35 +90,44 @@ export class SignupOneComponent implements OnInit, CanComponentDeactivate {
   }
 
   onAddUser(form: NgForm){
+
+    // Check if the passwords match
+    if (form.value.password != form.value.confirmPassword) {
+      console.log("Passwords do not match")
+    }
+
+    const user = {
+      email: form.value.email,
+      password: form.value.password,
+      userType: this.selectedType,
+      dateCreated: this.finalDate
+    };
+    console.log(user);
     if (form.invalid) {
       return;
     }
-    this.rateString = form.value.rate;
-
-    this.usersService.addUser(form.value.email, form.value.username, form.value.password, this.selectedType, form.value.professionalHeadline, form.value.summary, form.value.hourlyRate, this.finalDate)
+    this.usersService.addUser(user)
     .subscribe((result: any) => {
       console.log(result);
       this.changesSaved = true;
-    });
-    console.log(form.value);
-    form.reset();
-    this.createMessage('success');
-    setInterval(() =>
+      form.reset();
+      this.createMessage('success', 'Your account has been created successfully');
+      setInterval(() =>
       this.router.navigate(['../../login'], {relativeTo: this.route})
       , 2000);
+    }, (err: HttpErrorResponse) => {
+      console.log(err.error.message);
+      this.createMessage('error', err.error.message);
+    });
+    
   }
 
 
-  createMessage(type: string): void {
-    this.message.create(type, `Your account has been created successfully`);
+  createMessage(type: string, message:string): void {
+    this.message.create(type, message);
   }
 
- 
-
-  // onNextStep() {
-  //   this.changesSaved = true;
-  //   this.router.navigate(['../signup-two'], {relativeTo: this.route});
-  // }
+//  Password Strength Checker
 
   canDeactivate():  Observable<boolean> | Promise<boolean> | boolean {
     if (!this.changesSaved) {

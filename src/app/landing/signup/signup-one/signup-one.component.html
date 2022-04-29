@@ -2,11 +2,19 @@
     <div class="signup-container ">
         
           <div class="signup-steps-content ">
-            <h3 class="placeholder-logo">Basic Information</h3>
+            <h3 class="placeholder-logo">Sign Up</h3>
             <h5 class="signup-helper-text" style="text-align: center;">To create an account, please fill in the basic information below</h5>
 
               <div class="signup-section">
                 <form (submit)="onAddUser(userForm)" #userForm="ngForm">
+                  <div class="mb-3">
+                    <span nz-tooltip nzTooltipTitle="Are you joining as an individual or a company?">
+                    <select (change)="selectChangeHandler($event)" class="form-select" aria-label="Default select example" name="selectedType">
+                        <option value="individual">Individual</option>
+                        <option value="corporate">Corporate</option>
+                    </select>
+                  </span>
+                  </div>
                   <div class="mb-3">
                     <input 
                     type="email"
@@ -20,17 +28,8 @@
                     >
                   </div>
                   
-                  <!-- <p *ngIf="email.invalid">This is not valid</p> -->
-                  <div class="mb-3">
-                    <input 
-                    type="text"
-                    class="form-control"
-                    name="username"
-                    placeholder="Username"
-                    ngModel
-                    required
-                    >
-                  </div>
+                  <p *ngIf="email.invalid && email.touched">Please enter a valid email address</p>
+
                   <div class="mb-3">
                       <input 
                       type="password"
@@ -38,51 +37,52 @@
                       name="password"
                       placeholder="Password"
                       ngModel
+                      [(ngModel)]="psswrd"
+                      #password = "ngModel"
+                      required
+                      minlength="6"
+                      >
+                      <div class="strength-meter-area">
+                        <p *ngIf="password.dirty">Password Strength: {{ strengthMeter }}</p>
+                        <password-strength-meter [password]="psswrd" [enableFeedback]="true" (strengthChange)="getStreChange($event)"></password-strength-meter>
+                      </div>
+                    </div>
+
+                    
+
+                    
+                    <div class="mb-3">
+                      <input 
+                      type="password"
+                      class="form-control"
+                      name="confirmPassword"
+                      placeholder="Confirm Password"
+                      ngModel
+                      [(ngModel)]="cpsswrd"
+                      #confirmPassword = "ngModel"
                       required
                       minlength="6"
                       >
                     </div>
-                    <div class="mb-3">
-                      <select (change)="selectChangeHandler($event)" class="form-select" aria-label="Default select example" name="selectedType">
-                        <option value="individual">Individual</option>
-                        <option value="corporate">Corporate</option>
-                      </select>
+                    <div *ngIf="psswrd != cpsswrd && confirmPassword.dirty">
+                      <p>The passwords do not match</p>
                     </div>
+
                     <div class="mb-3">
-                      <input 
-                      type="text"
-                      class="form-control"
-                      name="professionalHeadline"
-                      placeholder="Professional Headline"
-                      ngModel
-                      required
-                      >
+                      <input class="form-check-input" type="checkbox" #terms name="terms" id="flexCheckDefault" required ngModel>
+                      <label class="form-check-label" for="flexCheckDefault">
+                        I read and agree to <a routerLink="/home/terms">Terms and Conditions</a>
+                      </label>
                     </div>
-                    <div class="mb-3">
-                      <input 
-                      type="text"
-                      class="form-control"
-                      name="summary"
-                      placeholder="Summary"
-                      ngModel
-                      required
-                      >
-                    </div>
-                    <div class="mb-3">
-                      <input 
-                      type="text"
-                      class="form-control"
-                      name="hourlyRate"
-                      placeholder="Hourly Rate"
-                      ngModel
-                      required
-                      >
-                    </div>
+
                     <button 
                     type="submit" 
-                    class="btn login-button"
-                    [disabled]="!userForm.valid">
-                        Sign Up
+                    class="btn link-primary responsive-click log-in"
+                    [disabled]="!userForm.valid ">
+                    <span *ngIf="!userForm.valid">
+                      <svg class="primary-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" width="24" fill="currentColor"><path d="M5.094 16.32A8 8 0 0 0 16.32 5.094L5.094 16.32zM3.68 14.906L14.906 3.68A8 8 0 0 0 3.68 14.906zM10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10z"></path></svg>
+                    </span>       
+                    Sign Up
                     </button>
                
               </form>

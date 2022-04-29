@@ -15,14 +15,8 @@ export class LogGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (this.usersService.Token) {
-        if (this.usersService.Type == 'corporate') {
             this.router.navigateByUrl('/recruiter-main');
             return false;
-        }
-        if (this.usersService.Type == 'individual') {
-            this.router.navigateByUrl('/seekers');
-            return false;
-        }
     }
     console.log("not logged in");
     return true;

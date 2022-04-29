@@ -42,7 +42,7 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/swiper/swiper-bundle.min.js"
+              "node_modules/@antv/g2/dist/g2.min.js"
             ]
           },
           "configurations": {

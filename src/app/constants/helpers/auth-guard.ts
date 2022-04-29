@@ -18,11 +18,7 @@ export class AuthGuard implements CanActivate {
       this.router.navigateByUrl('/login');
       return false;
     }
-    if (this.usersService.Type == 'individual') {
-        this.router.navigateByUrl('/seekers');
-        return false;
-    }
-    console.log("logged in corporate!!!");
+    console.log("logged in user!!!");
     return true;
   }
 
