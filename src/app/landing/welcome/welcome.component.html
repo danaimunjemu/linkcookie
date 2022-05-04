@@ -1,79 +1,11 @@
-<!-- <nz-space nzSize="middle">
-  <nz-skeleton-element
-    *nzSpaceItem
-    nzType="button"
-    [nzActive]="elementActive"
-    [nzSize]="elementSize"
-    [nzShape]="buttonShape"
-  ></nz-skeleton-element>
-  <nz-skeleton-element
-    *nzSpaceItem
-    nzType="avatar"
-    [nzActive]="elementActive"
-    [nzSize]="elementSize"
-    [nzShape]="avatarShape"
-  ></nz-skeleton-element>
-  <nz-skeleton-element
-    *nzSpaceItem
-    nzType="input"
-    [nzActive]="elementActive"
-    [nzSize]="elementSize"
-    style="width:200px"
-  ></nz-skeleton-element>
-</nz-space>
-<br />
-<br />
-<nz-skeleton-element nzType="image" [nzActive]="elementActive"></nz-skeleton-element>
-<div nz-row nzAlign="middle" [nzGutter]="8">
-  <div nz-col nzSpan="10">
-    Size:
-    <nz-radio-group [(ngModel)]="elementSize">
-      <label nz-radio-button nzValue="default">Default</label>
-      <label nz-radio-button nzValue="large">Large</label>
-      <label nz-radio-button nzValue="small">Small</label>
-    </nz-radio-group>
-  </div>
-  <div nz-col nzSpan="5">
-    Active:
-    <nz-switch [(ngModel)]="elementActive"></nz-switch>
-  </div>
-</div>
-<br />
-<br />
-<div nz-row nzAlign="middle" [nzGutter]="8">
-  <div nz-col nzSpan="10">
-    Button Shape:
-    <nz-radio-group [(ngModel)]="buttonShape">
-      <label nz-radio-button nzValue="default">Default</label>
-      <label nz-radio-button nzValue="circle">Circle</label>
-      <label nz-radio-button nzValue="round">Round</label>
-    </nz-radio-group>
-  </div>
-  <div nz-col nzSpan="10">
-    Avatar Shape:
-    <nz-radio-group [(ngModel)]="avatarShape">
-      <label nz-radio-button nzValue="circle">Circle</label>
-      <label nz-radio-button nzValue="square">Square</label>
-    </nz-radio-group>
-  </div>
-</div> -->
-
-
-
-
-<!-- 
-<div class="wrap  d-flex align-items-center">
-  <img src="../../../assets/images/back3.png" alt="" class="wrap-bg img-fluid">
-</div> -->
-
 
 
 <div>
   <div class="background-img-section">
     <div class="container-fluid hero-section">
       <div class="row top-section">
-        <div class="col-lg-5">
-          <div class="img-wrap">
+        <div class="col-lg-6  d-flex align-items-center justify-content-center img-wrap" style="padding: 20px;">
+          <!-- <div class="img-wrap"> -->
             <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -83,16 +15,16 @@
               </div>
               <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="4000">
-                  <img src="../../../assets/images/hero1.png" class="d-block w-100 hero-img img-fluid" alt="...">
+                  <img src="../../../assets/images/hero1.svg" class="d-block w-100 hero-img img-fluid" alt="...">
                 </div>
                 <div class="carousel-item" data-bs-interval="4000">
-                  <img src="../../../assets/images/jobseekers.png" class="d-block w-100 hero-img img-fluid" alt="...">
+                  <img src="../../../assets/images/hero2.svg" class="d-block w-100 hero-img img-fluid" alt="...">
                 </div>
                 <div class="carousel-item" data-bs-interval="4000">
-                  <img src="../../../assets/images/hero3.png" class="d-block w-100 hero-img img-fluid" alt="...">
+                  <img src="../../../assets/images/hero3.svg" class="d-block w-100 hero-img img-fluid" alt="...">
                 </div>
                 <div class="carousel-item" data-bs-interval="4000">
-                  <img src="../../../assets/images/hero4.png" class="d-block w-100 hero-img img-fluid" alt="...">
+                  <img src="../../../assets/images/hero4.svg" class="d-block w-100 hero-img img-fluid" alt="...">
                 </div>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -104,122 +36,347 @@
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
-          </div>
+          <!-- </div> -->
           
       </div>
-        <div class="col-lg-7  d-flex align-items-center">
+        <div class="col-lg-6  d-flex align-items-center" style="padding: 20px;">
             <div>
               <h1 class="hero-header">  The last <span class="hero-text">LINK</span> you will ever need!
               </h1>
-              <h3 class="hero-subheader">Join the top community for talent! <span style="color: #ffa104; font-weight: bold;">LinkCookie</span>  is a platform that helps both projects to find talent, consultants to find business opportunities, and job seekers to find jobs.
-              </h3>
-              <br><br>
-              <div class="d-grid gap-2 d-sm-flex justify-content-md-start">
-                <button class="btn hero-link-primary btn-sm" routerLink="../for-recruiters">Find Freelance talent for your next project<i class="bi bi-arrow-right button-icon"></i></button>
-                <!-- <button class="btn hero-link-secondary btn-sm" routerLink="../for-recruiters">Find Freelance talent for your next project<i class="bi bi-arrow-right button-icon"></i></button> -->
+              <p class="hero-paragraph">Join the top community for talent! <span style="color: #ffa104; font-weight: bold;">LinkCookie</span>  is a platform that helps both projects to find talent, consultants to find business opportunities, and job seekers to find jobs.
+              </p>
+              <div class="row d-flex align-items-center">
+                
               </div>        
             </div>
         </div>
+          <div class="container stats-section">
+            <div class="row bottom-section">
+              <div class="col-md-12">
+                <div>
+                  <form>
+                    <div class="row hero-form">
+                      <div class="col-md-2">
+
+                      </div>
+                      <div class="col-md-3">
+                        <div class="mb-5">
+                            <select (change)="selectChangeHandler($event)" class="form-select" aria-label="Default select example" name="selectedType" placeholder="I am looking for..." required>
+                                <option value="individual">I am a...</option>
+                                <option value="individual">Business</option>
+                                <option value="corporate">Freelancer</option>
+                                <option value="corporate">Consultant</option>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="mb-5">
+                            <select (change)="selectChangeHandler($event)" class="form-select" aria-label="Default select example" name="selectedType" placeholder="I am looking for..." required>
+                                <option value="individual">I am looking for...</option>
+                                <option value="individual">Employees</option>
+                                <option value="corporate">Tenders</option>
+                                <option value="corporate">Work</option>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <button class="btn hero-link-primary responsive-click" type="submit">
+                          Apply
+                        </button>
+                      </div>
+                      <div class="col-md-2">
+
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="spacer"></div>
+                <p class="link-description"> A place for <span class="link-changing">{{ linkText }}</span> to link</p>
+              </div>
+            </div>
+          </div> 
       </div>
-      <div class="container stats-section">
-        <div class="row bottom-section">
-          <div class="col-md-12">
-            <p class="link-description"> A place for <span class="link-changing">{{ linkText }}</span> to link</p>
-          </div>
-        </div>
-      </div>  
   </div>
   </div>
 </div>
 
-<br>
+<div class="padded-section">
+  <div class="section-heading ">
+    <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
+      <h5 class="section-tag">WORK</h5>
+    </div>
+    <h3 class="section-header">How It  <span class="header-yellow">Works</span> </h3>
+    <p class="section-description"><span style="color: #ffa104; font-weight: bold;">LinkCookie</span> allows you to create links in 3 easy steps</p>
+  </div>
+
+  <div class="container steps">
+    <div class="row">
+      <div class="col-md-4 how-section">
+        <div class="how-area">
+          <!-- <div class="how-icon d-flex justify-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" width="24" fill="currentColor"><path d="M3.534 10.07a1 1 0 1 1 .733 1.86A3.579 3.579 0 0 0 2 15.26V17a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1.647a3.658 3.658 0 0 0-2.356-3.419 1 1 0 1 1 .712-1.868A5.658 5.658 0 0 1 14 15.353V17a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3v-1.74a5.579 5.579 0 0 1 3.534-5.19zM7 0a4 4 0 0 1 4 4v2a4 4 0 1 1-8 0V4a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v2a2 2 0 1 0 4 0V4a2 2 0 0 0-2-2zm10 3h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0V7h-2a1 1 0 0 1 0-2h2V3a1 1 0 0 1 2 0v2z"></path></svg>
+          </div> -->
+          <img src="../../../assets/images/how2.svg" class="how-it-img" alt="">
+          <div class="how-header">
+            Create Account
+          </div>
+          <div class="how-text">
+            Create your LinkCookie Account
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 how-section">
+        <div class="how-area ">
+          <!-- <div class="how-icon d-flex justify-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -2 24 24" width="24" fill="currentColor"><path d="M3 0h10a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3zm0 2a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3zm2 1h6a1 1 0 0 1 0 2H5a1 1 0 1 1 0-2zm0 12h2a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2zm0-4h6a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2zm0-4h6a1 1 0 0 1 0 2H5a1 1 0 1 1 0-2z"></path></svg>
+          </div> -->
+          <img src="../../../assets/images/how1.svg" class="how-it-img" alt="">
+          <div class="how-header">
+            Update Profile
+          </div>
+          <div class="how-text">
+            Update your profile to enhance your account
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 how-section">
+        <div class="how-area ">
+          <!-- <div class="how-icon d-flex justify-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2.5 24 24" width="24" fill="currentColor"><path d="M3 0h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-6.958l-6.444 4.808A1 1 0 0 1 2 18.006V14a2 2 0 0 1-2-2V3a3 3 0 0 1 3-3zm6.378 12H17a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1 1 1 0 0 1 1 1v3.013L9.378 12zM13 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM7 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"></path></svg>
+          </div> -->
+          <img src="../../../assets/images/how3.svg" class="how-it-img" alt="">
+          <div class="how-header">
+            Start Linking
+          </div>
+          <div class="how-text">
+            Use our advanced system to search for links
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="spacer"></div>
 
 
 
+<!-- <div class="padded-section">
+  <div class="section-heading ">
+    <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
+      <h5 class="section-tag">SERVICES</h5>
+    </div>
+    <h3 class="section-header">Our  <span class="header-yellow">Services</span> </h3>
+    <p class="section-description">Meet some of the companies that have worked with us and that trust <span style="color: #ffa104; font-weight: bold;">LinkCookie</span></p>
+  </div>
 
+<div class="container-fluid">
+  <div class="row about-row">
+    <div class="col-md-3 about-card-area">
+      <div class="about-card">
+        <div class="about-img d-flex justify-content-center">
+          <img src="../../../assets/images/about1.svg" class="about-img" alt="">
+        </div>
+        <div class="about-header">
+          <h5>Are you a freelancer seeking gigs?</h5>
+        </div>
+        <div class="about-paragraph">
+          No cost until you hire Interview potential fits for your job, negotiate rates, and only pay for work you approve.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 about-card-area">
+      <div class="about-card">
+        <div class="about-img">
+          <img src="../../../assets/images/about2.svg" class="about-img" alt="">
+        </div>
+        <div class="about-header">
+          <h5>Are you a professional seeking employment?</h5>
+        </div>
+        <div class="about-paragraph">
+          No cost until you hire Interview potential fits for your job, negotiate rates, and only pay for work you approve.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 about-card-area">
+      <div class="about-card">
+        <div class="about-img">
+          <img src="../../../assets/images/about3.svg" class="about-img" alt="">
+        </div>
+        <div class="about-header">
+          <h5>Are you a business looking to hire?</h5>
+        </div>
+        <div class="about-paragraph">
+          No cost until you hire Interview potential fits for your job, negotiate rates, and only pay for work you approve.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 about-card-area">
+      <div class="about-card">
+        <div class="about-img">
+          <img src="../../../assets/images/about4.svg" class="about-img" alt="">
+        </div>
+        <div class="about-header">
+          <h5>Are you a business looking for tenders?</h5>
+        </div>
+        <div class="about-paragraph">
+          No cost until you hire Interview potential fits for your job, negotiate rates, and only pay for work you approve.
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="padded-section">
+  <div class="section-heading ">
+    <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
+      <h5 class="section-tag">TALENT</h5>
+    </div>
+    <h3 class="section-header">Hire  <span class="header-yellow">Talent</span> </h3>
+    <p class="section-description">We have a database full of talent ready to make you a success.</p>
+  </div>
+  
+  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 d-flex align-items-center">
+          <img src="../../../assets/images/links.jpg" class="d-block w-100 link-img img-fluid details-img" alt="...">
+        </div>
+    
+        <div class="col-md-5">
+          <div style="padding: 30px;">
+            <h3 class="details-header-lg">A Link For Qualified and Freelance Talent</h3>
+            <p class="description-p">Link with qualified professionals and freelance talent and hire them to take your business to the next
+              level. With <span style="color: #ffa104; font-weight: bold;">LinkCookie</span> you can
+              customize the service you need by quickly hiring the right talent. We ensure quality 
+              through protected and upfront payment and support from our customer service team. <br>
+              LinkCookie specializations:
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-md-start">
+              <button class="learn-more buttonp"  routerLink="../for-recruiters">
+                <span class="circle" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span class="button-text">Find Talent</span>
+              </button>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="spacer"></div>
+
+
+
+<div class="padded-section">
+  <div class="section-heading ">
+    <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
+      <h5 class="section-tag">TALENT</h5>
+    </div>
+    <h3 class="section-header">Hire  <span class="header-yellow">Talent</span> </h3>
+    <p class="section-description">We have a database full of talent ready to make you a success.</p>
+  </div>
+  
+  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 d-flex align-items-center">
+          <div>
+            <!-- <h5 class="details-header-sm">Are you looking for a job?</h5> -->
+            <h3 class="details-header-lg">A Link For Qualified and Freelance Talent</h3>
+            <p class="description-p">Link with qualified professionals and freelance talent and hire them to take your business to the next
+              level. With <span style="color: #ffa104; font-weight: bold;">LinkCookie</span> you can
+              customize the service you need by quickly hiring the right talent. We ensure quality 
+              through protected and upfront payment and support from our customer service team. <br>
+              LinkCookie specializations:
+            </p>
+            <div>
+              <ul class="welcome-list">
+                <li><i class="bi bi-check2-circle bullet-icon"></i>Digital Marketing and Sales</li>
+                <li><i class="bi bi-check2-circle bullet-icon"></i>Programming & IT</li>
+                <li><i class="bi bi-check2-circle bullet-icon"></i>Graphic & Creative Design</li>
+                <li><i class="bi bi-check2-circle bullet-icon"></i>Writing & Translation</li>
+                <li><i class="bi bi-check2-circle bullet-icon"></i>Finance & Accounting</li>
+                <li><i class="bi bi-check2-circle bullet-icon"></i>Business Services</li>
+                <li><i class="bi bi-check2-circle bullet-icon"></i>Other specializations</li>
+              </ul>
+            </div>
+            <div class="d-grid gap-2 d-sm-flex justify-content-md-start">
+              <button class="learn-more buttonp"  routerLink="../for-recruiters">
+                <span class="circle" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span class="button-text">Find Talent</span>
+              </button>
+            </div>
+          </div>  
+        </div>
+    
+        <div class="col-md-7">
+          <img src="../../../assets/images/link2.jpg" class="d-block w-100 link-img img-fluid details-img" alt="...">
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="spacer"></div>
 
 <div class="container-fluid partners">
   <div class="section-heading ">
+    <div class="spacer"></div>
     <h3 class="section-header">Everything you need  <span class="header-yellow">to get linked!</span> </h3>
     <div class="spacer"></div>
     <!-- <p class="section-description">Meet some of the companies that have worked with us and that trust <span style="color: #ffa104; font-weight: bold;">LinkCookie</span></p> -->
     <br>
   </div>
-  <div class="row">
-    <div class="col-md-4 d-flex justify-content-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 d-flex justify-content-center">
+          <div class="feature-wrap">
+              <div class="feature-icon">
+                <i class="bi bi-people feature-icon1"></i>
+              </div>
+              <div class="feature-content">
+                  <h4 class="feature-title">Affordable Talent</h4>
+                  <p class="feature-paragraph">Find affordable and qualified experts for your next project on LinkCookie. Freelancers and professionals are listed on our database.</p>
+                  <a routerLink="../for-recruiters" class="learn-more">Learn More <i class="bi bi-arrow-right button-icon"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4 d-flex justify-content-center">
         <div class="feature-wrap">
             <div class="feature-icon">
-              <i class="bi bi-people feature-icon1"></i>
+              <i class="bi bi-briefcase feature-icon1"></i>
             </div>
             <div class="feature-content">
-                <h4 class="feature-title">Affordable Talent</h4>
-                <p class="feature-paragraph">Find affordable and qualified experts for your next project on LinkCookie. Freelancers and professionals are listed on our database.</p>
-                <a routerLink="../for-recruiters" class="learn-more">Learn More <i class="bi bi-arrow-right button-icon"></i></a>
+                <h4 class="feature-title">Job Finder</h4>
+                <p class="feature-paragraph">Find your next big career opportunity through the LinkCookie community.</p>
+                  <a routerLink="../for-jobseekers" class="learn-more">Learn More <i class="bi bi-arrow-right button-icon"></i></a>
             </div>
         </div>
     </div>
     <div class="col-md-4 d-flex justify-content-center">
       <div class="feature-wrap">
           <div class="feature-icon">
-            <i class="bi bi-briefcase feature-icon1"></i>
+            <i class="bi bi-box-seam feature-icon1"></i>
           </div>
           <div class="feature-content">
-              <h4 class="feature-title">Job Finder</h4>
-              <p class="feature-paragraph">Find your next big career opportunity through the LinkCookie community.</p>
-                <a routerLink="../for-jobseekers" class="learn-more">Learn More <i class="bi bi-arrow-right button-icon"></i></a>
+              <h4 class="feature-title">Tenders</h4>
+              <p class="feature-paragraph">Attract the best talent by publishing your next big idea and project.</p>
+                <a routerLink="../tenders" class="learn-more">Learn More <i class="bi bi-arrow-right button-icon"></i></a>
           </div>
       </div>
   </div>
-  <div class="col-md-4 d-flex justify-content-center">
-    <div class="feature-wrap">
-        <div class="feature-icon">
-          <i class="bi bi-box-seam feature-icon1"></i>
-        </div>
-        <div class="feature-content">
-            <h4 class="feature-title">Tenders</h4>
-            <p class="feature-paragraph">Attract the best talent by publishing your next big idea and project.</p>
-              <a routerLink="../tenders" class="learn-more">Learn More <i class="bi bi-arrow-right button-icon"></i></a>
-        </div>
     </div>
-</div>
   </div>
+  
+  <div class="spacer"></div>
 </div>
 
-
-
-
-  
-  
-  
-  <!-- <div class="container-fluid partners">
-    <div class="row partners-content">
-      <div class="col-md-4 d-flex align-items-center">
-        <img src="../../../assets/images/home-banner.png" class="d-block w-100 banner-img img-fluid" alt="...">
-      </div>
-      <div class="col-md-8 d-flex align-items-center ">
-        <div class="row">
-          <div class="col-md-12 partners-sub">
-          Job finding and worker recruitment made simple with just one <span style="color: #ffa104; border-bottom: 3px solid #ffa104;">LINK!</span>
-          </div>
-          <div class="row">
-            <div class="col-md-4 bullet-list">
-              <i class="bi bi-check2-circle bullet-icon"></i> Simple and easy to use
-            </div>
-            <div class="col-md-4 bullet-list">
-              <i class="bi bi-phone-flip bullet-icon"></i> Accessible on any device
-            </div>
-            <div class="col-md-4 bullet-list">
-              <i class="bi bi-clock bullet-icon"></i> Use any time
-            </div>
-          </div>
-        </div>
-        <br>
-        
-      </div>
-    </div>
-  </div> -->
-  
-<br><br><br><br>
+<div class="spacer"></div>
 
 <div class="padded-section">
   <div class="section-heading ">
@@ -278,115 +435,10 @@
   </div>
 </div>
 
+<div class="spacer"></div>
 
 
-<br><br><br><br>
-
-<div class="padded-section">
-  <div class="section-heading ">
-    <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
-      <h5 class="section-tag">TALENT</h5>
-    </div>
-    <h3 class="section-header">Hire  <span class="header-yellow">Talent</span> </h3>
-    <p class="section-description">We have a database full of talent ready to make you a success.</p>
-  </div>
-  
-  
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7 d-flex align-items-center">
-          <div>
-            <!-- <h5 class="details-header-sm">Are you looking for a job?</h5> -->
-            <h3 class="details-header-lg">A Link For Qualified and Freelance Talent</h3>
-            <p class="description-p">Link with qualified professionals and freelance talent and hire them to take your business to the next
-              level. With <span style="color: #ffa104; font-weight: bold;">LinkCookie</span> you can
-              customize the service you need by quickly hiring the right talent. We ensure quality 
-              through protected and upfront payment and support from our customer service team. <br>
-              LinkCookie specializations:
-            </p>
-            <div>
-              <ul class="welcome-list">
-                <li><i class="bi bi-check2-circle bullet-icon"></i>Digital Marketing and Sales</li>
-                <li><i class="bi bi-check2-circle bullet-icon"></i>Programming & IT</li>
-                <li><i class="bi bi-check2-circle bullet-icon"></i>Graphic & Creative Design</li>
-                <li><i class="bi bi-check2-circle bullet-icon"></i>Writing & Translation</li>
-                <li><i class="bi bi-check2-circle bullet-icon"></i>Finance & Accounting</li>
-                <li><i class="bi bi-check2-circle bullet-icon"></i>Business Services</li>
-                <li><i class="bi bi-check2-circle bullet-icon"></i>Other specializations</li>
-              </ul>
-            </div>
-            <div class="d-grid gap-2 d-sm-flex justify-content-md-start">
-              <button class="learn-more buttonp"  routerLink="../for-recruiters">
-                <span class="circle" aria-hidden="true">
-                  <span class="icon arrow"></span>
-                </span>
-                <span class="button-text">Find Talent</span>
-              </button>
-            </div>
-          </div>  
-        </div>
-    
-        <div class="col-md-5">
-          <img src="../../../assets/images/jobseekers.png" class="d-block w-100 hero-img img-fluid details-img" alt="...">
-        </div>
-      </div>
-    </div>
-</div>
-
-
-
-  
-  <!-- <div class="container">
-    <hr>
-  </div>
-
-  <br><br>
-  
-  <div class="section-heading ">
-    <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
-      <h5 class="section-tag">WORK</h5>
-    </div>
-    <h3 class="section-header">Get  <span class="header-yellow">Employed</span> </h3>
-    <p class="section-description">Our site has businesses looking to hire</p>
-  </div>
-  
-  
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <img src="../../../assets/images/recruiters.png" class="d-block w-100 hero-img img-fluid details-img" alt="...">
-      </div>
-      <div class="col-md-8 d-flex align-items-center">
-        <div>
-          <h5 class="details-header-sm">Are you looking for employees?</h5>
-          <h3 class="details-header-lg">A Link For Recruiters</h3>
-          <p>We didnt design our courses to share our skills, but to ensure you can acquire 
-            them too! Theres a big difference between the two. Youve probably seen courses taught 
-            by experts. But the learning experience isnt good. Being an expert doesnt always
-             mean being a great teacher.</p>
-          <div>
-            <ul class="welcome-list">
-              <li><i class="bi bi-check2-circle bullet-icon"></i>Easy to use</li>
-              <li><i class="bi bi-check2-circle bullet-icon"></i>Quick to set up</li>
-              <li><i class="bi bi-check2-circle bullet-icon"></i>Trusted by suppliers all over the world</li>
-              <li><i class="bi bi-check2-circle bullet-icon"></i>Yet another reason</li>
-              <li><i class="bi bi-check2-circle bullet-icon"></i>Affordable!</li>
-            </ul>
-          </div>
-          <div class="d-grid gap-2 d-sm-flex justify-content-md-start">
-            <button class="learn-more buttonp"  routerLink="../new-ad">
-              <span class="circle" aria-hidden="true">
-                <span class="icon arrow"></span>
-              </span>
-              <span class="button-text">Find Talent</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-<div class="padded-section">
+<!-- <div class="padded-section">
   <div class="section-heading ">
     <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
       <h5 class="section-tag">JOBS</h5>
@@ -399,320 +451,98 @@
   <div class="container">
     <nz-tabset>
       <nz-tab nzTitle="Top Skills">
-        <div class='wrapper2'>
-          <div class='carousel'>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-easel skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>graphic design</p>
-                <p>Unicode: U+1F433</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-laptop skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>website development</p>
-                <p>Unicode: U+1F40B</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-stickies skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>baners and posters</p>
-                <p>Unicode: U+1F42C</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-person-video3 skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>consultancy</p>
-                <p>Unicode: U+1F41F</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-cash-stack skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>accounting</p>
-                <p>Unicode: U+1F420</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-currency-exchange skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>trading</p>
-                <p>Unicode: U+1F421</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-bezier skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>logo design</p>
-                <p>Unicode: U+1F988</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-briefcase skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>business management</p>
-                <p>Unicode: U+1F419</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-shop-window skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>digital marketing</p>
-                <p>Unicode: U+1F41A</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </nz-tab>
       <nz-tab nzTitle="Trending">
-        <div class='wrapper2'>
-          <div class='carousel'>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-easel skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>graphic design</p>
-                <p>Unicode: U+1F433</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-laptop skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>website development</p>
-                <p>Unicode: U+1F40B</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-stickies skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>baners and posters</p>
-                <p>Unicode: U+1F42C</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-person-video3 skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>consultancy</p>
-                <p>Unicode: U+1F41F</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-cash-stack skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>accounting</p>
-                <p>Unicode: U+1F420</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-currency-exchange skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>trading</p>
-                <p>Unicode: U+1F421</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-bezier skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>logo design</p>
-                <p>Unicode: U+1F988</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-briefcase skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>business management</p>
-                <p>Unicode: U+1F419</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-shop-window skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>digital marketing</p>
-                <p>Unicode: U+1F41A</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </nz-tab>
       <nz-tab nzTitle="Top Trending">
-        <div class='wrapper2'>
-          <div class='carousel'>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-easel skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>graphic design</p>
-                <p>Unicode: U+1F433</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-laptop skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>website development</p>
-                <p>Unicode: U+1F40B</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-stickies skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>baners and posters</p>
-                <p>Unicode: U+1F42C</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-person-video3 skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>consultancy</p>
-                <p>Unicode: U+1F41F</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-cash-stack skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>accounting</p>
-                <p>Unicode: U+1F420</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-currency-exchange skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>trading</p>
-                <p>Unicode: U+1F421</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-bezier skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>logo design</p>
-                <p>Unicode: U+1F988</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-briefcase skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>business management</p>
-                <p>Unicode: U+1F419</p>
-              </div>
-            </div>
-            <div class='carousel__item'>
-              <div class='carousel__item-head'>
-                <i class="bi bi-shop-window skills-icon"></i>
-              </div>
-              <div class='carousel__item-body'>
-                <p class='title'>digital marketing</p>
-                <p>Unicode: U+1F41A</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </nz-tab>
     </nz-tabset>
   </div>
-</div>
-
-
-  
-
-
-  
-  
-  
+</div> -->
 
 
 
-  <br><br><br>
-<!--   
-  
-  <div class="container">
-    <h1>Get Linked Today</h1>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card">
 
+  <div class="padded-section">
+    <div class="section-heading ">
+      <div class="d-flex justify-content-center" style="margin-bottom: 10px;">
+        <h5 class="section-tag">CONTACT</h5>
+      </div>
+      <h3 class="section-header">Contact  <span class="header-yellow">Us</span> </h3>
+      <p class="section-description">We care about our clients. Let us know how we can help you.</p>
+    </div>
+<div class="container contact-section">
+  <div class="row">
+    <div class="col-md-4 d-flex align-items-center justify-content-center">
+      <img src="../../../assets/images/care.svg" alt="" style="width: auto; height: 100%; max-height: 200px;">
+    </div>
+    <div class="col-md-8">
+      <form>
+        <div class="mb-3">
+          <input 
+          type="text"
+          class="form-control landing"
+          name="name"
+          placeholder="Name"
+          ngModel
+          required
+          >
         </div>
-      </div>
-      <div class="col-md-4">
-
-      </div>
-      <div class="col-md-4">
-
-      </div>
+        <div class="mb-3">
+          <input 
+          type="email"
+          class="form-control landing"
+          name="email"
+          placeholder="Email"
+          ngModel
+          required
+          #email = "ngModel"
+          email
+          >
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control landing" aria-label="With textarea" placeholder="Message" rows="5"></textarea>
+        </div>
+        <div class="mb-3">
+          <button class="btn hero-link-primary responsive-click" type="submit">
+            Send
+          </button>
+        </div>
+      </form>
     </div>
   </div>
- -->
+</div>
+    
+</div>
 
+<div class="spacer"></div>
 
  <footer id="site-footer">
 
-  <!-- <section class="horizontal-footer-section" id="footer-top-section">
-      <div id="footer-logo">
-          <picture>
-              <img src="https://raw.githubusercontent.com/taviskaron/t-div-headers/main/img/logo3.png" alt="footer logo" role="presentation">
-          </picture>
-      </div>
-  </section> -->
 
   <section class="horizontal-footer-section" id="footer-middle-section">
       <div id="footer-about" class="footer-columns footer-columns-large">
           <h1>Our Address</h1>
           <address>
-              <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/marker.png">Number 515, Group 5 Siem Reap, Cambodia</p>
-              <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/phone.png">+855 69 944 841</p>
-              <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/mail.png">talk2us@linkcookie.com</p>
-              <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/clock.png">8:00 AM – 6:00 PM</p>
+              <p class="footer-paragraph">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -1.5 24 24" width="24" fill="currentColor"><path d="M7 20.565c-4.667-6.09-7-10.423-7-13a7 7 0 1 1 14 0c0 2.577-2.333 6.91-7 13zm0-9a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path></svg>
+                Number 515, Group 5 Siem Reap, Cambodia
+              </p>
+              <p class="footer-paragraph">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -2 24 24" width="24" fill="currentColor"><path d="M3 0h6a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3zm0 2a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3zm3 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"></path></svg>
+                +855 69 944 841
+              </p>
+              <p class="footer-paragraph">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -5 24 24" width="24" fill="currentColor"><path d="M2 0h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 2v10h16V2H2zm3 6h6a1 1 0 0 1 0 2H5a1 1 0 1 1 0-2zm10-5h2v2h-2V3z"></path></svg>
+                talk2us@linkcookie.com
+              </p>
+              <p class="footer-paragraph">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" width="24" fill="currentColor"><path d="M11 9h4a1 1 0 0 1 0 2h-5a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v5zm-1 11C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path></svg>
+                8:00 AM – 6:00 PM
+              </p>
           </address>
           <h1> Our Newsletter</h1>
           <a href="#" class="footer-button" role="button">Subscribe</a>

@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
   loadPage() {
     setInterval(() =>
       this.pageReady = true
-    , 3000);
+    , 100);
   }
 
   ngOnInit() {

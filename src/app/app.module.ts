@@ -95,6 +95,7 @@ import { OnboardThirdComponent } from './main-app/recruiters/onboarding/onboard-
 import { OnboardBasicComponent } from './main-app/recruiters/onboarding/onboard-basic/onboard-basic.component';
 import { OnboardIndustryComponent } from './main-app/recruiters/onboarding/onboard-industry/onboard-industry.component';
 import { OnboardImageComponent } from './main-app/recruiters/onboarding/onboard-image/onboard-image.component';
+import { ChatComponent } from './main-app/recruiters/recruiter-main/chat/chat.component';
 
 
 
@@ -146,7 +147,8 @@ registerLocaleData(en);
     OnboardThirdComponent,
     OnboardBasicComponent,
     OnboardIndustryComponent,
-    OnboardImageComponent
+    OnboardImageComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,

@@ -34,6 +34,8 @@ export class WelcomeComponent implements OnInit {
   elementSize: NzSkeletonInputSize = 'default';
 
 
+  selectedType: string = 'individual';
+
 
   isVisible = false;
 
@@ -114,6 +116,11 @@ changeText() {
   , 3000);
 }
 
+
+selectChangeHandler(event: any) {
+  this.selectedType = event.target.value;
+  console.log(this.selectedType);
+}
 
 
   ngOnInit(): void {
