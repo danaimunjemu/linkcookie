@@ -38,12 +38,8 @@ import { LogGuard } from "./constants/helpers/log-guard";
 import { PersonalDetailsComponent } from "./main-app/recruiters/recruiter-main/recruiter-profile/personal-details/personal-details.component";
 import { OnboardingComponent } from "./main-app/recruiters/onboarding/onboarding.component";
 import { OnboardWelcomeComponent } from "./main-app/recruiters/onboarding/onboard-welcome/onboard-welcome.component";
-import { OnboardFirstComponent } from "./main-app/recruiters/onboarding/onboard-first/onboard-first.component";
-import { OnboardSecondComponent } from "./main-app/recruiters/onboarding/onboard-second/onboard-second.component";
-import { OnboardThirdComponent } from "./main-app/recruiters/onboarding/onboard-third/onboard-third.component";
 import { OnboardBasicComponent } from "./main-app/recruiters/onboarding/onboard-basic/onboard-basic.component";
 import { OnboardIndustryComponent } from "./main-app/recruiters/onboarding/onboard-industry/onboard-industry.component";
-import { OnboardImageComponent } from "./main-app/recruiters/onboarding/onboard-image/onboard-image.component";
 import { ChatComponent } from "./main-app/recruiters/recruiter-main/chat/chat.component";
 
 const appRoutes: Routes = [
@@ -77,12 +73,8 @@ const appRoutes: Routes = [
         children: [
             {path:'',redirectTo: 'onboard-welcome', pathMatch: 'full'},
             { path: 'onboard-welcome', component: OnboardWelcomeComponent },
-            { path: 'onboard-first', component: OnboardFirstComponent },
-            { path: 'onboard-second', component: OnboardSecondComponent },
-            { path: 'onboard-third', component: OnboardThirdComponent },
             { path: 'onboard-basic', component: OnboardBasicComponent },
             { path: 'onboard-industry', component: OnboardIndustryComponent },
-            { path: 'onboard-image', component: OnboardImageComponent },
         ]
     },
     { path: 'recruiter-main', component: RecruiterMainComponent, canActivate: [AuthGuard], 

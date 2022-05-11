@@ -92,5 +92,9 @@ export class UserExperienceService implements OnInit {
     //     return this.http.post(environment.server_url + 'userExperience', userExperience);
     // }
 
+    addUserExperience( experienceData: any ) {
+        console.log(experienceData);
+    }
+
 
 }

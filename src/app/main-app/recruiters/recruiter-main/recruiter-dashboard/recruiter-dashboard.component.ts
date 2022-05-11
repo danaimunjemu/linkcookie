@@ -4,7 +4,8 @@ import { User } from 'src/app/models/user.model';
 import { CorporateUserService } from 'src/app/services/corporateuser.service';
 import { UsersService } from 'src/app/services/user.service';
 import { Chart } from '@antv/g2';
-import { Color } from '@antv/g2/lib/dependents';
+// import DataSet from '@antv/data-set';
+import { CountriesService } from 'src/app/services/countries.service';
 
 
 
@@ -16,24 +17,117 @@ import { Color } from '@antv/g2/lib/dependents';
 export class RecruiterDashboardComponent implements OnInit {
   
 
+  profileCompletion = 0;
+
+
+
+
   // variables
   progressBar = 33;
   user: User;
   corporateUser: CorporateUser;
 
-  constructor(private usersService: UsersService, private corporateUserService: CorporateUserService) { 
+  constructor(
+    private usersService: UsersService, 
+    private corporateUserService: CorporateUserService,
+    private countriesService: CountriesService) { 
 
     this.user = usersService.User;
     this.corporateUser = corporateUserService.Corporate;
     // console.log(this.corporateUser);
+
+
+  
+
+  // console.log(countries.filter((country: any) => {
+  //   return country.name == "Zimbabwe"
+  // })[0].name);
+
+
   }
 
   initUser(){
     this.usersService.Account.subscribe((user:any)=>{this.user=user});
+    this.checkProfileCompletion();
+  }
+
+
+  // This function is used to check how much of the profile the user has completed
+  // It adds 10 for a user for each part of the profile that has been completed
+
+  checkProfileCompletion () {
+    const userProfile: User = this.usersService.User;
+    if (this.usersService.Type == 'individual') {
+      if (userProfile.experience.length > 1)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.firstName.length > 1)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.lastName.length > 1)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.profession.length > 1)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.skills.length > 1)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.imagePath != null)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.country != null)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.summary != null)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.packages.length > 1)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.billingAddress != null)  {
+        this.profileCompletion +=10;
+      }
+    }
+    if (this.usersService.Type == 'corporate') {
+      this.profileCompletion += 10;
+      if (userProfile.experience.length > 1)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.companyName.length > 1)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.industry.length > 1)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.skills.length > 1)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.imagePath != null)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.country != null)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.summary != null)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.packages.length > 1)  {
+        this.profileCompletion +=10;
+      }
+      if (userProfile.billingAddress != null)  {
+        this.profileCompletion +=10;
+      }
+    }
+    console.log(this.profileCompletion);
+    
   }
 
 
   ngOnInit(): void {
+
+   
+
     this.initUser();
     const data = [
       { year: 'Programming', sales: 140 },
@@ -46,7 +140,7 @@ export class RecruiterDashboardComponent implements OnInit {
     const chart = new Chart({
       container: 'c1',
       autoFit: true,
-      height: 400,
+      height: 220,
     });
     
     chart.data(data);

@@ -11,16 +11,17 @@
     <div class="main-profile-card">
       <div>
           <h3>Basic Information</h3>
-          {{user.email}}
       </div>
         <div class="row">
           <div class="col-lg-6">
             <div *ngIf="!ImageData">
+              <h5>Profile Picture</h5>
               <img src="../../../../../assets/images/avatar.png" class="img-fluid dash-img" alt="">
+              <br>
               <button (click)="imageModal()" class="btn link-primary responsive-click">
                 <span>
                   <svg class="primary-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-4.5 -4.5 24 24" width="24" fill="currentColor"><path d="M8.9 6.9v-5a1 1 0 1 0-2 0v5h-5a1 1 0 1 0 0 2h5v5a1 1 0 1 0 2 0v-5h5a1 1 0 1 0 0-2h-5z"></path></svg>
-                  Add
+                  <!-- Add -->
                 </span>
               </button>
             </div>
@@ -38,16 +39,44 @@
             </div>
           </div>
          
-    
-          <div class="col-lg-6">
-            <!-- <p><i class="bi bi-person"></i>{{user.username}}</p> 
-            <p><i class="bi bi-envelope"></i>{{user.email}}</p>
-            <p><i class="bi bi-flag"></i>N/A</p>
-            <p>{{user.professionalHeadline}}</p>
-            <p>{{user.summary}}</p>
-            <p>{{user.dateCreated}}</p> -->
+          <!-- If the user is an individual -->
+          <div class="col-lg-6" *ngIf="user.userType == 'individual'">
+            <h5></h5>
+            
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -2 24 24" width="24" fill="currentColor"><path d="M3.534 10.07a1 1 0 1 1 .733 1.86A3.579 3.579 0 0 0 2 15.26V17a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1.647a3.658 3.658 0 0 0-2.356-3.419 1 1 0 1 1 .712-1.868A5.658 5.658 0 0 1 14 15.353V17a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3v-1.74a5.579 5.579 0 0 1 3.534-5.19zM7 0a4 4 0 0 1 4 4v2a4 4 0 1 1-8 0V4a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v2a2 2 0 1 0 4 0V4a2 2 0 0 0-2-2z"></path></svg>
+              <span *ngIf="user.firstName != null && user.lastName != null">
+                {{user.firstName}} {{ user.lastName }} 
+              </span>
+              <span *ngIf="user.firstName == null && user.lastName == null">
+                N/A
+              </span>
+            </p>
+            
+
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -5 24 24" width="24" fill="currentColor"><path d="M2 5.702V12h16V5.702L15.039 2H4.96L2 5.702zM0 5l4-5h12l4 5v7a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5zm13.874 2a4.002 4.002 0 0 1-7.748 0H2V5h16v2h-4.126zm-2.142 0H8.268a2 2 0 0 0 3.464 0z"></path></svg>
+              <span>
+                {{user.email}}
+              </span>
+            </p>
+
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -2 24 24" width="24" fill="currentColor"><path d="M2 1h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H2v7a1 1 0 0 1-2 0V1a1 1 0 1 1 2 0zm0 9h12V3H2v7z"></path></svg>
+              <span *ngIf="user.country != null">
+                {{ user.country }}
+              </span>
+              <span *ngIf="user.country == null">
+                N/A
+              </span>
+            </p>
+
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -3 24 24" width="24" fill="currentColor"><path d="M18 7V5a1 1 0 0 0-1-1h-1v1a1 1 0 0 1-2 0V4H6v1a1 1 0 1 1-2 0V4H3a1 1 0 0 0-1 1v2h16zm0 2H2v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9zm-2-7h1a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h1V1a1 1 0 1 1 2 0v1h8V1a1 1 0 0 1 2 0v1z"></path></svg>
+              {{user.dateCreated}}
+            </p>
             <form>
-              <button class="btn link-primary responsive-click">
+              <button class="btn link-primary responsive-click"  (click)="editBasic()">
                 <span>
                 <svg  class="primary-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 -2.5 24 24" width="24" fill="currentColor"><path d="M12.238 5.472L3.2 14.51l-.591 2.016 1.975-.571 9.068-9.068-1.414-1.415zM13.78 3.93l1.414 1.414 1.318-1.318a.5.5 0 0 0 0-.707l-.708-.707a.5.5 0 0 0-.707 0L13.781 3.93zm3.439-2.732l.707.707a2.5 2.5 0 0 1 0 3.535L5.634 17.733l-4.22 1.22a1 1 0 0 1-1.237-1.241l1.248-4.255 12.26-12.26a2.5 2.5 0 0 1 3.535 0z"></path></svg>
                 </span>
@@ -56,40 +85,119 @@
             </form>
             
           </div>
+         
+
+          <!-- If the user is a Corporate -->
+          <div class="col-lg-6" *ngIf="user.userType == 'corporate'">
+            
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5.5 -2 24 24" width="24" fill="currentColor"><path d="M3 0h7a3 3 0 0 1 3 3v17H0V3a3 3 0 0 1 3-3zM2 18h9V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v15zM4 4h1a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2zm0 3h1a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2zm0 3h1a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 3h1a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm4-9h1a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2zm0 3h1a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2zm0 3h1a1 1 0 0 1 0 2H8a1 1 0 0 1 0-2zm0 3h1a1 1 0 0 1 0 2H8a1 1 0 0 1 0-2zm-3 3h3a1 1 0 0 1 1 1v1H4v-1a1 1 0 0 1 1-1z"></path></svg>
+              <span *ngIf="user.companyName != null">
+                {{user.companyName}}
+              </span>
+              <span *ngIf="user.companyName == null">
+                N/A
+              </span>
+            </p>
+            
+
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -5 24 24" width="24" fill="currentColor"><path d="M2 5.702V12h16V5.702L15.039 2H4.96L2 5.702zM0 5l4-5h12l4 5v7a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5zm13.874 2a4.002 4.002 0 0 1-7.748 0H2V5h16v2h-4.126zm-2.142 0H8.268a2 2 0 0 0 3.464 0z"></path></svg>
+              <span>
+                {{user.email}}
+              </span>
+            </p>
+
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -2 24 24" width="24" fill="currentColor"><path d="M2 1h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H2v7a1 1 0 0 1-2 0V1a1 1 0 1 1 2 0zm0 9h12V3H2v7z"></path></svg>
+              <span *ngIf="user.country != null">
+                {{ user.country }}
+              </span>
+              <span *ngIf="user.country == null">
+                N/A
+              </span>
+            </p>
+
+            
+
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -3 24 24" width="24" fill="currentColor"><path d="M18 7V5a1 1 0 0 0-1-1h-1v1a1 1 0 0 1-2 0V4H6v1a1 1 0 1 1-2 0V4H3a1 1 0 0 0-1 1v2h16zm0 2H2v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9zm-2-7h1a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h1V1a1 1 0 1 1 2 0v1h8V1a1 1 0 0 1 2 0v1z"></path></svg>
+              {{user.dateCreated}}
+            </p>
+            <form>
+              <button class="btn link-primary responsive-click" (click)="editBasic()">
+                <span>
+                <svg  class="primary-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 -2.5 24 24" width="24" fill="currentColor"><path d="M12.238 5.472L3.2 14.51l-.591 2.016 1.975-.571 9.068-9.068-1.414-1.415zM13.78 3.93l1.414 1.414 1.318-1.318a.5.5 0 0 0 0-.707l-.708-.707a.5.5 0 0 0-.707 0L13.781 3.93zm3.439-2.732l.707.707a2.5 2.5 0 0 1 0 3.535L5.634 17.733l-4.22 1.22a1 1 0 0 1-1.237-1.241l1.248-4.255 12.26-12.26a2.5 2.5 0 0 1 3.535 0z"></path></svg>
+                </span>
+              </button>
+              
+            </form>
+            
+          </div>
+
+
         </div>
     </div>
   </div>
   <div class="col-md-3">
     <div class="main-profile-card">
       <div>
-          <!-- <h3>{{ cardTitle }} Details</h3> -->
+          <h3 *ngIf="user.userType =='individual'"> Professional Details</h3>
+          <h3 *ngIf="user.userType =='corporate'"> Company Details</h3>
       </div>
         <div class="row">
-          <div class="col-md-12">
-            <div *ngIf="!PersonalData">
-              <nz-empty></nz-empty>
-            </div>
-            <div *ngIf="PersonalData">
-              <!-- <p> First Name: {{individualUserPersonal.firstName}} </p>
-              <p>Last Name: {{individualUserPersonal.lastName}}</p>
-              <p>Date of Birth: {{individualUserPersonal.dob}}</p> -->
-            </div>
-              
-            <div *ngIf="!PersonalData">
-              <button class="btn link-primary responsive-click" (click)="editPersonalDetails()">
-                <svg  class="primary-button-icon"  xmlns="http://www.w3.org/2000/svg" viewBox="-4.5 -4.5 24 24" width="24" fill="currentColor"><path d="M8.9 6.9v-5a1 1 0 1 0-2 0v5h-5a1 1 0 1 0 0 2h5v5a1 1 0 1 0 2 0v-5h5a1 1 0 1 0 0-2h-5z"></path></svg>
-                Add Info
-              </button>
-            </div>
+          <div class="col-md-12" *ngIf="user.userType == 'individual'">
+            <p *ngIf="user.profession != null">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -2 24 24" width="24" fill="currentColor"><path d="M3 13v5h8v-5H3zm10-.764V18a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-5.764c-.614-.55-1-1.348-1-2.236V7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3c0 .888-.386 1.687-1 2.236zM3 6a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H3zm5 5H6v-1a1 1 0 1 1 2 0v1zm0 2v1a1 1 0 0 1-2 0v-1h2zM3.5 0A1.5 1.5 0 0 1 5 1.5v3a1.5 1.5 0 0 1-3 0v-3A1.5 1.5 0 0 1 3.5 0zm7 0A1.5 1.5 0 0 1 12 1.5v3a1.5 1.5 0 0 1-3 0v-3A1.5 1.5 0 0 1 10.5 0z"></path></svg>
+              <span>
+                {{user.profession}}
+              </span>
+              <span *ngIf="user.profession == null">
+                N/A
+              </span>
+            </p>
 
-            <div *ngIf="PersonalData">
-              <button class="btn link-primary responsive-click" (click)="editPersonalDetails()">
-                <svg  class="primary-button-icon"  xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 -2.5 24 24" width="24" fill="currentColor"><path d="M12.238 5.472L3.2 14.51l-.591 2.016 1.975-.571 9.068-9.068-1.414-1.415zM13.78 3.93l1.414 1.414 1.318-1.318a.5.5 0 0 0 0-.707l-.708-.707a.5.5 0 0 0-.707 0L13.781 3.93zm3.439-2.732l.707.707a2.5 2.5 0 0 1 0 3.535L5.634 17.733l-4.22 1.22a1 1 0 0 1-1.237-1.241l1.248-4.255 12.26-12.26a2.5 2.5 0 0 1 3.535 0z"></path></svg>
-                Edit Info
-              </button>
-            </div>
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -2 24 24" width="24" fill="currentColor"><path d="M3 0h10a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3zm0 2a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3zm2 1h6a1 1 0 0 1 0 2H5a1 1 0 1 1 0-2zm0 12h2a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2zm0-4h6a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2zm0-4h6a1 1 0 0 1 0 2H5a1 1 0 1 1 0-2z"></path></svg>
+              <span *ngIf="user.summary != null">
+                {{user.summary}}
+              </span>
+              <span *ngIf="user.summary == null">
+                N/A
+              </span>
+            </p>
             
           </div>
+          <div class="col-md-12" *ngIf="user.userType == 'corporate'">
+            <p *ngIf="user.industry != null">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -2 24 24" width="24" fill="currentColor"><path d="M3 13v5h8v-5H3zm10-.764V18a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-5.764c-.614-.55-1-1.348-1-2.236V7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v3c0 .888-.386 1.687-1 2.236zM3 6a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H3zm5 5H6v-1a1 1 0 1 1 2 0v1zm0 2v1a1 1 0 0 1-2 0v-1h2zM3.5 0A1.5 1.5 0 0 1 5 1.5v3a1.5 1.5 0 0 1-3 0v-3A1.5 1.5 0 0 1 3.5 0zm7 0A1.5 1.5 0 0 1 12 1.5v3a1.5 1.5 0 0 1-3 0v-3A1.5 1.5 0 0 1 10.5 0z"></path></svg>
+              <span>
+                {{user.industry}}
+              </span>
+              <span *ngIf="user.industry == null">
+                N/A
+              </span>
+            </p>
+
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -2 24 24" width="24" fill="currentColor"><path d="M3 0h10a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3zm0 2a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3zm2 1h6a1 1 0 0 1 0 2H5a1 1 0 1 1 0-2zm0 12h2a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2zm0-4h6a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2zm0-4h6a1 1 0 0 1 0 2H5a1 1 0 1 1 0-2z"></path></svg>
+              <span *ngIf="user.summary != null">
+                {{user.summary}}
+              </span>
+              <span *ngIf="user.summary == null">
+                N/A
+              </span>
+            </p>
+            
+          </div>
+          <form>
+            <button class="btn link-primary responsive-click"  (click)="editPro()">
+              <span>
+              <svg  class="primary-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 -2.5 24 24" width="24" fill="currentColor"><path d="M12.238 5.472L3.2 14.51l-.591 2.016 1.975-.571 9.068-9.068-1.414-1.415zM13.78 3.93l1.414 1.414 1.318-1.318a.5.5 0 0 0 0-.707l-.708-.707a.5.5 0 0 0-.707 0L13.781 3.93zm3.439-2.732l.707.707a2.5 2.5 0 0 1 0 3.535L5.634 17.733l-4.22 1.22a1 1 0 0 1-1.237-1.241l1.248-4.255 12.26-12.26a2.5 2.5 0 0 1 3.535 0z"></path></svg>
+              </span>
+              Edit Info
+            </button>
+          </form>
         </div>
     </div>
   </div>
@@ -105,15 +213,16 @@
       </div>
         <div class="row">
           <div class="col-md-12">
-            <div *ngIf="!ExperienceData">
+            <div *ngIf="user.experience.length == 0">
               <nz-empty></nz-empty>
             </div>
-            <div *ngIf="ExperienceData">
-              <nz-table [nzData]="userExperience">
+            <div *ngIf="user.experience.length > 0">
+              <nz-table [nzData]="user.experience">
                 <thead>
                   <tr>
+                    <th>No.</th>
                     <th>Title</th>
-                    <th>Summary</th>
+                    <th>Description</th>
                     <th>Company</th>
                     <th>Start Date</th>
                     <th>End Date</th>
@@ -121,27 +230,28 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let userExperience of userExperience">
-                    <!-- <td>{{userExperience.title}}</td>
-                    <td>{{userExperience.summary}}</td>
-                    <td>{{userExperience.company}}</td>
-                    <td>{{userExperience.startMonth}} {{userExperience.startYear}}</td>
-                    <td>{{userExperience.endMonth}} {{userExperience.endYear}}</td> -->
+                  <tr *ngFor="let experience of user.experience; let indexOfElement = index">
+                    <td>{{indexOfElement}}</td>
+                    <td>{{experience.title}}</td>
+                    <td>{{experience.description}}</td>
+                    <td>{{experience.company}}</td>
+                    <td>{{experience.startMonth}} {{experience.startYear}}</td>
+                    <td>{{experience.endMonth}} {{experience.endYear}}</td>
                     <td>
-                      <button class="btn edit responsive-click">
+                      <button class="btn edit responsive-click"  (click)="editExperience(indexOfElement)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 -2.5 24 24" width="24" fill="currentColor"><path d="M12.238 5.472L3.2 14.51l-.591 2.016 1.975-.571 9.068-9.068-1.414-1.415zM13.78 3.93l1.414 1.414 1.318-1.318a.5.5 0 0 0 0-.707l-.708-.707a.5.5 0 0 0-.707 0L13.781 3.93zm3.439-2.732l.707.707a2.5 2.5 0 0 1 0 3.535L5.634 17.733l-4.22 1.22a1 1 0 0 1-1.237-1.241l1.248-4.255 12.26-12.26a2.5 2.5 0 0 1 3.535 0z"></path></svg>
                       </button>
-                      <button class="btn link-primary delete responsive-click">
+                      <button class="btn link-primary delete responsive-click" (click)="deleteExperience(indexOfElement)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 24 24" width="24" fill="currentColor"><path d="M6 2V1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1h4a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-.133l-.68 10.2a3 3 0 0 1-2.993 2.8H5.826a3 3 0 0 1-2.993-2.796L2.137 7H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h4zm10 2H2v1h14V4zM4.141 7l.687 10.068a1 1 0 0 0 .998.932h6.368a1 1 0 0 0 .998-.934L13.862 7h-9.72zM7 8a1 1 0 0 1 1 1v7a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v7a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1z"></path></svg>
                       </button>
                     </td>
                   </tr>
-                </tbody>
+                 </tbody>
               </nz-table>
             </div>
               <button class="btn link-primary responsive-click"  (click)="addExperience()">
                 <svg  class="primary-button-icon"  xmlns="http://www.w3.org/2000/svg" viewBox="-4.5 -4.5 24 24" width="24" fill="currentColor"><path d="M8.9 6.9v-5a1 1 0 1 0-2 0v5h-5a1 1 0 1 0 0 2h5v5a1 1 0 1 0 2 0v-5h5a1 1 0 1 0 0-2h-5z"></path></svg>
-                Add Info
+                Add Experience
               </button>
           </div>
         </div>
@@ -151,7 +261,7 @@
 
 
 
-
+          
 
 <div class="spacer"></div>
 
@@ -160,8 +270,8 @@
       <h3>Skills</h3>
   </div>
     <div class="row">
-      <div class="col-md-3">
-        <div *ngIf="!SkillsData">
+      <div class="col-md-12">
+        <div *ngIf="user.skills.length == 0">
           <nz-empty></nz-empty>
           <button class="btn link-primary responsive-click"  (click)="addSkills()">
             <svg  class="primary-button-icon"  xmlns="http://www.w3.org/2000/svg" viewBox="-4.5 -4.5 24 24" width="24" fill="currentColor"><path d="M8.9 6.9v-5a1 1 0 1 0-2 0v5h-5a1 1 0 1 0 0 2h5v5a1 1 0 1 0 2 0v-5h5a1 1 0 1 0 0-2h-5z"></path></svg>
@@ -169,22 +279,41 @@
           </button>
         </div>
 
-        <div *ngIf="SkillsData">
-          <span  *ngFor="let userSkill of userSkills">
-            <!-- <nz-tag [nzColor]="'#f5f5f7'">{{ userSkill.skillName }}</nz-tag> -->
-          </span>
-          <div>
+        <div *ngIf="user.skills.length > 0">
+          <!-- <span *ngFor="let skill of user.skills">
+            <nz-tag [nzColor]="'#f5f5f7'">{{ skill }}</nz-tag>
+          </span> -->
+          <nz-table [nzData]="user.skills">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Skill</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let skill of user.skills; let indexOfElement = index">
+                <td>{{indexOfElement}}</td>
+                <td>{{skill}}</td>
+                <td>
+                  <button class="btn edit responsive-click"  (click)="editSkills(indexOfElement)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 -2.5 24 24" width="24" fill="currentColor"><path d="M12.238 5.472L3.2 14.51l-.591 2.016 1.975-.571 9.068-9.068-1.414-1.415zM13.78 3.93l1.414 1.414 1.318-1.318a.5.5 0 0 0 0-.707l-.708-.707a.5.5 0 0 0-.707 0L13.781 3.93zm3.439-2.732l.707.707a2.5 2.5 0 0 1 0 3.535L5.634 17.733l-4.22 1.22a1 1 0 0 1-1.237-1.241l1.248-4.255 12.26-12.26a2.5 2.5 0 0 1 3.535 0z"></path></svg>
+                  </button>
+                  <button class="btn link-primary delete responsive-click" (click)="deleteSkill(indexOfElement)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 24 24" width="24" fill="currentColor"><path d="M6 2V1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1h4a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-.133l-.68 10.2a3 3 0 0 1-2.993 2.8H5.826a3 3 0 0 1-2.993-2.796L2.137 7H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h4zm10 2H2v1h14V4zM4.141 7l.687 10.068a1 1 0 0 0 .998.932h6.368a1 1 0 0 0 .998-.934L13.862 7h-9.72zM7 8a1 1 0 0 1 1 1v7a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v7a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1z"></path></svg>
+                  </button>
+                </td>
+              </tr>
+             </tbody>
+          </nz-table>
+          <div  *ngIf="user.skills.length < 3 && user.skills.length > 0">
             <button class="btn link-primary responsive-click"  (click)="addSkills()">
               <svg  class="primary-button-icon"  xmlns="http://www.w3.org/2000/svg" viewBox="-4.5 -4.5 24 24" width="24" fill="currentColor"><path d="M8.9 6.9v-5a1 1 0 1 0-2 0v5h-5a1 1 0 1 0 0 2h5v5a1 1 0 1 0 2 0v-5h5a1 1 0 1 0 0-2h-5z"></path></svg>
               Add Skills
             </button>
           </div>
+          
         </div>
-      </div>
-
-      <div class="col-md-9">
-        
-        
       </div>
     </div>
     
@@ -194,16 +323,33 @@
 
 <div class="main-profile-card">
   <div>
-      <h3>Pricing</h3>
+      <h3>Pricing Packages</h3>
   </div>
     <div class="row">
-      <div class="col-md-3">
-       
+      <div class="col-md-12">
+        <div *ngIf="user.packages.length == 0">
+          <nz-empty></nz-empty>
+        </div>
+        <div *ngFor="let package of user.packages; let indexOfElement = index">
+          <p>{{indexOfElement}}</p>
+          <p>{{package.packageName}}</p>
+          <p>{{package.packageSummary}}</p>
+          <p>{{package.packagePrice}}</p>
+          <button class="btn edit responsive-click"  (click)="editPackage(indexOfElement)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2.5 -2.5 24 24" width="24" fill="currentColor"><path d="M12.238 5.472L3.2 14.51l-.591 2.016 1.975-.571 9.068-9.068-1.414-1.415zM13.78 3.93l1.414 1.414 1.318-1.318a.5.5 0 0 0 0-.707l-.708-.707a.5.5 0 0 0-.707 0L13.781 3.93zm3.439-2.732l.707.707a2.5 2.5 0 0 1 0 3.535L5.634 17.733l-4.22 1.22a1 1 0 0 1-1.237-1.241l1.248-4.255 12.26-12.26a2.5 2.5 0 0 1 3.535 0z"></path></svg>
+          </button>
+          <button class="btn link-primary delete responsive-click" (click)="deletePackage(indexOfElement)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 24 24" width="24" fill="currentColor"><path d="M6 2V1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1h4a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-.133l-.68 10.2a3 3 0 0 1-2.993 2.8H5.826a3 3 0 0 1-2.993-2.796L2.137 7H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h4zm10 2H2v1h14V4zM4.141 7l.687 10.068a1 1 0 0 0 .998.932h6.368a1 1 0 0 0 .998-.934L13.862 7h-9.72zM7 8a1 1 0 0 1 1 1v7a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v7a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1z"></path></svg>
+          </button>
+        </div>
       </div>
 
       <div class="col-md-9">
         
-        <button class="btn btn-primary">Edit</button>
+        <button class="btn link-primary responsive-click"  (click)="addPackage()" *ngIf="user.packages.length < 3">
+          <svg  class="primary-button-icon"  xmlns="http://www.w3.org/2000/svg" viewBox="-4.5 -4.5 24 24" width="24" fill="currentColor"><path d="M8.9 6.9v-5a1 1 0 1 0-2 0v5h-5a1 1 0 1 0 0 2h5v5a1 1 0 1 0 2 0v-5h5a1 1 0 1 0 0-2h-5z"></path></svg>
+          Add Package
+        </button>
       </div>
     </div>
     
@@ -213,6 +359,7 @@
 
 
 
+<!-- Personal Information Modal -->
 <nz-modal
       [(nzVisible)]="isVisible"
       [nzTitle]="modalTitle"
@@ -273,7 +420,7 @@
 
 
 
-    
+  <!-- Profile Image Upload Modal -->
 
     <nz-modal
       [(nzVisible)]="imageIsVisible"
@@ -312,7 +459,7 @@
 
 
 
-    <!-- Experience Modal -->
+    <!-- Add Experience Modal -->
 
     <nz-modal
       [(nzVisible)]="experienceIsVisible"
@@ -324,6 +471,9 @@
       <ng-template #experienceTitle>Add Experience</ng-template>
 
       <ng-template #experienceContent>
+        <div class="d-flex justify-content-center" style="padding: 20px;">
+          <img src="../../../../../assets/images/profile-experience.svg" style="height: 200px;" alt="">
+        </div>
         <form (submit)="onAddExperience(experienceForm)" #experienceForm="ngForm">
           <div class="mb-3">
             <input 
@@ -336,13 +486,12 @@
             >
           </div>
           
-          <!-- <p *ngIf="email.invalid">This is not valid</p> -->
           <div class="mb-3">
             <input 
             type="text"
             class="form-control"
-            name="summary"
-            placeholder="Summary"
+            name="description"
+            placeholder="Description"
             ngModel
             required
             >
@@ -413,6 +562,164 @@
     </nz-modal>
 
 
+    <!-- Edit Experience Modal -->
+
+    <nz-modal
+      [(nzVisible)]="editExperienceIsVisible"
+      [nzTitle]="editExperienceTitle"
+      [nzContent]="editExperienceContent"
+      [nzFooter]="editExperienceFooter"
+      (nzOnCancel)="editExperienceCancel()"
+    >
+      <ng-template #editExperienceTitle>Edit Experience</ng-template>
+
+      <ng-template #editExperienceContent>
+        <div class="d-flex justify-content-center" style="padding: 20px;">
+          <img src="../../../../../assets/images/profile-experience.svg" style="height: 200px;" alt="">
+        </div>
+        <form (submit)="onEditExperience(editExperienceForm, indexOfElement)" #editExperienceForm="ngForm">
+          <div class="mb-3">
+            <input 
+            type="text"
+            class="form-control"
+            name="title"
+            placeholder="Title"
+            [(ngModel)]="user.experience[indexOfElement].title"
+            ngModel
+            required
+            >
+          </div>
+          
+          <div class="mb-3">
+            <input 
+            type="text"
+            class="form-control"
+            name="description"
+            placeholder="Description"
+            [(ngModel)]="user.experience[indexOfElement].description"
+            ngModel
+            required
+            >
+          </div>
+          <div class="mb-3">
+              <input 
+              type="text"
+              class="form-control"
+              name="company"
+              placeholder="Company"
+              [(ngModel)]="user.experience[indexOfElement].company"
+              ngModel
+              required
+              >
+            </div>
+            <div class="mb-3">
+              <input 
+              type="text"
+              class="form-control"
+              name="startYear"
+              placeholder="Start Year"
+              [(ngModel)]="user.experience[indexOfElement].startYear"
+              ngModel
+              required
+              >
+            </div>
+            <div class="mb-3">
+              <input 
+              type="text"
+              class="form-control"
+              name="endYear"
+              placeholder="End Year"
+              [(ngModel)]="user.experience[indexOfElement].endYear"
+              ngModel
+              required
+              >
+            </div>
+            <div class="mb-3">
+              <input 
+              type="text"
+              class="form-control"
+              name="startMonth"
+              placeholder="Start Month"
+              [(ngModel)]="user.experience[indexOfElement].startMonth"
+              ngModel
+              required
+              >
+            </div>
+            <div class="mb-3">
+              <input 
+              type="text"
+              class="form-control"
+              name="endMonth"
+              placeholder="End Month"
+              [(ngModel)]="user.experience[indexOfElement].endMonth"
+              ngModel
+              required
+              >
+            </div>
+            <button 
+            type="submit" 
+            class="btn login-button"
+            [disabled]="!editExperienceForm.valid">
+                Submit
+            </button>
+       
+      </form>
+      </ng-template>
+
+      <ng-template #editExperienceFooter>
+        
+      </ng-template>
+    </nz-modal>
+
+
+    <!-- Delete Experience Modal -->
+
+    <nz-modal
+      [(nzVisible)]="deleteExperienceIsVisible"
+      [nzTitle]="deleteExperienceTitle"
+      [nzContent]="deleteExperienceContent"
+      [nzFooter]="deleteExperienceFooter"
+      (nzOnCancel)="deleteExperienceCancel()"
+    >
+      <ng-template #deleteExperienceTitle>Delete Experience</ng-template>
+
+      <ng-template #deleteExperienceContent>
+        <nz-table [nzData]="user.experience">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Company</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{selectedExperience.title}}</td>
+              <td>{{selectedExperience.description}}</td>
+              <td>{{selectedExperience.company}}</td>
+              <td>{{selectedExperience.startMonth}} {{selectedExperience.startYear}}</td>
+              <td>{{selectedExperience.endMonth}} {{selectedExperience.endYear}}</td>
+              <td>
+                
+              </td>
+            </tr>
+           </tbody>
+        </nz-table>
+        <button class="btn edit responsive-click"  (click)="onDeleteExperience(indexOfElement)">
+          Yes
+        </button>
+        <button class="btn link-primary delete responsive-click" (click)="deleteExperienceCancel()">
+          No
+        </button>
+       
+      </ng-template>
+
+      <ng-template #deleteExperienceFooter>
+        
+      </ng-template>
+    </nz-modal>
 
 
 
@@ -430,12 +737,11 @@
       <ng-template #skillsContent>
         <form (submit)="onAddSkill(skillsForm)" #skillsForm="ngForm">
           
-          <!-- <p *ngIf="email.invalid">This is not valid</p> -->
           <div class="mb-3">
             <input 
             type="text"
             class="form-control"
-            name="skillName"
+            name="skill"
             placeholder="Skill"
             ngModel
             required
@@ -452,6 +758,430 @@
       </ng-template>
 
       <ng-template #skillsFooter>
+        
+      </ng-template>
+    </nz-modal>
+
+    <!-- Edit Skills Modal -->
+
+    <nz-modal
+      [(nzVisible)]="editSkillsIsVisible"
+      [nzTitle]="editSkillsTitle"
+      [nzContent]="editSkillsContent"
+      [nzFooter]="editSkillsFooter"
+      (nzOnCancel)="editSkillsCancel()"
+    >
+      <ng-template #editSkillsTitle>Edit Skill</ng-template>
+
+       <ng-template #editSkillsContent>
+        <form (submit)="onEditSkill(editSkillForm, indexOfElement)" #editSkillForm="ngForm">
+          <div class="mb-3">
+            <input 
+            type="text"
+            class="form-control"
+            name="skill"
+            placeholder="Skill"
+            [(ngModel)]="user.skills[indexOfElement]"
+            ngModel
+            required
+            >
+          </div>
+            <button 
+            type="submit" 
+            class="btn login-button"
+            [disabled]="!editSkillForm.valid">
+                Submit
+            </button>
+      </form>
+
+
+
+        
+        <button class="btn edit responsive-click"  (click)="onDeleteExperience(indexOfElement)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 24 24" width="24" fill="currentColor"><path d="M2 0h11.22a2 2 0 0 1 1.345.52l2.78 2.527A2 2 0 0 1 18 4.527V16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 2v14h14V4.527L13.22 2H2zm4 8h6a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2zm0 2v4h6v-4H6zm7-9a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V4a1 1 0 0 1 1-1zM5 3h5a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 3h3V5H6v1z"></path></svg>
+        </button>
+        <button class="btn link-primary delete responsive-click" (click)="deleteExperienceCancel()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 24 24" width="24" fill="currentColor"><path d="M6 2V1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1h4a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-.133l-.68 10.2a3 3 0 0 1-2.993 2.8H5.826a3 3 0 0 1-2.993-2.796L2.137 7H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h4zm10 2H2v1h14V4zM4.141 7l.687 10.068a1 1 0 0 0 .998.932h6.368a1 1 0 0 0 .998-.934L13.862 7h-9.72zM7 8a1 1 0 0 1 1 1v7a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v7a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1z"></path></svg>
+        </button>
+       
+      </ng-template>
+
+      <ng-template #editSkillsFooter>
+        
+      </ng-template>
+    </nz-modal>
+
+    <!-- Delete Skills Modal -->
+
+    <nz-modal
+      [(nzVisible)]="deleteSkillsIsVisible"
+      [nzTitle]="deleteSkillsTitle"
+      [nzContent]="deleteSkillsContent"
+      [nzFooter]="deleteSkillsFooter"
+      (nzOnCancel)="deleteSkillsCancel()"
+    >
+      <ng-template #deleteSkillsTitle>Edit SKills</ng-template>
+
+       <ng-template #deleteSkillsContent>
+
+        Are you sure you want to delete {{user.skills[indexOfElement]}} ?
+
+
+
+        
+        <button class="btn edit responsive-click"  (click)="onDeleteSkill(indexOfElement)">
+          Yes
+        </button>
+        <button class="btn link-primary delete responsive-click" (click)="deleteSkillsCancel()">
+          No
+        </button>
+       
+      </ng-template>
+
+      <ng-template #deleteSkillsFooter>
+        
+      </ng-template>
+    </nz-modal>
+
+    
+
+    <!-- Package Modal -->
+
+    <nz-modal
+      [(nzVisible)]="packageIsVisible"
+      [nzTitle]="packageTitle"
+      [nzContent]="packageContent"
+      [nzFooter]="packageFooter"
+      (nzOnCancel)="packageCancel()"
+    >
+      <ng-template #packageTitle>Add Package</ng-template>
+
+      <ng-template #packageContent>
+        <div class="d-flex justify-content-center" style="padding: 20px;">
+          <img src="../../../../../assets/images/profile-experience.svg" style="height: 200px;" alt="">
+        </div>
+        <form (submit)="onAddPackage(packageForm)" #packageForm="ngForm">
+          <div class="mb-3">
+            <input 
+            type="text"
+            class="form-control"
+            name="packageName"
+            placeholder="Name of Package"
+            ngModel
+            required
+            >
+          </div>
+          
+          <div class="mb-3">
+            <input 
+            type="text"
+            class="form-control"
+            name="packageSummary"
+            placeholder="Summary of Package"
+            ngModel
+            required
+            >
+          </div>
+          <div class="mb-3">
+              <input 
+              type="text"
+              class="form-control"
+              name="packagePrice"
+              placeholder="Package Price"
+              ngModel
+              required
+              >
+            </div>
+            
+            <button 
+            type="submit" 
+            class="btn login-button"
+            [disabled]="!packageForm.valid">
+                Submit
+            </button>
+       
+      </form>
+      </ng-template>
+
+      <ng-template #packageFooter>
+        
+      </ng-template>
+    </nz-modal>
+
+
+    <!-- Edit Package Modal -->
+
+    <nz-modal
+      [(nzVisible)]="editPackageIsVisible"
+      [nzTitle]="editPackageTitle"
+      [nzContent]="editPackageContent"
+      [nzFooter]="editPackageFooter"
+      (nzOnCancel)="editPackageCancel()"
+    >
+      <ng-template #editPackageTitle>Edit Package</ng-template>
+
+      <ng-template #editPackageContent>
+        <div class="d-flex justify-content-center" style="padding: 20px;">
+          <img src="../../../../../assets/images/profile-experience.svg" style="height: 200px;" alt="">
+        </div>
+        <form (submit)="onEditPackage(editPackageForm, indexOfElement)" #editPackageForm="ngForm">
+          <div class="mb-3">
+            <input 
+            type="text"
+            class="form-control"
+            name="packageName"
+            placeholder="Package Name"
+            [(ngModel)]="user.packages[indexOfElement].packageName"
+            ngModel
+            required
+            >
+          </div>
+          
+          <div class="mb-3">
+            <input 
+            type="text"
+            class="form-control"
+            name="packageSummary"
+            placeholder="Package Summary"
+            [(ngModel)]="user.packages[indexOfElement].packageSummary"
+            ngModel
+            required
+            >
+          </div>
+          <div class="mb-3">
+              <input 
+              type="text"
+              class="form-control"
+              name="packagePrice"
+              placeholder="Package Price"
+              [(ngModel)]="user.packages[indexOfElement].packagePrice"
+              ngModel
+              required
+              >
+            </div>
+            
+            <button 
+            type="submit" 
+            class="btn login-button"
+            [disabled]="!editPackageForm.valid">
+                Submit
+            </button>
+       
+      </form>
+      </ng-template>
+
+      <ng-template #editPackageFooter>
+        
+      </ng-template>
+    </nz-modal>
+
+
+    <!-- Delete Package Modal -->
+
+    <nz-modal
+      [(nzVisible)]="deletePackageIsVisible"
+      [nzTitle]="deletePackageTitle"
+      [nzContent]="deletePackageContent"
+      [nzFooter]="deletePackageFooter"
+      (nzOnCancel)="deletePackageCancel()"
+    >
+      <ng-template #deletePackageTitle>Delete Package</ng-template>
+
+      <ng-template #deletePackageContent>
+        <nz-table [nzData]="user.packages">
+          <thead>
+            <tr>
+              <th>Pakage Name</th>
+              <th>Package Summary</th>
+              <th>Package Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{selectedPackage.packageName}}</td>
+              <td>{{selectedPackage.packageSummary}}</td>
+              <td>{{selectedPackage.packagePrice}}</td>
+              <td>
+                
+              </td>
+            </tr>
+           </tbody>
+        </nz-table>
+        <button class="btn edit responsive-click"  (click)="onDeletePackage(indexOfElement)">
+          Yes
+        </button>
+        <button class="btn link-primary delete responsive-click" (click)="deletePackageCancel()">
+          No
+        </button>
+       
+      </ng-template>
+
+      <ng-template #deletePackageFooter>
+        
+      </ng-template>
+    </nz-modal>
+
+
+
+
+
+    <!-- Basic Info Modal -->
+
+    <nz-modal
+      [(nzVisible)]="basicIsVisible"
+      [nzTitle]="basicTitle"
+      [nzContent]="basicContent"
+      [nzFooter]="basicFooter"
+      (nzOnCancel)="basicCancel()"
+    >
+      <ng-template #basicTitle>Edit Basic Info</ng-template>
+
+      <ng-template #basicContent>
+        <div class="d-flex justify-content-center" style="padding: 20px;">
+          <img src="../../../../../assets/images/profile-experience.svg" style="height: 200px;" alt="">
+        </div>
+        <form (submit)="onEditBasic(basicForm)" #basicForm="ngForm">
+          <div class="row" *ngIf="user.userType == 'individual'">
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                <input 
+                type="text"
+                class="form-control"
+                name="firstName"
+                [(ngModel)]="user.firstName"
+                placeholder="First Name"
+                ngModel
+                required
+                >
+                <label for="floatingInput">First Name</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating mb-3">
+                <input 
+                type="text"
+                class="form-control"
+                name="lastName"
+                [(ngModel)]="user.lastName"
+                placeholder="Last Name"
+                ngModel
+                required
+                >
+                <label for="floatingInput">Last Name</label>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="user.userType == 'corporate'">
+            <div class="col-md-12">
+              <div class="form-floating mb-3">
+                <input 
+                type="text"
+                class="form-control"
+                name="companyName"
+                [(ngModel)]="user.companyName"
+                placeholder="Company Name"
+                ngModel
+                required
+                >
+                <label for="floatingInput">Company Name</label>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          <div class="mb-3" *ngIf="user.country != null">
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Country" [(ngModel)]="user.country" name="country">
+              <nz-option  *ngFor="let country of countries" nzLabel="{{country.name}}" nzValue="{{country.name}}"></nz-option>
+            </nz-select>
+            </div>
+
+            <div class="mb-3" *ngIf="user.country == null">
+              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Country" [(ngModel)]="selectedValue" name="country">
+                <nz-option  *ngFor="let country of countries" nzLabel="{{country.name}}" nzValue="{{country.name}}"></nz-option>
+              </nz-select>
+              </div>
+            
+            <button 
+            type="submit" 
+            class="btn login-button"
+            [disabled]="!basicForm.valid">
+                Submit
+            </button>
+       
+      </form>
+      </ng-template>
+
+      <ng-template #basicFooter>
+        
+      </ng-template>
+    </nz-modal>
+
+
+
+      <!-- Professional Details Modal -->
+
+      <nz-modal
+      [(nzVisible)]="proIsVisible"
+      [nzTitle]="proTitle"
+      [nzContent]="proContent"
+      [nzFooter]="proFooter"
+      (nzOnCancel)="proCancel()"
+    >
+      <ng-template #proTitle>Edit Basic Info</ng-template>
+
+      <ng-template #proContent>
+        <div class="d-flex justify-content-center" style="padding: 20px;">
+          <img src="../../../../../assets/images/profile-experience.svg" style="height: 200px;" alt="">
+        </div>
+        <form (submit)="onEditPro(proForm)" #proForm="ngForm">
+          <div class="mb-3"  *ngIf="user.userType == 'individual'">
+            <input 
+            type="text"
+            class="form-control"
+            name="profession"
+            [(ngModel)]="user.profession"
+            placeholder="Profession"
+            ngModel
+            required
+            >
+          </div>
+          
+          <div class="mb-3" *ngIf="user.userType == 'corporate'">
+            <input 
+            type="text"
+            class="form-control"
+            name="industry"
+            [(ngModel)]="user.industry"
+            placeholder="Industry"
+            ngModel
+            required
+            >
+          </div>
+
+          <div class="mb-3">
+            <input 
+            type="text"
+            class="form-control"
+            name="summary"
+            [(ngModel)]="user.summary"
+            placeholder="Summary"
+            ngModel
+            required
+            >
+          </div>
+            
+            <button 
+            type="submit" 
+            class="btn login-button"
+            [disabled]="!proForm.valid">
+                Submit
+            </button>
+       
+      </form>
+      </ng-template>
+
+      <ng-template #proFooter>
         
       </ng-template>
     </nz-modal>

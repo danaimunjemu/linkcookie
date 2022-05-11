@@ -89,13 +89,10 @@ import zxcvbnEnPackage from '@zxcvbn-ts/language-en';
 import { OnboardingComponent } from './main-app/recruiters/onboarding/onboarding.component';
 import { HttpConfigInterceptor } from './constants/helpers/http.interceptor';
 import { OnboardWelcomeComponent } from './main-app/recruiters/onboarding/onboard-welcome/onboard-welcome.component';
-import { OnboardFirstComponent } from './main-app/recruiters/onboarding/onboard-first/onboard-first.component';
-import { OnboardSecondComponent } from './main-app/recruiters/onboarding/onboard-second/onboard-second.component';
-import { OnboardThirdComponent } from './main-app/recruiters/onboarding/onboard-third/onboard-third.component';
 import { OnboardBasicComponent } from './main-app/recruiters/onboarding/onboard-basic/onboard-basic.component';
 import { OnboardIndustryComponent } from './main-app/recruiters/onboarding/onboard-industry/onboard-industry.component';
-import { OnboardImageComponent } from './main-app/recruiters/onboarding/onboard-image/onboard-image.component';
 import { ChatComponent } from './main-app/recruiters/recruiter-main/chat/chat.component';
+import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 
 
 
@@ -142,12 +139,8 @@ registerLocaleData(en);
     PersonalDetailsComponent,
     OnboardingComponent,
     OnboardWelcomeComponent,
-    OnboardFirstComponent,
-    OnboardSecondComponent,
-    OnboardThirdComponent,
     OnboardBasicComponent,
     OnboardIndustryComponent,
-    OnboardImageComponent,
     ChatComponent,
   ],
   imports: [
@@ -193,6 +186,7 @@ registerLocaleData(en);
     NzBadgeModule,
     NzAlertModule,
     NzNotificationModule,
+    NzAutocompleteModule,
     PasswordStrengthMeterModule.forRoot()
   ],
   providers: [

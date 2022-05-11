@@ -27,7 +27,7 @@ export class OnboardBasicComponent implements OnInit {
     if (this.usersService.Type == 'individual') {
       this.ifUser = true;
     }
-    if (this.usersService.Type == 'coroporate') {
+    if (this.usersService.Type == 'corporate') {
       this.ifCompany = true;
     }
   }

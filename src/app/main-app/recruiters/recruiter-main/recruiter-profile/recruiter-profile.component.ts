@@ -17,6 +17,8 @@ import { UserExperienceService } from 'src/app/services/userexperience.service';
 import { UserExperience } from 'src/app/models/userexperience.model';
 import { UserSkillsService } from 'src/app/services/userskills.service';
 import { UserSkills } from 'src/app/models/userskills.model';
+import { CountriesService } from 'src/app/services/countries.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-recruiter-profile',
@@ -32,22 +34,15 @@ export class RecruiterProfileComponent implements OnInit {
   loading = false;
   avatarUrl?: string;
   user!: User;
-  corporateUserArray: any;
-  corporateUser: any;
-  cardTitle: string = '';
-  individualUserPersonal: any;
-  individualId = '';
-  PersonalData!: boolean;
-  ExperienceData!: boolean;
   ImageData!: boolean;
   imagePreview!: string;
   profileImage: any;
   anyAny: any[] = [];
-  allUserExperience: any[] = [];
-  userExperience: any;
-  allUserSkills: any[] = [];
-  userSkills: any;
-  SkillsData!: boolean;
+  userExperience: any = [];
+
+  countries = this.countriesService.countries;
+  country: string = '';
+  selectedValue = null;
 
 
   errorHandler: boolean = true;
@@ -62,18 +57,13 @@ export class RecruiterProfileComponent implements OnInit {
   constructor(
     private usersService: UsersService, 
     private msg: NzMessageService, 
-    private corporateUserService: CorporateUserService,
     private individualUserService: IndividualUserService,
     private profileImageService: ProfileImageService,
+    private userSkillsService: UserSkillsService,
     private userExperienceService: UserExperienceService,
-    private userSkillsService: UserSkillsService
+    private countriesService: CountriesService
     )
     { 
-      this.checkType();
-      console.log(usersService.Type);
-      console.log(this.individualUserService.Individual);
-      this.individualUserService.checkIndividualUser();
-      this.checkUserPersonal();
 
       profileImageService.allProfileImages$.subscribe((anyAny: any) => {
         this.anyAny = anyAny;
@@ -87,41 +77,6 @@ export class RecruiterProfileComponent implements OnInit {
       console.log(this.profileImage);
       if (this.profileImage != undefined) {
         this.errorHandler = false;
-      }
-
-      // userExperienceService.allUserExperience$.subscribe((allUserExperience: any) => {
-      //   this.allUserExperience = allUserExperience;
-      //   this.userExperience = this.allUserExperience.filter((userExperience: UserExperience) => {
-      //     return userExperience.userId == this.usersService.User._id;
-      //   });
-      // });
-
-      
-
-
-      console.log(this.userExperience);
-      if (this.userExperience != undefined) {
-        this.experienceErrorHandler = false;
-      }
-
-
-
-
-
-      userSkillsService.allUserSkills$.subscribe((allUserSkills: any) => {
-        console.log(this.allUserSkills);
-        this.allUserSkills = allUserSkills;
-        this.userSkills = this.allUserSkills.filter((userSkills: UserSkills) => {
-          return userSkills.userId == this.usersService.User._id;
-        });
-      });
-
-  
-
-
-      console.log(this.userSkills);
-      if (this.userSkills != undefined) {
-        this.skillsErrorHandler = false;
       }
 
       
@@ -138,19 +93,6 @@ export class RecruiterProfileComponent implements OnInit {
     this.usersService.Account.subscribe((user:any)=>{this.user=user});
   }
 
-  checkType() {
-    if (this.usersService.Type == 'individual') {
-      this.cardTitle = 'Personal'
-    } else {
-      this.cardTitle = 'Company';
-    }
-  }
-
-  checkUserPersonal() {
-    this.individualUserService.checkIndividualUser();
-    this.individualUserPersonal = this.individualUserService.Individual;
-    console.log(this.individualUserPersonal);
-  }
   
 
   onAddPersonal(form: NgForm) {
@@ -162,19 +104,14 @@ export class RecruiterProfileComponent implements OnInit {
       console.log(result);
     });
     form.reset();
-    this.createMessage('success');
-    this.checkUserPersonal();
-    setInterval(() =>
-    this.PersonalData = true
-      , 2000);
+    this.createMessage('success', 'Your account has been created successfully');
       this.individualUserService.checkIndividualUser();
-      this.checkUserPersonal();
       this.isVisible = false;
       location.reload();
   }
 
-  createMessage(type: string): void {
-    this.msg.create(type, `Your account has been created successfully`);
+  createMessage(type: string, message:string): void {
+    this.msg.create(type, message);
   }
 
 
@@ -185,11 +122,7 @@ export class RecruiterProfileComponent implements OnInit {
       image: new FormControl(null, {validators: [Validators.required], asyncValidators: [mimeType]})
     });
     this.individualUserService.checkIndividualUser();
-    this.PersonalData = JSON.parse(<string>localStorage.getItem('personalData')).personalData;
-    this.ExperienceData = JSON.parse(<string>localStorage.getItem('experienceData')).experienceData;
     this.ImageData = JSON.parse(<string>localStorage.getItem('imageData')).imageData;
-    this.SkillsData = JSON.parse(<string>localStorage.getItem('skillsData')).skillsData;
-    console.log(this.SkillsData);
 
     // this.userExperienceService.getUserExperience();
 
@@ -233,22 +166,6 @@ export class RecruiterProfileComponent implements OnInit {
     //     }
     //   });
     // }
-
-    if (this.allUserSkills.length == 0) {
-      this.userSkillsService.allUserSkills$.subscribe((allUserSkills: any) => {
-        this.allUserSkills = allUserSkills;
-        if (this.SkillsData && this.userSkills.length == 0) {
-          console.log("get those skills man!!");
-          this.userSkills = this.allUserSkills.filter((userSkills: UserSkills) => {
-            return userSkills.userId == this.usersService.User._id;
-          });
-          console.log(this.userSkills);
-          setInterval(() =>
-              this.skillsErrorHandler = false
-            , 500);
-        }
-      });
-    }
 
     
 
@@ -332,6 +249,8 @@ export class RecruiterProfileComponent implements OnInit {
 
   // Experience Modal 
 
+  indexOfElement: number = 0;
+
   experienceIsVisible = false;
   experienceIsConfirmLoading = false;
 
@@ -355,21 +274,108 @@ export class RecruiterProfileComponent implements OnInit {
     this.experienceIsVisible = false;
   }
 
-  onAddExperience(form: NgForm) {
+  editExperienceIsVisible = false;
+  editExperienceIsConfirmLoading = false;
 
+  editExperience(indexOfElement: any): void {
+    console.log(indexOfElement);
+    this.indexOfElement= indexOfElement;
+    let currentExperience =  this.user.experience[indexOfElement];
+    console.log(currentExperience);
+    this.editExperienceIsVisible = true;
+  }
+
+  editExperienceModal(): void {
+    this.editExperienceIsVisible = true;
+  }
+
+  editExperienceOk(): void {
+    this.editExperienceIsConfirmLoading = true;
+    setTimeout(() => {
+      this.editExperienceIsVisible = false;
+      this.editExperienceIsConfirmLoading = false;
+    }, 1000);
+  }
+
+  editExperienceCancel(): void {
+    this.editExperienceIsVisible = false;
+  }
+
+  deleteExperienceIsVisible = false;
+  deleteExperienceIsConfirmLoading = false;
+  selectedExperience: any;
+  selectedSkill: any;
+
+
+  deleteExperience(indexOfElement: any): void {
+    console.log(indexOfElement);
+    this.indexOfElement= indexOfElement;
+    this.selectedExperience = this.user.experience[indexOfElement];
+    this.deleteExperienceIsVisible = true;
+  }
+
+  deleteExperienceModal(): void {
+    this.deleteExperienceIsVisible = true;
+  }
+
+  deleteExperienceOk(): void {
+    this.deleteExperienceIsConfirmLoading = true;
+    setTimeout(() => {
+      this.deleteExperienceIsVisible = false;
+      this.deleteExperienceIsConfirmLoading = false;
+    }, 1000);
+  }
+
+  deleteExperienceCancel(): void {
+    this.deleteExperienceIsVisible = false;
+  }
+
+  onAddExperience(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    // this.userExperienceService.addUserExperience(this.individualUserService.Individual.userId, form.value.title, form.value.summary, form.value.company, form.value.startYear, form.value.endYear, form.value.startMonth, form.value.endMonth)
-    // .subscribe((result: any) => {
-    //   console.log(result);
-    //   form.reset();
-    // this.experienceIsVisible = false;
-    // this.userExperienceService.init()
-    // });
-    
+    const experienceData: any = {
+      title: form.value.title,
+      description: form.value.description,
+      company: form.value.company,
+      startYear: form.value.startYear,
+      endYear: form.value.endYear,
+      startMonth: form.value.startMonth,
+      endMonth: form.value.endMonth,
+    }
+    const userID = this.user._id;
+    this.usersService.addUserExperience(userID, experienceData);
+    this.initUser();
+    this.experienceIsVisible = false;
   }
 
+  onEditExperience(form: NgForm, indexOfElement: number) {
+    if (form.invalid) {
+      return;
+    }
+    console.log(indexOfElement);
+    const experienceData: any = {
+      title: form.value.title,
+      description: form.value.description,
+      company: form.value.company,
+      startYear: form.value.startYear,
+      endYear: form.value.endYear,
+      startMonth: form.value.startMonth,
+      endMonth: form.value.endMonth,
+    }
+    console.log(experienceData);
+    const userID = this.user._id;
+    this.usersService.editUserExperience(userID, experienceData, indexOfElement);
+    this.initUser();
+    this.editExperienceIsVisible = false;
+  }
+
+  onDeleteExperience(indexOfElement: number) {
+    const userID = this.user._id;
+    this.usersService.deleteUserExperience(userID, this.selectedExperience, indexOfElement);
+    this.initUser();
+    this.deleteExperienceIsVisible = false;
+  }
 
 
   // Skills Modal 
@@ -397,18 +403,340 @@ export class RecruiterProfileComponent implements OnInit {
     this.skillsIsVisible = false;
   }
 
+  editSkillsIsVisible = false;
+  editSkillsIsConfirmLoading = false;
+
+  editSkills(indexOfElement: any): void {
+    console.log(indexOfElement);
+    this.indexOfElement= indexOfElement;
+    let currentSkill =  this.user.skills[indexOfElement];
+    console.log(currentSkill);
+    this.editSkillsIsVisible = true;
+  }
+
+  editSkillskillsModal(): void {
+    this.editSkillsIsVisible = true;
+  }
+
+  editSkillsOk(): void {
+    this.editSkillsIsConfirmLoading = true;
+    setTimeout(() => {
+      this.editSkillsIsVisible = false;
+      this.editSkillsIsConfirmLoading = false;
+    }, 1000);
+  }
+
+  editSkillsCancel(): void {
+    this.editSkillsIsVisible = false;
+  }
+
+  deleteSkillsIsVisible = false;
+  deleteSkillsIsConfirmLoading = false;
+
+  deleteSkill(indexOfElement: any): void {
+    console.log(indexOfElement);
+    this.indexOfElement= indexOfElement;
+    this.selectedSkill = this.user.skills[indexOfElement];
+    this.deleteSkillsIsVisible = true;
+  }
+
+  deleteSkillskillsModal(): void {
+    this.deleteSkillsIsVisible = true;
+  }
+
+  deleteSkillsOk(): void {
+    this.deleteSkillsIsConfirmLoading = true;
+    setTimeout(() => {
+      this.deleteSkillsIsVisible = false;
+      this.deleteSkillsIsConfirmLoading = false;
+    }, 1000);
+  }
+
+  deleteSkillsCancel(): void {
+    this.deleteSkillsIsVisible = false;
+  }
+
   onAddSkill(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    this.userSkillsService.addUserSkill(this.individualUserService.Individual.userId, form.value.skillName)
-    .subscribe((result: any) => {
-      console.log(result);
-      form.reset();
+    const userID = this.user._id;
+    console.log(userID);
+    // this.usersService.addUserSkill(userID!, form.value.skill)
+    // .subscribe((result: any) => {
+    //   console.log(result);
+    //   form.reset();
+    //   this.skillsIsVisible = false;
+    //   this.usersService.init()
+    //   this.initUser();
+    // });
+    const userSkill =  {
+      skill: form.value.skill
+    }
+    console.log(userSkill);
+    this.usersService.addUserSkill(userID, userSkill);
+      this.usersService.init()
+      this.initUser();
       this.skillsIsVisible = false;
-this.userSkillsService.init()
-    });
-
   }
 
+  onEditSkill(form: NgForm, indexOfElement: number) {
+    if (form.invalid) {
+      return;
+    }
+    console.log(indexOfElement);
+    const skillData: any = {skill: form.value.skill};
+    console.log(skillData);
+    const userID = this.user._id;
+    this.usersService.editUserSkill(userID, skillData, indexOfElement);
+    this.initUser();
+    this.editSkillsIsVisible = false;
+  }
+
+  onDeleteSkill(indexOfElement: number) {
+    const userID = this.user._id;
+    const selectedSkill = {skill: this.selectedSkill};
+    this.usersService.deleteUserSkill(userID, selectedSkill, indexOfElement);
+    this.initUser();
+    this.deleteSkillsIsVisible = false;
+  }
+
+
+
+
+    // Package Modal 
+
+    packageIsVisible = false;
+    packageIsConfirmLoading = false;
+
+    selectedPackage: any;
+    deletedPackage: any;
+  
+    addPackage(): void {
+      this.packageIsVisible = true;
+    }
+  
+    packageModal(): void {
+      this.packageIsVisible = true;
+    }
+  
+    packageOk(): void {
+      this.packageIsConfirmLoading = true;
+      setTimeout(() => {
+        this.packageIsVisible = false;
+        this.packageIsConfirmLoading = false;
+      }, 1000);
+    }
+  
+    packageCancel(): void {
+      this.packageIsVisible = false;
+    }
+
+  editPackageIsVisible = false;
+  editPackageIsConfirmLoading = false;
+
+  editPackage(indexOfElement: any): void {
+    console.log(indexOfElement);
+    this.indexOfElement= indexOfElement;
+    let currentPackage =  this.user.packages[indexOfElement];
+    console.log(currentPackage);
+    this.editPackageIsVisible = true;
+  }
+
+  editPackageModal(): void {
+    this.editPackageIsVisible = true;
+  }
+
+  editPackageOk(): void {
+    this.editExperienceIsConfirmLoading = true;
+    setTimeout(() => {
+      this.editPackageIsVisible = false;
+      this.editPackageIsConfirmLoading = false;
+    }, 1000);
+  }
+
+  editPackageCancel(): void {
+    this.editPackageIsVisible = false;
+  }
+
+  deletePackageIsVisible = false;
+  deletePackageIsConfirmLoading = false;
+  
+
+
+  deletePackage(indexOfElement: any): void {
+    this.indexOfElement= indexOfElement;
+    this.selectedPackage = this.user.packages[indexOfElement];
+    this.deletePackageIsVisible = true;
+  }
+
+  deletePackageModal(): void {
+    this.deletePackageIsVisible = true;
+  }
+
+  deletePackageOk(): void {
+    this.deletePackageIsConfirmLoading = true;
+    setTimeout(() => {
+      this.deletePackageIsVisible = false;
+      this.deletePackageIsConfirmLoading = false;
+    }, 1000);
+  }
+
+  deletePackageCancel(): void {
+    this.deletePackageIsVisible = false;
+  }
+  
+    onAddPackage(form: NgForm) {
+      if (form.invalid) {
+        return;
+      }
+      console.log(form.value);
+      const packageData: any = {
+        packageName: form.value.packageName,
+        packageSummary: form.value.packageSummary,
+        packagePrice: form.value.packagePrice
+      }
+      const userID = this.user._id;
+      this.usersService.addUserPackage(userID, packageData);
+      this.initUser();
+      this.packageIsVisible = false;
+    }
+
+    onEditPackage(form: NgForm, indexOfElement: number) {
+      if (form.invalid) {
+        return;
+      }
+      console.log(indexOfElement);
+      const packageData: any = {
+        packageName: form.value.packageName,
+        packageSummary: form.value.packageSummary,
+        packagePrice: form.value.packagePrice
+      }
+      console.log(packageData);
+      const userID = this.user._id;
+      this.usersService.editUserPackage(userID, packageData, indexOfElement);
+      this.initUser();
+      this.editPackageIsVisible = false;
+    }
+  
+    onDeletePackage(indexOfElement: number) {
+      console.log(indexOfElement);
+      console.log(this.selectedPackage);
+      const userID = this.user._id;
+      this.usersService.deleteUserPackage(userID, this.selectedPackage, indexOfElement);
+      this.initUser();
+      this.deletePackageIsVisible = false;
+    }
+
+    // Basic Modal 
+
+    basicIsVisible = false;
+    basicIsConfirmLoading = false;
+  
+    editBasic(): void {
+      this.basicIsVisible = true;
+    }
+  
+    basicModal(): void {
+      this.basicIsVisible = true;
+    }
+  
+    basicOk(): void {
+      this.basicIsConfirmLoading = true;
+      setTimeout(() => {
+        this.basicIsVisible = false;
+        this.basicIsConfirmLoading = false;
+      }, 1000);
+    }
+  
+    basicCancel(): void {
+      this.basicIsVisible = false;
+    }
+  
+    onEditBasic(form: NgForm) {
+      if (form.invalid) {
+        return;
+      }
+      console.log(form.value);
+      const basicUpdate: any = {
+        firstName: form.value.firstName,
+        lastName: form.value.lastName,
+        country: form.value.country
+      }
+      const userID = this.user._id;
+      this.usersService.updateUser( userID! , basicUpdate)
+      .subscribe((result: any) => {
+        console.log(result);
+        this.createMessage('success', 'Your information has been created successfully');
+      }, (err: HttpErrorResponse) => {
+        console.log(err.error.message);
+        this.createMessage('error', err.error.message);
+      });
+      this.initUser();
+      this.basicIsVisible = false;
+    }
+
+
+        // Pro Modal 
+
+        proIsVisible = false;
+        proIsConfirmLoading = false;
+      
+        editPro(): void {
+          this.proIsVisible = true;
+        }
+      
+        proModal(): void {
+          this.proIsVisible = true;
+        }
+      
+        procOk(): void {
+          this.proIsConfirmLoading = true;
+          setTimeout(() => {
+            this.proIsVisible = false;
+            this.proIsConfirmLoading = false;
+          }, 1000);
+        }
+      
+        proCancel(): void {
+          this.proIsVisible = false;
+        }
+      
+        onEditPro(form: NgForm) {
+          if (form.invalid) {
+            return;
+          }
+          console.log(form.value);
+          if (form.value.profession == '') {
+            form.value.profession = '';
+          }
+          if (form.value.industry == '') {
+            form.value.industry = '';
+          }
+          const proUpdate: any = {
+            profession: form.value.profession,
+            industry: form.value.industry,
+            summary: form.value.summary
+          }
+          const userID = this.user._id;
+          this.usersService.updateUser( userID! , proUpdate)
+          .subscribe((result: any) => {
+            console.log(result);
+            this.createMessage('success', 'Your information has been created successfully');
+          }, (err: HttpErrorResponse) => {
+            console.log(err.error.message);
+            this.createMessage('error', err.error.message);
+          });
+          this.initUser();
+          this.proIsVisible = false;
+        }
+
+
 }
+
+
+
+
+
+    
+
