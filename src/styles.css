@@ -1197,6 +1197,13 @@ a.learn-more:hover {
     padding: 15px;
 }
 
+.profile-button {
+    border-radius: 20px;
+    background-color: #fff7ee;
+    color: #ffa104;
+    padding: 15px;
+}
+
 .go-home {
     margin-top: 20px;
     font-size: 18px;
@@ -3452,6 +3459,11 @@ div.loading-bar {
     padding-left: 50px;
 }
 
+.profile-title {
+    font-weight: 700;
+    font-size: 16px;
+}
+
 .border-area {
     border-radius: 20px;
     border: 1px solid #efefef;
@@ -3493,6 +3505,24 @@ div.loading-bar {
     background-color: #fff;
 }
 
+.main-profile-id-card{
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeInBottom;
+    background-color: #fff;
+    /* max-width: 600px; */
+}
+
+.id-background {
+    background-image: url('./assets/images/back3.png');
+    background-size:100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .ant-upload.ant-upload-select-picture-card {
     max-width: 250px !important;
     max-height: 250px !important;
@@ -3504,6 +3534,7 @@ div.loading-bar {
 .main-section {
     margin-top: -125px !important;
     max-width: 100vw;
+    min-height: 100vh;
 }
 
 
@@ -3581,6 +3612,43 @@ div.loading-bar {
   .sidebar-area {
       max-width: 235px;
   }
+
+  .ant-pagination-disabled .ant-pagination-item-link, .ant-pagination-disabled:hover .ant-pagination-item-link, .ant-pagination-disabled:focus-visible .ant-pagination-item-link {
+      border: 1px solid rgba(0,0,0,.1) !important;
+      color: rgba(0,0,0,.55) !important;
+      height: 50px;
+      width: 50px;
+      border-radius: 20px;
+  }
+
+  .ant-pagination-item-active a {
+      border: none;
+      color: #fff;
+      height: 50px;
+      width: 50px;
+      border-radius: 20px;
+      align-items: center;
+      display: inline-grid;
+  }
+
+  .ant-pagination-item-active {
+    background-color: #ffa104;
+    color: #fff;
+    height: 50px;
+    width: 50px;
+    border-radius: 20px;
+    border: none;
+  }
+
+  .ant-pagination-item-active:focus-visible a, .ant-pagination-item-active:hover a {
+      color: #fff;
+  }
+
+  .anticon svg {
+      display: block;
+  }
+
+  
 
   /* .content-area{
       max-width: calc(100vw - 100px);
@@ -3940,6 +4008,7 @@ nz-badge {
     background-color: #efefef;
     color: #2b2839;
     border-radius: 10px;
+    padding: 15px;
 }
 
 .edit:hover {
@@ -3977,6 +4046,27 @@ nz-badge {
     box-shadow: none;
 }
 
+.pricing-img {
+    max-width: 250px;
+}
+
+.img-area {
+    min-height: 180px;
+}
+
+.pricing-card {
+    padding: 30px;
+    border: 1px solid #efefef;
+    border-radius: 20px;
+}
+
+.package-name {
+    padding: 15px;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+    font-size: 18px;
+    text-align: center;
+}
 
 .ant-alert {
     border-radius: 10px;
