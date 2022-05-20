@@ -1,0 +1,342 @@
+
+<button nz-button nz-dropdown [nzDropdownMenu]="menu4">
+    Create Ad
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4.5 -4.5 24 24" width="24" fill="currentColor"><path d="M8.9 6.9v-5a1 1 0 1 0-2 0v5h-5a1 1 0 1 0 0 2h5v5a1 1 0 1 0 2 0v-5h5a1 1 0 1 0 0-2h-5z"></path></svg>
+  </button>
+  <nz-dropdown-menu #menu4="nzDropdownMenu">
+    <ul nz-menu>
+      <a routerLink="../job-ad">
+        <li nz-menu-item>Job Advert</li>
+      </a>
+      <a routerLink="../project-ad">
+        <li nz-menu-item>Project Advert</li>
+      </a>
+      <a routerLink="../tender-ad">
+        <li nz-menu-item>Tender Advert</li>
+      </a>
+      <!-- <a routerLink="../consultant-ad">
+        <li nz-menu-item>Consultancy Advert</li>
+      </a> -->
+    </ul>
+  </nz-dropdown-menu>
+
+
+  
+
+
+  <nz-tabset nzCentered>
+    <nz-tab nzTitle="Jobs">
+      <div class="spacer-sm"></div>
+      
+      <div class="container-fluid">
+        <nz-tag class="filterTag" nzMode="closeable" *ngIf="filteredAdTitle !== ''" (nzOnClose)="onCloseTitle()">{{ filteredAdTitle }}</nz-tag>
+        <nz-tag class="filterTag" nzMode="closeable" *ngIf="selectedType !== ''" (nzOnClose)="onCloseType()">{{ selectedType }}</nz-tag>
+        <nz-tag class="filterTag" nzMode="closeable" *ngIf="filteredCountry !== ''" (nzOnClose)="onCloseCountry()">{{ filteredCountry }}</nz-tag>
+      </div>
+
+      <div class="spacer-sm"></div>
+
+      <div class="row">
+        <div class="col-md-3">
+            <div class="dash-card">
+              <h5>Filter</h5>
+              <div class="mb-3">
+                <input type="text" class="form-control" name="filteredAdTitle" [(ngModel)]="filteredAdTitle" (input)="titleFiltering($event)" placeholder="Job Title">
+              </div>
+      
+              <div class="mb-3">
+                <select (change)="selectJobTypeHandler($event)" class="form-select" aria-label="Default select example" name="selectedType">
+                    <option value="">Full/Part Time</option>
+                    <option value="full time">Full Time</option>
+                    <option value="part time">Part Time</option>
+                </select>
+              </div>
+          
+              <nz-select nzMode="tags" nzPlaceHolder="Skills" [(ngModel)]="listOfSelectedValue" (ngModelChange)="skillsFiltering($event)">
+              </nz-select>
+          
+          
+              <div class="spacer"></div>
+              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Country" [(ngModel)]="filteredCountry" name="country"  (ngModelChange)="countryFiltering($event)">
+                <nz-option nzLabel="Remote" nzValue="Remote"></nz-option>
+                <nz-option  *ngFor="let country of countries" nzLabel="{{country.name}}" nzValue="{{country.name}}"></nz-option>
+              </nz-select>
+              <button class="btn link-primary responsive-click" (click)="clearFilters()">Clear</button>
+            </div>
+        </div>
+        <div class="col-md-9">
+          <div class="row">
+            <div class="col-md-12" *ngFor="let jobAdvert of jobAdverts | adSkillsFilter: listOfSelectedValue | jobLocationFilter: filteredCountry | jobTitleFilter: filteredAdTitle | jobTypeFilter: selectedType |  
+          paginate: { itemsPerPage: 2, 
+            currentPage: q,
+            id: 'jobs' }; ">
+            <a (click)="showModal(jobAdvert._id, 'job')">
+              <div class="dash-card">
+                <div class="row">
+                  <div class="col-md-2">
+                    <div class="d-flex justify-content-center">
+                      <img src="../../../../../assets/images/avatar.png" class="img-fluid dash-img" alt="">
+                  </div>
+                  </div>
+                  <div class="col-md-10">
+                    <div>
+                       <!-- <p *ngIf="advertUploader.userType == 'individual'">{{ advertUploader.firstName }} {{ advertUploader.lastName }}</p>
+                       <p *ngIf="advertUploader.userType == 'corporate'">{{ advertUploader.companyName }}</p>
+                      <p>{{ advertUploader.companyName }}</p> -->
+                      <div class="row">
+                        <div class="col-md-6">
+                          <h5 class="adTitle"> {{jobAdvert.adTitle}} 
+                            <nz-tag *ngIf="jobAdvert.jobType == 'part time'" class="part-time-tag">{{jobAdvert.jobType}}</nz-tag>
+                            <nz-tag *ngIf="jobAdvert.jobType == 'full time'" class="full-time-tag">{{jobAdvert.jobType}}</nz-tag>
+                          </h5>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-end job-location">
+                          <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="job-location-svg" viewBox="-4 -2 24 24" width="24" fill="currentColor"><path d="M2 1h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H2v7a1 1 0 0 1-2 0V1a1 1 0 1 1 2 0zm0 9h12V3H2v7z"></path></svg>
+                            {{jobAdvert.jobLocation}}
+                          </p>
+                        </div>
+                      </div>
+                      <p>{{jobAdvert.adSummary}}</p>
+                      <p *ngIf="jobAdvert.jobType == 'part time'">Job Length:  {{ jobAdvert.jobLength }}</p>
+                      <!-- <p class="dateUploaded">Uploaded: {{ jobAdvert.dateCreated | date:'fullDate' }}</p> -->
+                      
+                      <p *ngIf="jobAdvert.jobType == 'part time'"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" width="24" fill="currentColor"><path d="M11 9h4a1 1 0 0 1 0 2h-5a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v5zm-1 11C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path></svg>
+                        Employment Period:  {{ jobAdvert.jobLength }}
+                      </p>
+                      
+                      <span  *ngFor="let skill of jobAdvert.adSkills"> <nz-tag class="skills-tag">{{skill}}</nz-tag></span>
+                      <div class="spacer-sm"></div>
+                      <p class="due-date"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -3 24 24" width="24" fill="currentColor"><path d="M18 7V5a1 1 0 0 0-1-1h-1v1a1 1 0 0 1-2 0V4H6v1a1 1 0 1 1-2 0V4H3a1 1 0 0 0-1 1v2h16zm0 2H2v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9zm-2-7h1a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h1V1a1 1 0 1 1 2 0v1h8V1a1 1 0 0 1 2 0v1z"></path></svg>
+                        Due Date: {{ jobAdvert.dateDue | date:'fullDate'  }}
+                      </p>
+                      <div class="d-flex justify-content-end">
+                        <button class="btn link-primary responsive-click" *ngIf="user.userType == 'individual'" (click)="applyJob(jobAdvert._id)">Apply</button>
+                      <button class="btn link-primary responsive-click" (click)="showModal(indexOfElement, 'job')">View</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <div class="spacer-sm"></div>
+          </div>
+          </div>
+          
+        </div>
+        <div class="spacer-sm"></div>
+        <div class="d-flex justify-content-end">
+          <pagination-controls (pageChange)="q = $event" id="jobs" ></pagination-controls> 
+        </div>
+        
+        
+      </div>
+
+
+      <nz-modal [(nzVisible)]="isVisible" nzTitle="" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+        <ng-container *nzModalContent>
+          <h3 class="openedAdTitle"> 
+            {{selectedAd.adTitle}} 
+            <nz-tag *ngIf="selectedAd.jobType == 'part time'" class="part-time-tag">{{selectedAd.jobType}}</nz-tag>
+            <nz-tag *ngIf="selectedAd.jobType == 'full time'" class="full-time-tag">{{selectedAd.jobType}}</nz-tag>
+          </h3>
+                      <p class="dateUploaded">Uploaded: {{ selectedAd.dateCreated | date:'fullDate' }}</p>
+                      <p>{{selectedAd.adSummary}}</p>
+                      <p *ngIf="selectedAd.jobType == 'part time'">Job Length:  {{ selectedAd.jobLength }}</p>
+                      <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="job-location-svg" viewBox="-4 -2 24 24" width="24" fill="currentColor"><path d="M2 1h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H2v7a1 1 0 0 1-2 0V1a1 1 0 1 1 2 0zm0 9h12V3H2v7z"></path></svg>
+                        {{selectedAd.jobLocation}}
+                      </p>
+                      <span  *ngFor="let skill of selectedAd.adSkills"> <nz-tag class="skills-tag">{{skill}}</nz-tag></span>
+                      <div class="spacer-sm"></div>
+                      <ul *ngFor="let jobDescription of selectedAd.jobDescription">
+                        <li>{{jobDescription}}</li>
+                      </ul>
+                      <p class="due-date"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -3 24 24" width="24" fill="currentColor"><path d="M18 7V5a1 1 0 0 0-1-1h-1v1a1 1 0 0 1-2 0V4H6v1a1 1 0 1 1-2 0V4H3a1 1 0 0 0-1 1v2h16zm0 2H2v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9zm-2-7h1a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h1V1a1 1 0 1 1 2 0v1h8V1a1 1 0 0 1 2 0v1z"></path></svg>
+                        Due Date: {{ selectedAd.dateDue | date:'fullDate'  }}
+                      </p>
+                      <div *ngIf="selectedAd.type == 'Job'">
+                        <button class="btn link-primary responsive-click" *ngIf="user.userType == 'individual'" (click)="applyJob(selectedAd._id)">Apply</button>
+                      </div>
+        </ng-container>
+      </nz-modal>
+          
+          
+
+        
+    </nz-tab>
+    <nz-tab nzTitle="Projects">
+      <div class="row">
+        <div class="spacer-sm"></div>
+      
+      <div class="container-fluid">
+        <nz-tag class="filterTag" nzMode="closeable" *ngIf="filteredAdTitle !== ''" (nzOnClose)="onCloseTitle()">{{ filteredAdTitle }}</nz-tag>
+        <nz-tag class="filterTag" nzMode="closeable" *ngIf="selectedType !== ''" (nzOnClose)="onCloseType()">{{ selectedType }}</nz-tag>
+        <nz-tag class="filterTag" nzMode="closeable" *ngIf="filteredCountry !== ''" (nzOnClose)="onCloseCountry()">{{ filteredCountry }}</nz-tag>
+      </div>
+
+      <div class="spacer-sm"></div>
+        <div class="col-md-3">
+          
+          <div class="dash-card">
+            <div>
+              Filter
+      
+              <div class="mb-3">
+                <input type="text" class="form-control" name="filteredAdTitle" [(ngModel)]="filteredAdTitle" placeholder="Project Title">
+              </div>
+              
+          
+              <nz-select nzMode="tags" nzPlaceHolder="Skills" [(ngModel)]="listOfSelectedValue">
+              </nz-select>
+          
+          
+              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Country" [(ngModel)]="filteredCountry" name="country">
+                <nz-option nzLabel="Remote" nzValue="Remote"></nz-option>
+                <nz-option  *ngFor="let country of countries" nzLabel="{{country.name}}" nzValue="{{country.name}}"></nz-option>
+              </nz-select>
+
+              <button class="btn link-primary responsive-click" (click)="clearFilters()">Clear</button>
+          
+          
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div *ngFor="let projectAdvert of projectAdverts | adSkillsFilter: listOfSelectedValue | jobLocationFilter: filteredCountry | jobTitleFilter: filteredAdTitle | 
+          paginate: { itemsPerPage: 2, 
+            currentPage: p,
+            id: 'projects' };">
+            <a (click)="showModal(projectAdvert._id, 'project')">
+              <div class="dash-card" >
+                <div class="row">
+                  <div class="col-md-6">
+                    <h5 class="adTitle">
+                      {{projectAdvert.adTitle}}
+                      <nz-tag *ngIf="projectAdvert.jobType == 'part time'" class="part-time-tag">{{projectAdvert.jobType}}</nz-tag>
+                      <nz-tag *ngIf="projectAdvert.jobType == 'full time'" class="full-time-tag">{{projectAdvert.jobType}}</nz-tag>
+                    </h5>
+                  </div>
+                  <div class="col-md-6 d-flex justify-content-end job-location">
+                    <p>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="job-location-svg" viewBox="-4 -2 24 24" width="24" fill="currentColor"><path d="M2 1h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H2v7a1 1 0 0 1-2 0V1a1 1 0 1 1 2 0zm0 9h12V3H2v7z"></path></svg>
+                      {{projectAdvert.jobLocation}}
+                    </p>
+                  </div>
+                </div>
+                <p>Summary: {{projectAdvert.adSummary}}</p>
+                <p *ngIf="projectAdvert.jobType == 'part time'">Job Length:  {{ projectAdvert.jobLength }}</p>
+
+                <span  *ngFor="let skill of projectAdvert.adSkills"> <nz-tag class="skills-tag">{{skill}}</nz-tag></span>
+                      <div class="spacer-sm"></div>
+                
+                <p class="due-date"> 
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -3 24 24" width="24" fill="currentColor"><path d="M18 7V5a1 1 0 0 0-1-1h-1v1a1 1 0 0 1-2 0V4H6v1a1 1 0 1 1-2 0V4H3a1 1 0 0 0-1 1v2h16zm0 2H2v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9zm-2-7h1a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h1V1a1 1 0 1 1 2 0v1h8V1a1 1 0 0 1 2 0v1z"></path></svg>
+                  Due Date: {{ projectAdvert.dateDue | date:'fullDate'  }}
+                </p>
+                <div class="d-flex justify-content-end">
+                  <button class="btn link-primary responsive-click" (click)="showModal(indexOfElement, 'project')">View</button>
+                </div>
+              </div>
+            </a>
+              <div class="spacer-sm"></div>
+        </div>
+        </div>
+
+      </div>
+      <div class="spacer-sm"></div>
+        <div class="d-flex justify-content-end">
+          <pagination-controls (pageChange)="p = $event" id="projects" ></pagination-controls> 
+        </div>
+      
+        
+    </nz-tab>
+
+    <nz-tab nzTitle="Tenders">
+      <div class="spacer-sm"></div>
+      
+      <div class="container-fluid">
+        <nz-tag class="filterTag" nzMode="closeable" *ngIf="filteredAdTitle !== ''" (nzOnClose)="onCloseTitle()">{{ filteredAdTitle }}</nz-tag>
+        <nz-tag class="filterTag" nzMode="closeable" *ngIf="selectedType !== ''" (nzOnClose)="onCloseType()">{{ selectedType }}</nz-tag>
+        <nz-tag class="filterTag" nzMode="closeable" *ngIf="filteredCountry !== ''" (nzOnClose)="onCloseCountry()">{{ filteredCountry }}</nz-tag>
+      </div>
+
+      <div class="spacer-sm"></div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="dash-card">
+            Filter
+    
+            <div class="mb-3">
+              <input type="text" class="form-control" name="filteredAdTitle" [(ngModel)]="filteredAdTitle" placeholder="Tender Title">
+            </div>
+            
+        
+            <nz-select nzMode="tags" nzPlaceHolder="Skills" [(ngModel)]="listOfSelectedValue">
+              <nz-option nzValue="Flying" nzLabel="Flying"></nz-option>
+              <nz-option nzValue="Repairs" nzLabel="Repairs"></nz-option>
+              <nz-option nzValue="Jumping" nzLabel="Jumping"></nz-option>
+            </nz-select>
+        
+        
+            <div class="spacer"></div>
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Country" [(ngModel)]="filteredCountry" name="country">
+              <nz-option nzLabel="Remote" nzValue="Remote"></nz-option>
+              <nz-option  *ngFor="let country of countries" nzLabel="{{country.name}}" nzValue="{{country.name}}"></nz-option>
+            </nz-select>
+            <button class="btn link-primary responsive-click" (click)="clearFilters()">Clear</button>
+        
+          </div>
+        </div>
+        <div class="col-md-9">
+          
+            <div *ngFor="let tenderAdvert of tenderAdverts | adSkillsFilter: listOfSelectedValue | jobLocationFilter: filteredCountry | jobTitleFilter: filteredAdTitle | 
+            paginate: { itemsPerPage: 2, 
+              currentPage: r,
+              id: 'tenders' };">
+              <a (click)="showModal(tenderAdvert._id, 'tender')">
+              <div class="dash-card">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h5 class="adTitle">
+                      {{tenderAdvert.adTitle}}
+                      <nz-tag *ngIf="tenderAdvert.jobType == 'part time'" class="part-time-tag">{{tenderAdvert.jobType}}</nz-tag>
+                      <nz-tag *ngIf="tenderAdvert.jobType == 'full time'" class="full-time-tag">{{tenderAdvert.jobType}}</nz-tag>
+                    </h5>
+                  </div>
+                  <div class="col-md-6 d-flex justify-content-end job-location">
+                    <p>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="job-location-svg" viewBox="-4 -2 24 24" width="24" fill="currentColor"><path d="M2 1h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H2v7a1 1 0 0 1-2 0V1a1 1 0 1 1 2 0zm0 9h12V3H2v7z"></path></svg>
+                      Tender Location:  {{tenderAdvert.jobLocation}}
+                    </p>
+                  </div>
+                </div>
+                <p>Summary: {{tenderAdvert.adSummary}}</p>
+                <p *ngIf="tenderAdvert.jobType == 'part time'">Job Length:  {{ tenderAdvert.jobLength }}</p>
+                <span  *ngFor="let skill of tenderAdvert.adSkills"> <nz-tag class="skills-tag">{{skill}}</nz-tag></span>
+                      <div class="spacer-sm"></div>
+                
+                <p class="due-date"> 
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -3 24 24" width="24" fill="currentColor"><path d="M18 7V5a1 1 0 0 0-1-1h-1v1a1 1 0 0 1-2 0V4H6v1a1 1 0 1 1-2 0V4H3a1 1 0 0 0-1 1v2h16zm0 2H2v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9zm-2-7h1a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h1V1a1 1 0 1 1 2 0v1h8V1a1 1 0 0 1 2 0v1z"></path></svg>
+                  Due Date: {{ tenderAdvert.dateDue | date:'fullDate'  }}
+                </p>
+                <div class="d-flex justify-content-end">
+                  <button class="btn link-primary responsive-click" (click)="showModal(indexOfElement, 'tender')">View</button>
+                </div>
+              </div>
+          </a>
+            </div>
+        </div>
+      </div>
+      <div class="spacer-sm"></div>
+        <div class="d-flex justify-content-end">
+          <pagination-controls (pageChange)="r = $event" id="tenders" ></pagination-controls> 
+        </div>
+      
+      
+    </nz-tab>
+    <!-- <nz-tab nzTitle="Consultancy">Content of Tab Pane 3</nz-tab> -->
+  </nz-tabset>

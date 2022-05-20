@@ -15,26 +15,80 @@ export class UsersService {
 
     private users: User[] = [];
     private usersUpdated = new Subject<User[]>();
+    private profilesPerPage: number = 8;
+    private currentPage: number = 1;
+    private userType: string = 'individual';
 
     users$ = new BehaviorSubject([]);
+    browseUsers$ = new BehaviorSubject([]);
+    user$ = new BehaviorSubject([]);
+    user: any;
+
+    // Pagination
+
 
     constructor(
       private http:HttpClient, 
       private router: Router, 
       private notificationService:NzNotificationService) { 
         this.init();
+        
      }
 
 
     init() {
         this.getUsers().subscribe((users2: any) => {
             this.users$.next(users2);
-        })
+            var user: any;
+            for(user of users2) {
+              var sum = 0;
+              var avg = 0;
+              for (var i = 0; i < user.rating.length; i++){
+                sum += parseInt( user.rating[i], 10);
+              }
+              if (sum != 0) {
+                avg = Math.round(sum/user.rating.length) ;
+                console.log(avg);
+                user['averageRating'] = avg;
+              }
+              if (sum === 0 ) {
+                avg = 0;
+                user['averageRating'] = avg;
+              }
+            }
+        });
+
+        this.getBrowseUsers(this.profilesPerPage, this.currentPage).subscribe((users2: any) => {
+          this.browseUsers$.next(users2);
+          var user: any;
+          for(user of users2) {
+            var sum = 0;
+            var avg = 0;
+            for (var i = 0; i < user.rating.length; i++){
+              sum += parseInt( user.rating[i], 10);
+            }
+            if (sum != 0) {
+              avg = Math.round(sum/user.rating.length) ;
+              console.log(avg);
+              user['averageRating'] = avg;
+            }
+            if (sum === 0 ) {
+              avg = 0;
+              user['averageRating'] = avg;
+            }
+          }
+      });
+
     }
 
     getUsers() {
         return this.http.get(environment.server_url+'user');
     }
+
+    getBrowseUsers(profilesPerPage: number, currentPage: number) {
+      const queryParams = `?pageSize=${profilesPerPage}&page=${currentPage}`;
+      return this.http.get(environment.server_url+'user' + queryParams);
+  }
 
     getUserUpdatedListener() {
         return this.usersUpdated.asObservable();
@@ -51,10 +105,13 @@ export class UsersService {
     globalUser: string = '';
     
 
-    addProfileImage( userId: string, image: File) {
-      const profileData = new FormData();
-      profileData.append("image", image);
-      return this.http.put(environment.server_url + 'user/' +userId, profileData);
+    addProfileImage( userID: any, image: File) {
+      const profilePictureData = new FormData();
+      profilePictureData.append("image", image, userID);
+      this.http.put<{user: any}>(environment.server_url + 'profileImage/' + userID, profilePictureData)
+      .subscribe(response => {
+        console.log(response);
+      });
   }
 
 
@@ -68,20 +125,18 @@ export class UsersService {
 
           let user : User = response.user;
           console.log(user);
+          
             console.log(response);
             this._Token = response?.token;
             this._User = response.user._id;
             this._Type = response.user.userType;
-            console.log(response.user.userType);
-            console.log(response.user.logIns);
-            console.log(response.user._id);
 
             let timeStamp: Date = new Date();
             let finalDate: string = timeStamp.toString();
 
             user.logIns.push(finalDate);
 
-         this.updateUser(response.user._id,user).subscribe()
+         this.updateUser(response.user._id,user).subscribe();
 
             this.globalUser = response.user._id;
             this.notificationService.success("Login","successful");
@@ -92,6 +147,8 @@ export class UsersService {
                     this._Type = user.userType;
                     localStorage.setItem('type', user.userType);
                     console.log(user.userType);
+                    var sum = 0;
+             
                 },  
             );
             setTimeout(() => {
@@ -126,10 +183,12 @@ export class UsersService {
 
       user.experience.push(experienceData);
 
-      this.updateUser(response.user._id,user).subscribe();
         this.notificationService.success("Update","successful");
         this.init();
-    })
+      return this.updateUser(response.user._id,user).subscribe();
+
+    });
+
   }
 
   editUserExperience( userID: any, experienceData: any, indexOfElement: number ) {
@@ -162,7 +221,7 @@ export class UsersService {
   // User Skills
 
   addUserSkill( userID: any, userSkill: any) {
-    this.http.put<{user: any}>(environment.server_url + 'user/' + userID, userSkill)
+    return this.http.put<{user: any}>(environment.server_url + 'user/' + userID, userSkill)
     .subscribe((response: any) => {
       let user : User = response.user;
       user.skills.push(userSkill.skill);

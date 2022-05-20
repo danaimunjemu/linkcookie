@@ -8,6 +8,8 @@ import {
   NzSkeletonButtonSize,
   NzSkeletonInputSize
 } from 'ng-zorro-antd/skeleton';
+import { NgForm } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -35,13 +37,15 @@ export class WelcomeComponent implements OnInit {
 
 
   selectedType: string = 'individual';
+  selectedSearch: string = 'employees';
 
 
   isVisible = false;
+  isEmailVisible = false;
 
   linkText = "JOB SEEKERS";
 
-  constructor(private message: NzMessageService) { }
+  constructor(private message: NzMessageService, private router: Router, private route: ActivatedRoute) { }
 
   showModal(): void {
     this.isVisible = true;
@@ -57,9 +61,25 @@ export class WelcomeComponent implements OnInit {
     this.isVisible = false;
   }
 
+  showEmailModal(): void {
+    this.isEmailVisible = true;
+  }
+
+  handleEmailOk(): void {
+    console.log('Button ok clicked!');
+    this.isEmailVisible = false;
+  }
+
+  handleEmailCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isEmailVisible = false;
+  }
+
   createMessage(type: string): void {
     this.message.create(type, `Your application was sent successfully ${type}`);
   }
+
+  
 
 
 
@@ -116,15 +136,62 @@ changeText() {
   , 3000);
 }
 
+loadEmail() {
+  setInterval(() =>
+    this.isEmailVisible = true
+  , 1000);
+}
+
 
 selectChangeHandler(event: any) {
   this.selectedType = event.target.value;
   console.log(this.selectedType);
 }
 
+selectSearchChangeHandler(event: any) {
+  this.selectedSearch = event.target.value;
+  console.log(this.selectedSearch);
+}
+
+onSearch(form: NgForm) {
+  console.log(form.value);
+  if (form.value.selectedType == 'business' && form.value.selectedSearch == 'employees') {
+    this.router.navigate(['../for-recruiters'], {relativeTo: this.route})
+  }
+  if (form.value.selectedType == 'business' && form.value.selectedSearch == 'tenders') {
+    this.router.navigate(['../tenders'], {relativeTo: this.route})
+  }
+  if (form.value.selectedType == 'business' && form.value.selectedSearch == 'work') {
+    this.router.navigate(['../tenders'], {relativeTo: this.route})
+  }
+
+  if (form.value.selectedType == 'freelancer' && form.value.selectedSearch == 'employees') {
+    this.router.navigate(['../for-recruiters'], {relativeTo: this.route})
+  }
+  if (form.value.selectedType == 'freelancer' && form.value.selectedSearch == 'tenders') {
+    this.router.navigate(['../tenders'], {relativeTo: this.route})
+  }
+  if (form.value.selectedType == 'freelancer' && form.value.selectedSearch == 'work') {
+    this.router.navigate(['../for-jobseekers'], {relativeTo: this.route})
+  }
+
+  if (form.value.selectedType == 'consultant' && form.value.selectedSearch == 'employees') {
+    this.router.navigate(['../for-recruiters'], {relativeTo: this.route})
+  }
+  if (form.value.selectedType == 'consultant' && form.value.selectedSearch == 'tenders') {
+    this.router.navigate(['../tenders'], {relativeTo: this.route})
+  }
+  if (form.value.selectedType == 'consultant' && form.value.selectedSearch == 'work') {
+    this.router.navigate(['../for-jobseekers'], {relativeTo: this.route})
+  }
+}
+
+
+
 
   ngOnInit(): void {
       this.changeText();
+      // this.loadEmail();
   }
 
 }

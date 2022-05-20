@@ -41,6 +41,14 @@ import { OnboardWelcomeComponent } from "./main-app/recruiters/onboarding/onboar
 import { OnboardBasicComponent } from "./main-app/recruiters/onboarding/onboard-basic/onboard-basic.component";
 import { OnboardIndustryComponent } from "./main-app/recruiters/onboarding/onboard-industry/onboard-industry.component";
 import { ChatComponent } from "./main-app/recruiters/recruiter-main/chat/chat.component";
+import { ImageUploadComponent } from "./main-app/recruiters/recruiter-main/image-upload/image-upload.component";
+import { JobAdComponent } from "./main-app/recruiters/recruiter-main/recruiter-ads/job-ad/job-ad.component";
+import { ProjectAdComponent } from "./main-app/recruiters/recruiter-main/recruiter-ads/project-ad/project-ad.component";
+import { TenderAdComponent } from "./main-app/recruiters/recruiter-main/recruiter-ads/tender-ad/tender-ad.component";
+import { ConsultantAdComponent } from "./main-app/recruiters/recruiter-main/recruiter-ads/consultant-ad/consultant-ad.component";
+import { AllAdsComponent } from "./main-app/recruiters/recruiter-main/recruiter-ads/all-ads/all-ads.component";
+import { AdvertsComponent } from "./main-app/recruiters/recruiter-main/adverts/adverts.component";
+import { ApplicantsComponent } from "./main-app/recruiters/recruiter-main/adverts/applicants/applicants.component";
 
 const appRoutes: Routes = [
     
@@ -82,20 +90,20 @@ const appRoutes: Routes = [
             {path:'',redirectTo: 'recruiter-dashboard', pathMatch: 'full'},
             { path: 'recruiter-dashboard', component: RecruiterDashboardComponent },
             { path: 'recruiter-browse', component: RecruiterBrowseComponent },
+            { path: 'image-upload', component: ImageUploadComponent },
             { path: 'chat', component: ChatComponent },
-            { path: 'new-ad', component: NewAdComponent,
-                children: [
-                    {path:'', redirectTo: 'step-one', pathMatch: 'full'},
-                    { path: 'step-one', component: StepOneComponent },
-                    { path: 'step-two', component: StepTwoComponent },
-                    { path: 'step-three', component: StepThreeComponent },
-                    { path: 'step-four', component: StepFourComponent },
-                    { path: 'step-five', component: StepFiveComponent },
-                ]
-             },
+            { path: 'chat', component: ChatComponent },
+            { path: 'adverts', component: AdvertsComponent},
+            { path: 'adverts/applicants/:id', component: ApplicantsComponent},
             { path: 'recruiter-ads', component: RecruiterAdsComponent, 
                 children: [
+                    { path: '', redirectTo: 'all-ads', pathMatch: 'full'},
                     { path: 'single-ad', component: SingleAdComponent },
+                    { path: 'all-ads', component: AllAdsComponent },
+                    { path: 'job-ad', component: JobAdComponent},
+                    { path: 'project-ad', component: ProjectAdComponent},
+                    { path: 'tender-ad', component: TenderAdComponent},
+                    { path: 'consultant-ad', component: ConsultantAdComponent},
                 ]
             },
             { path: 'cart', component: CartComponent },

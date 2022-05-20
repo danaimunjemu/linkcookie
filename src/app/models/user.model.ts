@@ -20,6 +20,7 @@ export interface User {
     packages: any[],
     billingAddress: string,
     rating: string[],
+    bookmarks: string[],
     emailConfirmation: string,
     logIns:string[],
 }

@@ -1,0 +1,108 @@
+
+
+<nz-steps [nzCurrent]="current">
+    <nz-step nzTitle="Step One"></nz-step>
+    <nz-step nzTitle="Step Two"></nz-step>
+    <nz-step nzTitle="Step Three"></nz-step>
+    <nz-step nzTitle="Finish"></nz-step>
+  </nz-steps>
+
+  <div class="steps-content">
+    <div *ngIf="section1">
+        <form (submit)="onAddBasic(basicForm)" #basicForm="ngForm">
+            <div class="mb-3">
+                <input type="text" class="form-control" name="adTitle" placeholder="Job Title" ngModel [(ngModel)]="jobAdvert.adTitle" required>
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" name="adSummary"  placeholder="Job Summary" ngModel [(ngModel)]="jobAdvert.adSummary" required>
+            </div>
+            <div class="mb-3">
+              <nz-select nzMode="tags" name="jobDescription" nzPlaceHolder="Job Description" [(ngModel)]="listOfJobDescription">
+              </nz-select>
+          </div>
+            <div class="mb-3">
+                <nz-select nzMode="tags" name="skills" nzPlaceHolder="Skills" [(ngModel)]="listOfSelectedValue">
+                    <nz-option nzValue="Flying" nzLabel="Flying"></nz-option>
+                    <nz-option nzValue="Repairs" nzLabel="Repairs"></nz-option>
+                    <nz-option nzValue="Jumping" nzLabel="Jumping"></nz-option>
+                  </nz-select>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn link-primary responsive-click log-in" [disabled]="!basicForm.valid ">Submit</button>
+            </div>
+        </form>
+      </div>
+
+      <div *ngIf="section2">
+        <form (submit)="onAddJobInfo(jobInfoForm)" #jobInfoForm="ngForm">
+            <div class="mb-3">
+                <select (change)="selectJobTypeHandler($event)" class="form-select" aria-label="Default select example" name="selectedType">
+                    <option value="full time">Full Time</option>
+                    <option value="part time">Part Time</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <select (change)="selectLengthHandler($event)" class="form-select" aria-label="Default select example" name="selectedLength" *ngIf="jobTypeToggler">
+                    <option value="More than 6 months">More than 6 months</option>
+                    <option value="3 to 6 months">3 to 6 months</option>
+                    <option value="1 to 3 months">1 to 3 months</option>
+                </select>
+              </div>
+            <div class="mb-3">
+                <input type="number" class="form-control" name="jobSalary"  placeholder="Job Salary" ngModel [(ngModel)]="jobAdvert.jobSalary" required>
+            </div>
+            <div class="mb-3">
+                <input class="form-check-input" type="checkbox" #remote name="remote" id="flexCheckDefault" ngModel>
+                <label class="form-check-label" for="flexCheckDefault">
+                  <span style="padding-left: 10px;">Is the job remote?</span>
+                </label>
+              </div>
+            <div class="mb-3">
+                <button type="submit" class="btn link-primary responsive-click log-in" [disabled]="!jobInfoForm.valid ">Submit</button>
+            </div>
+        </form>
+      </div>
+
+      <div *ngIf="section3">
+        <form (submit)="onAddMeta(metaForm)" #metaForm="ngForm">
+            <div class="mb-3" *ngIf="jobAdvert.jobLocation !== 'Remote'">
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Country" [(ngModel)]="jobAdvert.jobLocation" name="country">
+                    <nz-option  *ngFor="let country of countries" nzLabel="{{country.name}}" nzValue="{{country.name}}"></nz-option>
+                  </nz-select>
+            </div>
+            <div class="mb-3">
+                <input type="date" class="form-control" name="dateDue"  ngModel [(ngModel)]="jobAdvert.dateDue" required>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn link-primary responsive-click log-in" [disabled]="!metaForm.valid ">Submit</button>
+            </div>
+        </form>
+      </div>
+
+      <div *ngIf="section4">
+          <div >
+            <p>Job Title: {{jobAdvert.adTitle}}</p>
+            <p>Summary: {{jobAdvert.adSummary}}</p>
+            <p>Job Type: {{jobAdvert.jobType}}</p>
+            <p *ngIf="jobAdvert.jobType == 'part time'">Job Length:  {{ jobAdvert.jobLength }}</p>
+            <p>Job Location:  {{jobAdvert.jobLocation}}</p>
+            <span>Job Skills: </span> <p *ngFor="let skill of jobAdvert.adSkills">{{skill}}</p>
+            <span>Job Skills: </span> <p *ngFor="let jobDescription of jobAdvert.jobDescription">{{jobDescription}}</p>
+            <p>Due Date: {{ jobAdvert.dateDue }}</p>
+          </div>
+      </div>
+  </div>
+  <div class="steps-action">
+    <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+      <span>Previous</span>
+    </button>
+    <button nz-button nzType="default" (click)="next()" *ngIf="current < 3">
+      <span>Next</span>
+    </button>
+    <button nz-button nzType="primary" (click)="done()" *ngIf="current === 3">
+      <span>Done</span>
+    </button>
+  </div>
+
+
+  

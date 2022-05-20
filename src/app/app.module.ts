@@ -83,7 +83,6 @@ import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { PersonalDetailsComponent } from './main-app/recruiters/recruiter-main/recruiter-profile/personal-details/personal-details.component';
-import { ProfileImageService } from './services/profileimage.service';
 import { PasswordStrengthMeterModule, PSM_CONFIG } from 'angular-password-strength-meter';
 import zxcvbnEnPackage from '@zxcvbn-ts/language-en';
 import { OnboardingComponent } from './main-app/recruiters/onboarding/onboarding.component';
@@ -93,6 +92,28 @@ import { OnboardBasicComponent } from './main-app/recruiters/onboarding/onboard-
 import { OnboardIndustryComponent } from './main-app/recruiters/onboarding/onboard-industry/onboard-industry.component';
 import { ChatComponent } from './main-app/recruiters/recruiter-main/chat/chat.component';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
+import { ImageUploadComponent } from './main-app/recruiters/recruiter-main/image-upload/image-upload.component';
+import { FilterPipe } from './services/pipes/filter.pipe';
+import { CountryFilterPipe } from './services/pipes/country-filter.pipe';
+import { IndustryFilterPipe } from './services/pipes/industry-filter.pipe';
+import { ProfessionFilterPipe } from './services/pipes/profession-filter.pipe';
+import { SkillsFilterPipe } from './services/pipes/skills-filter.pipe';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { RatingFilterPipe } from './services/pipes/rating-filter.pipe';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { JobAdComponent } from './main-app/recruiters/recruiter-main/recruiter-ads/job-ad/job-ad.component';
+import { ProjectAdComponent } from './main-app/recruiters/recruiter-main/recruiter-ads/project-ad/project-ad.component';
+import { TenderAdComponent } from './main-app/recruiters/recruiter-main/recruiter-ads/tender-ad/tender-ad.component';
+import { ConsultantAdComponent } from './main-app/recruiters/recruiter-main/recruiter-ads/consultant-ad/consultant-ad.component';
+import { AllAdsComponent } from './main-app/recruiters/recruiter-main/recruiter-ads/all-ads/all-ads.component';
+import { JwPaginationModule } from 'jw-angular-pagination';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { AdSkillsFilterPipe } from './services/pipes/Advert Pipes/ad-skills-filter.pipe';
+import { JobLocationFilterPipe } from './services/pipes/Advert Pipes/job-location-filter.pipe';
+import { JobTitleFilterPipe } from './services/pipes/Advert Pipes/job-title-filter.pipe';
+import { JobTypeFilterPipe } from './services/pipes/Advert Pipes/job-type-filter.pipe';
+import { AdvertsComponent } from './main-app/recruiters/recruiter-main/adverts/adverts.component';
+import { ApplicantsComponent } from './main-app/recruiters/recruiter-main/adverts/applicants/applicants.component';
 
 
 
@@ -142,6 +163,24 @@ registerLocaleData(en);
     OnboardBasicComponent,
     OnboardIndustryComponent,
     ChatComponent,
+    ImageUploadComponent,
+    FilterPipe,
+    CountryFilterPipe,
+    IndustryFilterPipe,
+    ProfessionFilterPipe,
+    SkillsFilterPipe,
+    RatingFilterPipe,
+    JobAdComponent,
+    ProjectAdComponent,
+    TenderAdComponent,
+    ConsultantAdComponent,
+    AllAdsComponent,
+    AdSkillsFilterPipe,
+    JobLocationFilterPipe,
+    JobTitleFilterPipe,
+    JobTypeFilterPipe,
+    AdvertsComponent,
+    ApplicantsComponent,
   ],
   imports: [
     BrowserModule,
@@ -187,13 +226,16 @@ registerLocaleData(en);
     NzAlertModule,
     NzNotificationModule,
     NzAutocompleteModule,
+    NzInputNumberModule,
+    MatPaginatorModule,
+    JwPaginationModule,
+    NgxPaginationModule,
     PasswordStrengthMeterModule.forRoot()
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }, 
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
     CanDeactivateGuard, 
-    ProfileImageService,
     {
       provide: PSM_CONFIG,
       useValue: {

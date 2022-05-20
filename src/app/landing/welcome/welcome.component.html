@@ -54,29 +54,30 @@
             <div class="row bottom-section">
               <div class="col-md-12">
                 <div>
-                  <form>
+                  <form (submit)="onSearch(searchForm)" #searchForm="ngForm">
                     <div class="row hero-form">
                       <div class="col-md-2">
-
                       </div>
                       <div class="col-md-3">
-                        <div class="mb-5">
-                            <select (change)="selectChangeHandler($event)" class="form-select" aria-label="Default select example" name="selectedType" placeholder="I am looking for..." required>
-                                <option value="individual">I am a...</option>
-                                <option value="individual">Business</option>
-                                <option value="corporate">Freelancer</option>
-                                <option value="corporate">Consultant</option>
+                        <div class="mb-5 ">
+                            <select (change)="selectChangeHandler($event)" class="form-select" name="selectedType" placeholder="I am looking for..." required ngModel >
+                                <option value="">I am a ...</option>
+                                <option value="business">Business</option>
+                                <option value="freelancer">Freelancer</option>
+                                <option value="consultant">Consultant</option>
                             </select>
+                            <!-- <label for="floatingSelect">I am a...</label> -->
                         </div>
                       </div>
                       <div class="col-md-3">
-                        <div class="mb-5">
-                            <select (change)="selectChangeHandler($event)" class="form-select" aria-label="Default select example" name="selectedType" placeholder="I am looking for..." required>
-                                <option value="individual">I am looking for...</option>
-                                <option value="individual">Employees</option>
-                                <option value="corporate">Tenders</option>
-                                <option value="corporate">Work</option>
+                        <div class="mb-5 ">
+                            <select (change)="selectSearchChangeHandler($event)" class="form-select" name="selectedSearch" placeholder="I am looking for..." required ngModel>
+                                <option value="">I am looking for...</option>
+                                <option value="employees">Employees</option>
+                                <option value="tenders">Tenders</option>
+                                <option value="work">Work</option>
                             </select>
+                            <!-- <label for="floatingSelect">I am looking for...</label> -->
                         </div>
                       </div>
                       <div class="col-md-2">
@@ -530,11 +531,11 @@
               </p>
               <p class="footer-paragraph">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -2 24 24" width="24" fill="currentColor"><path d="M3 0h6a3 3 0 0 1 3 3v14a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3zm0 2a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3zm3 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"></path></svg>
-                +855 69 944 841
+                <a href="tel:85569944841">+855 69 944 841</a>
               </p>
               <p class="footer-paragraph">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -5 24 24" width="24" fill="currentColor"><path d="M2 0h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 2v10h16V2H2zm3 6h6a1 1 0 0 1 0 2H5a1 1 0 1 1 0-2zm10-5h2v2h-2V3z"></path></svg>
-                talk2us@linkcookie.com
+                <a href="mailto:talk2us@linkcookie.com">talk2us@linkcookie.com</a>
               </p>
               <p class="footer-paragraph">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24" width="24" fill="currentColor"><path d="M11 9h4a1 1 0 0 1 0 2h-5a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v5zm-1 11C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path></svg>
@@ -628,4 +629,11 @@
 </footer>
 
 
-  
+<!-- <button nz-button [nzType]="'primary'" (click)="showEmailModal()"><span>Show Modal</span></button>
+<nz-modal [(nzVisible)]="isEmailVisible" nzTitle="The first Modal" (nzOnCancel)="handleEmailCancel()" (nzOnOk)="handleEmailOk()">
+  <ng-container *nzModalContent>
+    <p>Content one</p>
+    <p>Content two</p>
+    <p>Content three</p>
+  </ng-container>
+</nz-modal> -->

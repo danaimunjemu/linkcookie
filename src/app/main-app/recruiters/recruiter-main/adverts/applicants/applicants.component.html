@@ -1,0 +1,37 @@
+<a routerLink="../../">Go Back</a>
+<div class="spacer-sm"></div>
+
+<div class="row">
+    <div class="col-md-3" *ngFor="let applicant of applicants">
+        <div class="dash-card">
+            <div class="d-flex justify-content-center">
+                <img src="../../../../../assets/images/avatar.png" class="img-fluid dash-img" alt="">
+              </div>
+              <div style="text-align: center;">
+                <h3 *ngIf="applicant.userType=='individual'">{{applicant.firstName}} {{applicant.lastName}}</h3>
+                  <h3 *ngIf="applicant.userType=='corporate'">{{applicant.companyName}}</h3>
+                  <div>
+                    <p *ngIf="applicant.userType=='individual'">
+                      {{applicant.profession}}
+                    </p>
+                    <p *ngIf="applicant.userType=='corporate'">
+                      {{applicant.industry}}
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -2 24 24" width="24" fill="currentColor"><path d="M2 1h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H2v7a1 1 0 0 1-2 0V1a1 1 0 1 1 2 0zm0 9h12V3H2v7z"></path></svg>
+                      <span *ngIf="applicant.country !=null"> {{applicant.country}} </span>
+                      <span *ngIf="applicant.country == null">N/A</span>
+                    </p>
+                  </div>
+              </div>
+              
+            </div>
+    </div>
+</div>
+
+
+
+
+

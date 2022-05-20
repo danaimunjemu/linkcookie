@@ -1605,7 +1605,6 @@ a.learn-more:hover {
   }
 
   .filter-container {
-    margin-top: 20px;
     border-radius: 30px;
     background-color: #fff;
     padding: 20px;
@@ -2809,7 +2808,7 @@ footer#site-footer a {
 }
 
 footer#site-footer a:hover {
-    color: #fff7ee;
+    color: #ffa104;
 }
 
 footer#site-footer h1 {
@@ -3283,9 +3282,13 @@ nz-tag {
   }
 
 
-  .spacer {
+  .spacer-lg {
       padding-bottom: 50px;
   }
+
+  .spacer-sm {
+    padding-bottom: 25px;
+}
 
   .justified {
       text-align: justify;
@@ -3429,7 +3432,7 @@ div.loading-bar {
 
 .dash-card {
     border-radius: 20px;
-    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
     padding: 30px;
     background-color: #fff;
     animation-duration: 1s;
@@ -3439,7 +3442,7 @@ div.loading-bar {
 
 .dash-profile-card {
     border-radius: 20px;
-    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
     padding: 30px;
     background-color: #fff;
     animation-duration: 1s;
@@ -3447,6 +3450,12 @@ div.loading-bar {
     animation-name: fadeInBottom;
     /* max-width: 500px; */
     /* min-width: 500px; */
+}
+
+.inner-card {
+    border: 2px solid #eaeef5;
+    padding: 20px;
+    border-radius: 20px;
 }
 
 .card-image {
@@ -3497,8 +3506,7 @@ div.loading-bar {
 .main-profile-card {
     padding: 20px;
     border-radius: 20px;
-    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
-    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
     animation-duration: 1s;
     animation-fill-mode: both;
     animation-name: fadeInBottom;
@@ -3508,7 +3516,7 @@ div.loading-bar {
 .main-profile-id-card{
     padding: 20px;
     border-radius: 20px;
-    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
     animation-duration: 1s;
     animation-fill-mode: both;
     animation-name: fadeInBottom;
@@ -3555,7 +3563,7 @@ div.loading-bar {
       max-height: calc(100vh - 150px) ;
       position: fixed !important;
       background-color: #fff !important;
-      box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
   }
 
   li nz-menu-item {
@@ -3605,7 +3613,7 @@ div.loading-bar {
 
   nz-footer {
     text-align: center;
-    background-color: #fff7ee !important;
+    background-color: #fffaf2 !important;
     color: #060c27 !important;
   }
 
@@ -3659,17 +3667,20 @@ div.loading-bar {
     margin-top: 20px;
   }
   .ant-layout-content{
-      min-height: 80vh;
+      min-height: calc(100vh - 50px);
   }
 
   .ant-layout {
-      background-color: #fff7ee;
+      background-color: #fffaf2;
   }
 
   .p-2 {
       padding: 0px !important;
   }
 
+  .ant-select-multiple .ant-select-selection-search {
+      min-width: 100% !important;
+  }
 
   .innerCollapsed {
       min-width: calc( 100vw - 180px);
@@ -3699,6 +3710,10 @@ div.loading-bar {
 
 .ant-page-header-heading-title {
     color: #ffa104;
+}
+
+.ant-page-header {
+    padding: 0px 0px 20px 0px !important;
 }
 
 nz-menu-item {
@@ -3767,7 +3782,6 @@ nz-menu-item:active {
 
 .side-navigation.active .nav-menu-item {
     color: #ffa104;
-    font-weight: 600;
 }
 
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
@@ -3894,7 +3908,7 @@ nz-menu-item:active {
 }
 
 .app-nav {
-    background-color: #fff7ee !important;
+    background-color: #fffaf2 !important;
     padding: 10px 20px;
     border: none;
     z-index: 2;
@@ -3930,9 +3944,9 @@ nz-badge {
       background-color: #fff;
   }
 
-  input[type="file"] {
+  /* input[type="file"] {
       visibility: hidden;
-  }
+  } */
 
 
 .image-preview {
@@ -3945,6 +3959,10 @@ nz-badge {
 
 .footer-paragraph {
     font-weight: 400;
+}
+
+.footer-paragraph:hover {
+    color: #ffa104 !important;
 }
 
 
@@ -4052,20 +4070,49 @@ nz-badge {
 
 .img-area {
     min-height: 180px;
+    padding: 15px;
 }
 
 .pricing-card {
     padding: 30px;
     border: 1px solid #efefef;
     border-radius: 20px;
+    min-height: 500px;
 }
 
 .package-name {
     padding: 15px;
     border-top: 1px solid #efefef;
     border-bottom: 1px solid #efefef;
-    font-size: 18px;
     text-align: center;
+}
+
+.package-name h5 {
+    font-weight: 700;
+    margin: 0px;
+    font-size: 24px;
+}
+
+.package-description {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid #efefef;
+}
+
+.package-description p {
+    margin: 0px;
+    font-size: 16px;
+}
+
+.package-price {
+    padding: 15px;
+    font-weight: 700;
+    color: #ffa104;
+    text-align: center;
+}
+
+.package-price p {
+    font-size: 18px;
 }
 
 .ant-alert {
@@ -4115,4 +4162,126 @@ nz-badge {
     color: #ffa104;
     padding: 20px;
     border-radius: 50%;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.steps-content {
+    margin-top: 16px;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    min-height: 200px;
+    text-align: center;
+    padding: 50px 250px;
+  }
+
+  .steps-action {
+    margin-top: 24px;
+  }
+
+  button {
+    margin-right: 8px;
+  }
+
+  .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon {
+      background-color: #ffa104 !important;
+  }
+
+  .ant-steps-item-process .ant-steps-item-icon {
+      border-color: #ffa104 !important;
+  }
+
+  .filter-container {
+      background-color: #fff;
+      min-width: 100%;
+  }
+
+  .done-area {
+      padding: 10px;
+  }
+
+  .done-icon {
+      background-color: #0bc571;
+      border-radius: 50%;
+      color: #fff;
+  }
+
+  .icomplete-icon {
+    background-color: #fff;
+    border-radius: 50%;
+    border: 3px solid rgba(0,0,0,.55);
+    color: #fff;
+}
+
+.dateUploaded {
+    color: #aab0b6 !important;
+}
+
+.adTitle {
+    font-size: 20px;
+}
+
+/* .openedAdTitle {
+
+} */
+
+.skills-tag {
+    color: #737a8d !important;
+    background-color: #f3f7ff !important;
+    border: 1px solid #f3f7ff !important;
+    padding: 3px 10px 3px 10px;
+}
+
+.part-time-tag {
+    color: #e3924a !important;
+    background-color: #fff7eb !important;
+    border: 1px solid #fff7eb !important;
+    padding: 3px 10px 3px 10px;
+}
+
+.full-time-tag {
+    color: #6fc5a2 !important;
+    background-color: #ecfdf5 !important;
+    border: 1px solid #ecfdf5 !important;
+    padding: 3px 10px 3px 10px;
+}
+
+.due-date {
+    color: #aab0b6;
+}
+
+.job-location {
+    font-size: 12px;
+}
+
+.job-location-svg {
+    height: 15px;
+}
+
+.filterTag {
+    padding: 5px 15px 5px 15px;
+    background-color: #fff;
+    border-color: #ffa104;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    color: rgba(0, 0, 0, 0.85) !important;
+    font-size: 16px;
+}
+
+.ngx-pagination .current {
+    background-color: #ffa104 !important;
+}
+
+.ngx-pagination li {
+    border-radius: 20px !important;
+}
+
+.ngx-pagination a, .ngx-pagination button {
+    border-radius: 20px !important;
+}
+
+h5 {
+    color: #446651;
 }

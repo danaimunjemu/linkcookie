@@ -3,7 +3,6 @@ import { CorporateUser } from 'src/app/models/corporateuser.model';
 import { User } from 'src/app/models/user.model';
 import { CorporateUserService } from 'src/app/services/corporateuser.service';
 import { IndividualUserService } from 'src/app/services/individualuser.service';
-import { ProfileImageService } from 'src/app/services/profileimage.service';
 import { UsersService } from 'src/app/services/user.service';
 import { UserExperienceService } from 'src/app/services/userexperience.service';
 import { UserSkillsService } from 'src/app/services/userskills.service';
@@ -22,13 +21,11 @@ export class RecruiterMainComponent implements OnInit {
   constructor(private corporateUserService: CorporateUserService, 
     private usersService: UsersService, 
     private individualUserService: IndividualUserService, 
-    private profileImageService: ProfileImageService,
     private userExperienceService: UserExperienceService,
     private userSkillsService: UserSkillsService
     ) { 
     this.individualUserService.checkIndividualUser();
     this.user = usersService.User;
-    this.profileImageService.getUserProfileImage();
     // this.userExperienceService.getUserExperience();
     this.userSkillsService.getUserSkills();
     // console.log(this.corporateUser);

@@ -1,428 +1,270 @@
-<!-- 
-<div class="OLD OLD">
-  <div class="area-area">
+
+
+    <div class="spacers"></div>
+
+    <nz-tabset nzCentered>
+      <nz-tab nzTitle="Freelancers">
+        <nz-page-header
+    class="site-page-header"
+    nzTitle="Freelancers"
+    nzSubtitle="Freelancers Pool"
+  ></nz-page-header>
+
+  <div class="spacer-sm"></div>
+      
+      <div class="container-fluid">
+        <nz-tag class="filterTag" nzMode="closeable" *ngIf="filteredProfession !== ''" (nzOnClose)="onCloseTitle()">{{ filteredProfession }}</nz-tag>
+        <nz-tag class="filterTag" nzMode="closeable" *ngIf="filteredCountry !== ''" (nzOnClose)="onCloseCountry()">{{ filteredCountry }}</nz-tag>
+      </div>
+
+      <div class="spacer-sm"></div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="dash-card">
+        Filter
+        
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example" name="selectedIndustry" [(ngModel)]="filteredProfession">
+              <option value="">Please select an Industry...</option>
+              <option value="Digital Marketing and Sales">Digital Marketing and Sales</option>
+              <option value="Programming and IT">Programming and IT</option>
+              <option value="Graphic & Creative Design">Graphic & Creative Design</option>
+              <option value="Writing & Translation">Writing & Translation</option>
+              <option value="Finance & Acounting">Finance & Acounting</option>
+              <option value="Business Services">Business Services</option>
+              <option value="Other Skills">Other Skills</option>
+          </select>
+        </div>
+    
+        <nz-select nzMode="tags" nzPlaceHolder="Skills" [(ngModel)]="listOfSelectedValue">
+          <nz-option nzValue="Flying" nzLabel="Flying"></nz-option>
+          <nz-option nzValue="Repairs" nzLabel="Repairs"></nz-option>
+          <nz-option nzValue="Jumping" nzLabel="Jumping"></nz-option>
+        </nz-select>
+    
+    
+        <div class="spacer"></div>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Country" [(ngModel)]="filteredCountry" name="country">
+          <nz-option  *ngFor="let country of countries" nzLabel="{{country.name}}" nzValue="{{country.name}}"></nz-option>
+        </nz-select>
+    
+    
+        <nz-rate [ngModel]="demoValue" nzDisabled></nz-rate>
+        <nz-input-number [(ngModel)]="demoValue" [nzMin]="0" [nzMax]="5" [nzStep]="1"></nz-input-number>
+        <button class="btn link-primary responsive-click" (click)="clearFilters()">Clear</button>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let user of freelancers | countryFilter: filteredCountry | professionFilter: filteredProfession | skillsFilter: listOfSelectedValue | ratingFilter: demoValue | paginate: { itemsPerPage: 6, currentPage: p, id: 'individuals' }">
+          <div class="dash-card" style="margin-bottom: 25px;">
+            <div class="d-flex justify-content-center">
+                <img src="../../../../../assets/images/avatar.png" class="img-fluid dash-img" alt="">
+              </div>
+              <div style="text-align: center;">
+                <h3 *ngIf="user.userType=='individual'">{{user.firstName}} {{user.lastName}}</h3>
+                  <h3 *ngIf="user.userType=='corporate'">{{user.companyName}}</h3>
+                  <div>
+                    <p *ngIf="user.userType=='individual'">
+                      {{user.profession}}
+                    </p>
+                    <p *ngIf="user.userType=='corporate'">
+                      {{user.industry}}
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -2 24 24" width="24" fill="currentColor"><path d="M2 1h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H2v7a1 1 0 0 1-2 0V1a1 1 0 1 1 2 0zm0 9h12V3H2v7z"></path></svg>
+                      <span *ngIf="user.country !=null"> {{user.country}} </span>
+                      <span *ngIf="user.country == null">N/A</span>
+                    </p>
+                  </div>
+              </div>
+              
+                  
+                  
+              <div class="d-flex justify-content-center">
+                <span *ngIf="user.rating.length > 0">
+                  <nz-rate [ngModel]="user.averageRating" nzAllowHalf></nz-rate>
+                </span>
+                <span *ngIf="user.rating.length == 0">
+                  <nz-rate [ngModel]="0" nzAllowHalf></nz-rate>
+                </span>
+                <span>
+                  ( {{user.rating.length}} )  
+                </span>
+              </div>
+            </div>
+            <div class="spacer"></div>
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="spacer"></div>
+
+  <div class="d-flex justify-content-end">
+    <pagination-controls (pageChange)="p = $event" id="individuals"></pagination-controls>
+  </div>
+
+  
+  </div>
+
+
+  
+ 
+
+
+
+
+
+
+
+
+
+<!-- <mat-paginator [length]="allFreelancers.length"
+              [pageSize]="profilesPerPage"
+              [pageSizeOptions]="pageSizeOption"
+              aria-label="Select page"
+              (page)="onChangedPage($event)">
+</mat-paginator> -->
+
+<!-- <nz-pagination 
+[nzPageIndex]="1" 
+[nzTotal]="freelancers.length" 
+nzShowSizeChanger 
+[nzPageSizeOptions]="pageSizeOption" 
+[nzPageSize]="profilesPerPage" 
+(nzPageIndexChange)="onChangedPage($event)"
+(nzPageSizeChange)="onChangedSize($event)"></nz-pagination>
+    
+<div class="spacer"></div> -->
+
+
+      </nz-tab>
+
+
+
+      
+      <nz-tab nzTitle="Companies">
+        <nz-page-header
+class="site-page-header"
+nzTitle="Companies"
+nzSubtitle="Companies Pool"
+></nz-page-header>
+
+<div class="spacer-sm"></div>
+      
+      <div class="container-fluid">
+        <nz-tag class="filterTag" nzMode="closeable" *ngIf="filteredIndustry !== ''" (nzOnClose)="onCloseTitle()">{{ filteredIndustry }}</nz-tag>
+        <nz-tag class="filterTag" nzMode="closeable" *ngIf="filteredCountry !== ''" (nzOnClose)="onCloseCountry()">{{ filteredCountry }}</nz-tag>
+      </div>
+
+      <div class="spacer-sm"></div>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="dash-card">
+      <div class="mb-3">
+        <select class="form-select" aria-label="Default select example" name="selectedIndustry" [(ngModel)]="filteredIndustry">
+            <option value="">Please select an Industry...</option>
+            <option value="Digital Marketing and Sales">Digital Marketing and Sales</option>
+            <option value="Programming and IT">Programming and IT</option>
+            <option value="Graphic & Creative Design">Graphic & Creative Design</option>
+            <option value="Writing & Translation">Writing & Translation</option>
+            <option value="Finance & Acounting">Finance & Acounting</option>
+            <option value="Business Services">Business Services</option>
+            <option value="Other Skills">Other Skills</option>
+        </select>
+      </div>
+    
+      <nz-select nzMode="tags" nzPlaceHolder="Skills" [(ngModel)]="listOfSelectedValue">
+        <nz-option nzValue="Flying" nzLabel="Flying"></nz-option>
+        <nz-option nzValue="Repairs" nzLabel="Repairs"></nz-option>
+        <nz-option nzValue="Jumping" nzLabel="Jumping"></nz-option>
+      </nz-select>
+    
+    
+      <div class="spacer"></div>
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Country" [(ngModel)]="filteredCountry" name="country">
+        <nz-option  *ngFor="let country of countries" nzLabel="{{country.name}}" nzValue="{{country.name}}"></nz-option>
+      </nz-select>
+      
+    
+    <div class="spacer"></div>
+    
+    <nz-rate [ngModel]="demoValue" nzDisabled></nz-rate>
+    <nz-input-number [(ngModel)]="demoValue" [nzMin]="0" [nzMax]="5" [nzStep]="1"></nz-input-number>
+    <button class="btn link-primary responsive-click" (click)="clearFilters()">Clear</button>
+    </div>
+  </div>
+  <div class="col-md-9">
     <div class="row">
-      <div class="col-md-3">
-          
-      </div>
-      <div class="col-md-9">
-          
+
+      <div class="col-md-4" *ngFor="let user of corporates | 
+            countryFilter: filteredCountry | 
+            industryFilter: filteredIndustry | 
+            skillsFilter: listOfSelectedValue | 
+            ratingFilter: demoValue | 
+            paginate: { itemsPerPage: 2, 
+                    currentPage: q,
+                    id: 'corporates' }">
+        <div class="dash-card">
+          <div class="d-flex justify-content-center">
+              <img src="../../../../../assets/images/avatar.png" class="img-fluid dash-img" alt="">
+            </div>
+            <div style="text-align: center;">
+              <h3 *ngIf="user.userType=='individual'">{{user.firstName}} {{user.lastName}}</h3>
+                <h3 *ngIf="user.userType=='corporate'">{{user.companyName}}</h3>
+                <div>
+                  <p *ngIf="user.userType=='individual'">
+                    {{user.profession}}
+                  </p>
+                  <p *ngIf="user.userType=='corporate'">
+                    {{user.industry}}
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -2 24 24" width="24" fill="currentColor"><path d="M2 1h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H2v7a1 1 0 0 1-2 0V1a1 1 0 1 1 2 0zm0 9h12V3H2v7z"></path></svg>
+                    <span *ngIf="user.country !=null"> {{user.country}} </span>
+                    <span *ngIf="user.country == null">N/A</span>
+                  </p>
+                </div>
+            </div>
             
-      </div>
-  </div>
-  
-  
-  
-  <div class="row">
-    <div class="input-group filter-group">
-      <span class="input-group-text filter-input-icon"><i class="bi bi-funnel"></i></span>
-      <input type="text" aria-label="First name" class="form-control filter-input-text" placeholder="Search...">
-    </div>
-      <div class="col-md-3">
-          <div class="filter-container">
-              <h3>Filter</h3>
-              <nz-select
-                [(ngModel)]="listOfTagOptions"
-                nzMode="tags"
-                [nzTokenSeparators]="[',']"
-                nzPlaceHolder="automatic tokenization"
-                nzPlaceHolder="Filter by skills"
-                class="filter-select"
-              >
-                <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
-              </nz-select>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                <label class="form-check-label" for="flexCheckChecked">
-                  No Experience
-                </label>
-              </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Less than 1 year
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    1 to 3 years
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    More than 5 years
-                  </label>
+                
+                
+                <div class="d-flex justify-content-center">
+                  <span *ngIf="user.rating.length > 0">
+                    <nz-rate [ngModel]="user.averageRating" nzAllowHalf></nz-rate>
+                  </span>
+                  <span *ngIf="user.rating.length == 0">
+                    <nz-rate [ngModel]="0" nzAllowHalf></nz-rate>
+                  </span>
+                  <span>
+                    ( {{user.rating.length}} )  
+                  </span>
                 </div>
           </div>
       </div>
-      <div class="col-md-9 ">
-        <div class="row browse-section ">
-          <div class="col">
-  <div class="containerp d-flex justify-content-center">
-    <div class="cardp">
-        <div class="headerp">
-            <div class="hamburger-menu">
-                <div class="center"></div>
-            </div>
-            <a href="#" class="mail">
-              <i class="bi bi-eye"></i>
-            </a>
-            <div class="main">
-                <div class="image">
-                    <div class="hover">
-                      <i class="bi bi-camera camera-icon"></i>
-                    </div>
-                </div>
-                <h3 class="name">John Doe</h3>
-                <h3 class="sub-name">UI/UX Designer</h3>
-            </div>
-        </div>
-  
-        <div class="contentp">
-            <div class="left">
-                <div class="about-container">
-                    <h3 class="title">About</h3>
-                    <p>
-                      <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
-                      <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
-                      <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
-                    </p>
-                      
-                    <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
-                </div>
-                <div class="icons-container">
-                  <nz-tag [nzColor]="'#fdecee'" style="color: #fd8d9a !important; border: none;">Unvailable</nz-tag>
-                </div>
-                <div class="buttons-wrap">
-                    <div class="follow-wrap">
-                        <a href="#" class="follow">Bookmark</a>
-                    </div>
-                    <div class="share-wrap">
-                        <a href="#" class="share">Save</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+      <pagination-controls (pageChange)="q = $event" id="corporates" ></pagination-controls>
     </div>
   </div>
-          </div>
-          <div class="col">
-  <div class="containerp d-flex justify-content-center">
-  <div class="cardp">
-      <div class="headerp">
-          <div class="hamburger-menu">
-              <div class="center"></div>
-          </div>
-          <a href="#" class="mail">
-            <i class="bi bi-eye"></i>
-          </a>
-          <div class="main">
-              <div class="image">
-                  <div class="hover">
-                    <i class="bi bi-camera camera-icon"></i>
-                  </div>
-              </div>
-              <h3 class="name">John Doe</h3>
-              <h3 class="sub-name">UI/UX Designer</h3>
-          </div>
-      </div>
+</div>
+
+
   
-      <div class="contentp">
-          <div class="left">
-              <div class="about-container">
-                  <h3 class="title">About</h3>
-                  <p>
-                    <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
-                    <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
-                    <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
-                  </p>
-                    
-                  <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
-              </div>
-              <div class="icons-container">
-                <nz-tag [nzColor]="'#e6f8f5'" style="color: #1cc3a5 !important; border: none;">Available</nz-tag>
-              </div>
-              <div class="buttons-wrap">
-                  <div class="follow-wrap">
-                      <a href="#" class="follow">Bookmark</a>
-                  </div>
-                  <div class="share-wrap">
-                      <a href="#" class="share">Save</a>
-                  </div>
-              </div>
-          </div>
-  
-      </div>
-  </div>
-  </div>
-        </div>
-        <div class="col">
-  <div class="containerp d-flex justify-content-center">
-  <div class="cardp">
-    <div class="headerp">
-        <div class="hamburger-menu">
-            <div class="center"></div>
-        </div>
-        <a href="#" class="mail">
-          <i class="bi bi-eye"></i>
-        </a>
-        <div class="main">
-            <div class="image">
-                <div class="hover">
-                  <i class="bi bi-camera camera-icon"></i>
-                </div>
-            </div>
-            <h3 class="name">John Doe</h3>
-            <h3 class="sub-name">UI/UX Designer</h3>
-        </div>
-    </div>
-  
-    <div class="contentp">
-        <div class="left">
-            <div class="about-container">
-                <h3 class="title">About</h3>
-                <p>
-                  <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
-                  <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
-                  <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
-                </p>
-                  
-                <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
-            </div>
-            <div class="icons-container">
-              <nz-tag [nzColor]="'#fdecee'" style="color: #fd8d9a !important; border: none;">Unvailable</nz-tag>
-            </div>
-            <div class="buttons-wrap">
-                <div class="follow-wrap">
-                    <a href="#" class="follow">Bookmark</a>
-                </div>
-                <div class="share-wrap">
-                    <a href="#" class="share">Save</a>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-  </div>
-      </div>
-  
-          
-      </div>
-      </div>
-      
-  </div>
-  
-  <div class="row">
-   
-      <div class="col-md-3">
-          
-      </div>
-      <div class="col-md-9 ">
-        <div class="row browse-section ">
-          <div class="col">
-  <div class="containerp d-flex justify-content-center">
-    <div class="cardp">
-        <div class="headerp">
-            <div class="hamburger-menu">
-                <div class="center"></div>
-            </div>
-            <a href="#" class="mail">
-              <i class="bi bi-eye"></i>
-            </a>
-            <div class="main">
-                <div class="image">
-                    <div class="hover">
-                      <i class="bi bi-camera camera-icon"></i>
-                    </div>
-                </div>
-                <h3 class="name">John Doe</h3>
-                <h3 class="sub-name">UI/UX Designer</h3>
-            </div>
-        </div>
-  
-        <div class="contentp">
-            <div class="left">
-                <div class="about-container">
-                    <h3 class="title">About</h3>
-                    <p>
-                      <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
-                      <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
-                      <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
-                    </p>
-                      
-                    <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
-                </div>
-                <div class="icons-container">
-                  <nz-tag [nzColor]="'#e6f8f5'" style="color: #1cc3a5 !important; border: none;">Available</nz-tag>
-                </div>
-                <div class="buttons-wrap">
-                    <div class="follow-wrap">
-                        <a href="#" class="follow">Bookmark</a>
-                    </div>
-                    <div class="share-wrap">
-                        <a href="#" class="share">Save</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-          </div>
-          <div class="col">
-  <div class="containerp d-flex justify-content-center">
-  <div class="cardp">
-      <div class="headerp">
-          <div class="hamburger-menu">
-              <div class="center"></div>
-          </div>
-          <a href="#" class="mail">
-            <i class="bi bi-eye"></i>
-          </a>
-          <div class="main">
-              <div class="image">
-                  <div class="hover">
-                    <i class="bi bi-camera camera-icon"></i>
-                  </div>
-              </div>
-              <h3 class="name">John Doe</h3>
-              <h3 class="sub-name">UI/UX Designer</h3>
-          </div>
-      </div>
-  
-      <div class="contentp">
-          <div class="left">
-              <div class="about-container">
-                  <h3 class="title">About</h3>
-                  <p>
-                    <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
-                    <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
-                    <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
-                  </p>
-                    
-                  <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
-              </div>
-              <div class="icons-container">
-                <nz-tag [nzColor]="'#fdecee'" style="color: #fd8d9a !important; border: none;">Unvailable</nz-tag>
-              </div>
-              <div class="buttons-wrap">
-                  <div class="follow-wrap">
-                      <a href="#" class="follow">Bookmark</a>
-                  </div>
-                  <div class="share-wrap">
-                      <a href="#" class="share">Save</a>
-                  </div>
-              </div>
-          </div>
-  
-      </div>
-  </div>
-  </div>
-        </div>
-        <div class="col">
-  <div class="containerp d-flex justify-content-center">
-  <div class="cardp">
-    <div class="headerp">
-        <div class="hamburger-menu">
-            <div class="center"></div>
-        </div>
-        <a href="#" class="mail">
-          <i class="bi bi-eye"></i>
-        </a>
-        <div class="main">
-            <div class="image">
-                <div class="hover">
-                  <i class="bi bi-camera camera-icon"></i>
-                </div>
-            </div>
-            <h3 class="name">John Doe</h3>
-            <h3 class="sub-name">UI/UX Designer</h3>
-        </div>
-    </div>
-  
-    <div class="contentp">
-        <div class="left">
-            <div class="about-container">
-                <h3 class="title">About</h3>
-                <p>
-                  <nz-tag [nzColor]="'#f7f8fa'">Accounting</nz-tag>
-                  <nz-tag [nzColor]="'f7f8fa'">Construction</nz-tag>
-                  <nz-tag [nzColor]="'f7f8fa'">Engineering</nz-tag>
-                </p>
-                  
-                <p><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></p>
-            </div>
-            <div class="icons-container">
-              <nz-tag [nzColor]="'#e6f8f5'" style="color: #1cc3a5 !important; border: none;">Available</nz-tag>
-            </div>
-            <div class="buttons-wrap">
-                <div class="follow-wrap">
-                    <a href="#" class="follow">Bookmark</a>
-                </div>
-                <div class="share-wrap">
-                    <a href="#" class="share">Save</a>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-  </div>
-      </div>
-  
-          
-      </div>
-      </div>
-      
-  </div>
-  
-  
-  
-  <div class="row">
-      <div class="col-md-3">
-          
-      </div>
-      <div class="col-md-9 ">
-        <div class="row browse-section ">
-          
-  
-         
-          
-      </div>
-      </div>
-      
-  </div>
-  </div>
 
 
 
 
+      </nz-tab>
+    </nz-tabset>
 
-<script>
-    const image = document.querySelector('.image');
-    const hover = document.querySelector('.hover');
-    const modal = document.querySelector('.modalp');
-    const close = document.querySelector('.closep');
+    <div class="spacers"></div>
+    
 
-    function show(){
-        hover.classList.add('active');
-        modal.classList.add('show');
-    }
-
-    function hide(){
-        hover.classList.remove('active');
-        modal.classList.remove('show');
-    }
-
-    image.addEventListener('click', show);
-    close.addEventListener('click', hide);
-</script>
-
-</div> -->
-  
-
-<nz-page-header
-      class="site-page-header"
-      nzTitle="Browse"
-      nzSubtitle="Services Pool"
-    ></nz-page-header>

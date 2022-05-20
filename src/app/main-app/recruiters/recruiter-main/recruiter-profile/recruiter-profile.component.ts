@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { BehaviorSubject, Observable, Observer } from 'rxjs';
+import { BehaviorSubject, Observable, Observer, Subscription } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { UsersService } from 'src/app/services/user.service';
 import { CorporateUser } from 'src/app/models/corporateuser.model';
@@ -11,14 +11,16 @@ import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Form, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { mimeType } from 'src/app/constants/validators/mime-type.validator';
-import { ProfileImageService } from 'src/app/services/profileimage.service';
-import { ProfileImage } from 'src/app/models/profileimage.model';
 import { UserExperienceService } from 'src/app/services/userexperience.service';
 import { UserExperience } from 'src/app/models/userexperience.model';
 import { UserSkillsService } from 'src/app/services/userskills.service';
 import { UserSkills } from 'src/app/models/userskills.model';
 import { CountriesService } from 'src/app/services/countries.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Profile } from 'src/app/models/Profile';
+import { ProfileService } from 'src/app/services/profile.service';
+import { environment } from "src/environments/environment";
+
 
 @Component({
   selector: 'app-recruiter-profile',
@@ -27,22 +29,35 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class RecruiterProfileComponent implements OnInit {
 
+  form!: FormGroup;
+  profile!: Profile;
+  imageData!: any;
+
   corporates: any[] = [];
   individuals: IndividualUser[] = [];
   test_user!:User;
 
-  loading = false;
+  // loading = false;
   avatarUrl?: string;
   user!: User;
   ImageData!: boolean;
-  imagePreview!: string;
   profileImage: any;
   anyAny: any[] = [];
   userExperience: any = [];
+  currentUser!: User;
+
+  shortLink: string = "";
+    loading: boolean = false; // Flag variable
+    file!: File; // Variable to store file
 
   countries = this.countriesService.countries;
   country: string = '';
   selectedValue = null;
+
+  
+
+  profiles: Profile[] = [];
+  private profileSubscription!: Subscription;
 
 
   errorHandler: boolean = true;
@@ -50,7 +65,11 @@ export class RecruiterProfileComponent implements OnInit {
   skillsErrorHandler: boolean = true;
 
 
-  pictureForm!: FormGroup;
+  // Image Upload
+  profilePictureForm!: FormGroup;
+  imagePreview!: any;
+
+
 
 
 
@@ -58,41 +77,71 @@ export class RecruiterProfileComponent implements OnInit {
     private usersService: UsersService, 
     private msg: NzMessageService, 
     private individualUserService: IndividualUserService,
-    private profileImageService: ProfileImageService,
     private userSkillsService: UserSkillsService,
     private userExperienceService: UserExperienceService,
-    private countriesService: CountriesService
+    private countriesService: CountriesService,
+    private profileService: ProfileService,
+    private http: HttpClient
+    
     )
-    { 
+    { }
 
-      profileImageService.allProfileImages$.subscribe((anyAny: any) => {
-        this.anyAny = anyAny;
-      });
-      console.log(this.anyAny);
-
-      this.profileImage = this.anyAny.filter((hey: ProfileImage) => {
-        return hey.userId == this.usersService.User._id;
-      })[0];
-
-      console.log(this.profileImage);
-      if (this.profileImage != undefined) {
-        this.errorHandler = false;
-      }
-
-      
-  }
-
-  // getImage() {
-  //   this.profileImage = this.profileImageService.getOneProfileImage();
-  // }
 
 
 
 
   initUser(){
+    this.usersService.init();
     this.usersService.Account.subscribe((user:any)=>{this.user=user});
+    this.usersService.users$.subscribe((users: any) => {
+      this.currentUser = users.filter((user: any) => {
+        return user._id = user._id;
+      })
+    })
   }
 
+  beforeUpload = (file: NzUploadFile, _fileList: NzUploadFile[]): Observable<boolean> =>
+  new Observable((observer: Observer<boolean>) => {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJpgOrPng) {
+      this.msg.error('You can only upload JPG file!');
+      observer.complete();
+      return;
+    }
+    const isLt2M = file.size! / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      this.msg.error('Image must smaller than 2MB!');
+      observer.complete();
+      return;
+    }
+    observer.next(isJpgOrPng && isLt2M);
+    observer.complete();
+  });
+
+private getBase64(img: File, callback: (img: string) => void): void {
+  const reader = new FileReader();
+  reader.addEventListener('load', () => callback(reader.result!.toString()));
+  reader.readAsDataURL(img);
+}
+
+handleChange(info: { file: NzUploadFile }): void {
+  switch (info.file.status) {
+    case 'uploading':
+      this.loading = true;
+      break;
+    case 'done':
+      // Get this url from response in real world.
+      this.getBase64(info.file!.originFileObj!, (img: string) => {
+        this.loading = false;
+        this.avatarUrl = img;
+      });
+      break;
+    case 'error':
+      this.msg.error('Network error');
+      this.loading = false;
+      break;
+  }
+}
   
 
   onAddPersonal(form: NgForm) {
@@ -118,64 +167,41 @@ export class RecruiterProfileComponent implements OnInit {
   ngOnInit(): void {
     this.initUser();
 
-    this.pictureForm = new FormGroup({
-      image: new FormControl(null, {validators: [Validators.required], asyncValidators: [mimeType]})
-    });
-    this.individualUserService.checkIndividualUser();
-    this.ImageData = JSON.parse(<string>localStorage.getItem('imageData')).imageData;
+    this.profileService.getProfiles();
+    this.profileSubscription = this.profileService
+      .getProfilesStream()
+      .subscribe((profiles: Profile[]) => {
+        this.profiles = profiles;
+      });
 
-    // this.userExperienceService.getUserExperience();
-
-    this.profileImageService.allProfileImages$.subscribe((anyAny: any) => {
-      this.anyAny = anyAny;
+    this.form = new FormGroup({
+      name: new FormControl(null),
+      image: new FormControl(null),
     });
-    this.profileImageService.getUserProfileImage();
+    
 
-    console.log("ngOnInit runs");
-    if (this.anyAny.length == 0) {
-      console.log("ende so, hamuna chinhu");
-      this.profileImageService.allProfileImages$.subscribe((anyAny: any) => {
-        this.anyAny = anyAny;
-        console.log(this.anyAny);
-        if (this.ImageData && this.profileImage == undefined) {
-          console.log("get that data");
-          this.profileImage = this.anyAny.filter((hey: ProfileImage) => {
-            return hey.userId == this.usersService.User._id;
-          })[0];
-          console.log(this.profileImage);
-          setInterval(() =>
-          this.errorHandler = false
-        , 500);
-          
-        }
-    });
+  }
+
+  onFileSelect(event: Event) {
+    const file = (event.target as HTMLInputElement).files![0];
+    this.form.patchValue({ image: file });
+    const allowedMimeTypes = ["image/png", "image/jpeg", "image/jpg"];
+    if (file && allowedMimeTypes.includes(file.type)) {
+      const reader = new FileReader();
+      reader.onload = () => { 
+        this.imageData = reader.result as string;
+      };
+      reader.readAsDataURL(file);
     }
-
-    // if (this.allUserExperience.length == 0) {
-    //   this.userExperienceService.allUserExperience$.subscribe((allUserExperience: any) => {
-    //     this.allUserExperience = allUserExperience;
-    //     if (this.ExperienceData && this.userExperience.length == 0) {
-    //       console.log("get that experience man!!");
-    //       this.userExperience = this.allUserExperience.filter((userExperience: UserExperience) => {
-    //         return userExperience.userId == this.usersService.User._id;
-    //       });
-    //       console.log(this.userExperience);
-    //       setInterval(() =>
-    //           this.experienceErrorHandler = false
-    //         , 500);
-    //     }
-    //   });
-    // }
-
-    
-
-    
-
   }
 
-  check() {
-    this.ngOnInit();
+  onSubmit() {
+    this.profileService.addProfile(this.form.value.name, this.form.value.image);
+    console.log(this.form.value.name, this.form.value.image);
+    this.form.reset();
+    this.imageData = null;
   }
+
 
   isVisible = false;
   isConfirmLoading = false;
@@ -197,29 +223,59 @@ export class RecruiterProfileComponent implements OnInit {
     this.isVisible = false;
   }
 
+  onChange(event: any) {
+    this.file = event.target.files[0];
+}
+
+// OnClick of button Upload
+onUpload() {
+    this.loading = !this.loading;
+    console.log(this.file);
+    this.upload(this.file).subscribe(
+        (event: any) => {
+            if (typeof (event) === 'object') {
+
+                // Short link via api response
+                this.shortLink = event.link;
+
+                this.loading = false; // Flag variable 
+            }
+        }
+    );
+}
+
+upload(file: File):Observable<any> {
+  
+  // Create form data
+  const formData = new FormData(); 
+    
+  // Store form name as "file" with file data
+  formData.append("file", file, file.name);
+    
+  // Make http post request over api
+  // with formData as req
+  return this.http.post(environment.server_url + 'profiles', formData)
+}
+
   onImagePicked(event: Event) {
-    const file = (event.target as HTMLInputElement).files![0];
-    this.pictureForm.patchValue({image: file});
-    this.pictureForm.get('image')?.updateValueAndValidity();
-    // console.log(file);
-    // console.log(this.pictureForm);
-    const reader  = new FileReader();
-    reader.onload = () => {
-      this.imagePreview = reader.result as string;
-    };
-    reader.readAsDataURL(file);
+    // const file = (event.target as HTMLInputElement).files![0];
+    // this.profilePictureForm.patchValue({image: file});
+    // this.profilePictureForm.get('image')?.updateValueAndValidity();
+    // const reader  = new FileReader();
+    // reader.onload = () => {
+    //   this.imagePreview = reader.result as string;
+    // };
+    // reader.readAsDataURL(file);
   }
 
-  onAddImage(form: NgForm) {
-    if (form.invalid) {
-      return;
-    }
-    this.profileImageService.addProfileImage(this.individualUserService.Individual.userId, this.pictureForm.value.image)
-    .subscribe((result: any) => {
-      console.log(result);
-    });
-    this.imageIsVisible = false;
-    location.reload();
+  onAddImage() {
+    // if (this.profilePictureForm.invalid) {
+    //   return;
+    // }
+    // const userId: any = this.user._id;
+    // this.profileImageService.addProfileImage(userId, this.profilePictureForm.value.image);
+    // this.imageIsVisible = false;
+    // location.reload();
   }
 
 
@@ -475,8 +531,8 @@ export class RecruiterProfileComponent implements OnInit {
     }
     console.log(userSkill);
     this.usersService.addUserSkill(userID, userSkill);
-      this.usersService.init()
       this.initUser();
+      this.usersService.init();
       this.skillsIsVisible = false;
   }
 

@@ -6,6 +6,8 @@ import { UsersService } from 'src/app/services/user.service';
 import { Chart } from '@antv/g2';
 // import DataSet from '@antv/data-set';
 import { CountriesService } from 'src/app/services/countries.service';
+import { AdvertService } from 'src/app/services/advert.service';
+import { Advert } from 'src/app/models/advert.model';
 
 
 
@@ -25,12 +27,15 @@ export class RecruiterDashboardComponent implements OnInit {
   // variables
   progressBar = 33;
   user: User;
+  myAds: any[]=[];
+  appliedAds: any[] = [];
   corporateUser: CorporateUser;
 
   constructor(
     private usersService: UsersService, 
     private corporateUserService: CorporateUserService,
-    private countriesService: CountriesService) { 
+    private countriesService: CountriesService,
+    private advertService: AdvertService,) { 
 
     this.user = usersService.User;
     this.corporateUser = corporateUserService.Corporate;
@@ -47,8 +52,24 @@ export class RecruiterDashboardComponent implements OnInit {
   }
 
   initUser(){
-    this.usersService.Account.subscribe((user:any)=>{this.user=user});
+    this.usersService.Account.subscribe((user:any)=>{
+      this.user=user
+      this.advertService.adverts$.subscribe((adverts: any) => {
+        this.myAds = adverts.filter((advert: Advert) => {
+          return advert.userId == this.user._id;
+        });
+        console.log(this.myAds);
+      });
+      let userId = this.user._id || '';
+      this.advertService.adverts$.subscribe((adverts: any) => {
+        this.appliedAds = adverts.filter((advert: Advert) => {
+          return advert.applicants.includes(userId);
+        });
+        console.log(this.appliedAds);
+      })
+    });
     this.checkProfileCompletion();
+
   }
 
 
@@ -125,37 +146,7 @@ export class RecruiterDashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-   
-
     this.initUser();
-    const data = [
-      { year: 'Programming', sales: 140 },
-      { year: 'Digital Marketing', sales: 52 },
-      { year: 'Graphic Design', sales: 61 },
-      { year: 'Writing', sales: 30 },
-      { year: 'Finance & Accounting', sales: 48 },
-      { year: 'Business Services', sales: 38 },
-    ];
-    const chart = new Chart({
-      container: 'c1',
-      autoFit: true,
-      height: 220,
-    });
-    
-    chart.data(data);
-    chart.scale('sales', {
-      nice: true,
-    });
-    
-    chart.tooltip({
-      showMarkers: false
-    });
-    chart.interaction('active-region');
-    
-    chart.interval().position('year*sales').style({ radius: [20, 20, 0, 0], fill: '#35afe1' });
-    
-    chart.render();
   }
 
 }
