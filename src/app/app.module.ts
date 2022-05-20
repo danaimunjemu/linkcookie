@@ -114,7 +114,7 @@ import { JobTitleFilterPipe } from './services/pipes/Advert Pipes/job-title-filt
 import { JobTypeFilterPipe } from './services/pipes/Advert Pipes/job-type-filter.pipe';
 import { AdvertsComponent } from './main-app/recruiters/recruiter-main/adverts/adverts.component';
 import { ApplicantsComponent } from './main-app/recruiters/recruiter-main/adverts/applicants/applicants.component';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 
@@ -235,6 +235,7 @@ registerLocaleData(en);
   providers: [
     { provide: NZ_I18N, useValue: en_US }, 
     { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     CanDeactivateGuard, 
     {
       provide: PSM_CONFIG,
